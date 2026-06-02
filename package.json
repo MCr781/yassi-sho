@@ -1,0 +1,10 @@
+{
+  "name": "yassi-sho",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx tailwindcss -i src/input.css -o assets/css/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.2.4"
+  }
+}

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>یاسی شو | پلتفرم مشارکت مردمی یاس</title>
+
+    <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
+    <!-- Make sure FontAwesome is properly linked for the new icons -->
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center relative">
+
+            <!-- Right side (Nav Links) -->
+                        <nav class="flex gap-8 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
+                <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
+                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
+            </nav>
+
+            <!-- Center Overlapping Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 -bottom-8 z-50 group cursor-pointer">
+                <div class="bg-white p-2 rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <img src="assets/images/header-logo.png" alt="YasiShow Logo"
+                        class="h-20 drop-shadow-sm object-contain group-hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+
+            <!-- Left side (Lang & Socials) -->
+            <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
+                <div
+                    class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full">
+                    فارسی | EN</div>
+                <div class="flex gap-3 text-lg">
+                    <i
+                        class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i
+                        class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i
+                        class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i
+                        class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <div class="max-w-[1300px] mx-auto px-4 pt-20 pb-20 flex flex-col lg:flex-row gap-12">
+
+        <!-- ================= SIDEBAR (Right side) ================= -->
+        <aside
+            class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-8 lg:border-l border-slate-200 lg:pl-10">
+
+            <!-- TL Logo -->
+            <img src="assets/images/tl-logo.png" alt="TL Logo"
+                class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
+
+            <!-- Filter Buttons Stack (Modernized) -->
+            <div class="w-[200px] flex flex-col gap-2.5">
+                <button
+                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
+                <button
+                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">مراکز</button>
+                <button
+                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">درگذشتگان</button>
+                <button
+                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">همه</button>
+            </div>
+
+            <!-- Intro Text -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 relative">
+                <i class="fa-solid fa-quote-right absolute top-3 right-3 text-slate-100 text-3xl"></i>
+                <p class="text-[13px] text-slate-600 text-justify leading-loose relative z-10">
+                    <strong class="text-brand-purple-dark font-black">یاسی شو</strong> یک پلتفرم بر بستر فضای وب است که
+                    بر اساس مشارکت افراد جهت ساخت و تکمیل پروژه های انجمن خیریه بیماران سرطانی یاس شامل:
+                    <br><span class="inline-block mt-2 font-medium text-slate-700"><i
+                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز رادیوتراپی</span>
+                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i
+                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز غربالگری خون</span>
+                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i
+                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>درمانگاه و مرکز بستری</span>
+                    <br><span class="inline-block mt-1 mb-2 font-medium text-slate-700"><i
+                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز آموزش و پیشگیری</span>
+                    <br>شکل گرفته است. با حضور خود، دعوت از دوستان و اضافه نمودن اقوام و یاران سفر کرده تان در این
+                    پروژه، انجمن یاس را یاری رسانید.
+                </p>
+            </div>
+
+            
+            <!-- Login CTA -->
+            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+                <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
+                <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
+                <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
+                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-2.5 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
+                    ورود / ثبت‌نام
+                </button>
+            </div>
+        </aside>
+
+        <!-- ================= MAIN CONTENT (Left side) ================= -->
+        <main class="w-full lg:flex-1 flex flex-col gap-10">
+            <!-- Content placeholder for deceased-archive.html -->
+            <div class="flex flex-col gap-8">
+                <!-- Top Section: Stats & Define Button -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+                    <div class="absolute -start-10 -top-10 w-32 h-32 bg-brand-pink/5 rounded-full blur-2xl pointer-events-none"></div>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-start items-center gap-8 w-full md:w-auto relative z-10">
+                        <div class="text-center">
+                            <div class="text-brand-purple-light mb-1"><i class="fa-solid fa-dove text-xl"></i></div>
+                            <div class="text-2xl font-black text-slate-800 font-sans">1,021</div>
+                            <div class="text-[12px] font-bold text-slate-500">یاران سفر کرده</div>
+                        </div>
+                        <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
+                        <div class="text-center">
+                            <div class="text-brand-purple-light mb-1"><i class="fa-solid fa-user-group text-xl"></i></div>
+                            <div class="text-2xl font-black text-slate-800 font-sans">1,567</div>
+                            <div class="text-[12px] font-bold text-slate-500">مشارکت کننده</div>
+                        </div>
+                        <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
+                        <div class="text-center">
+                            <div class="text-brand-pink mb-1"><i class="fa-solid fa-heart text-xl"></i></div>
+                            <div class="text-2xl font-black text-brand-purple-dark font-sans" dir="ltr">102.7 <span class="text-sm">M</span></div>
+                            <div class="text-[12px] font-bold text-slate-500">تومان هدیه مردمی</div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto relative z-10">
+                        <button onclick="document.getElementById('define-deceased-modal').classList.remove('hidden'); document.getElementById('define-deceased-modal').classList.add('flex');" class="w-full md:w-auto bg-brand-purple-dark text-white px-6 py-3 rounded-full text-[14px] font-black shadow-lg hover:shadow-xl hover:bg-brand-purple-light hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i>
+                            ثبت یادبود جدید
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 relative z-10">
+                    <form class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <i class="fa-solid fa-magnifying-glass absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" placeholder="جستجو بر اساس نام درگذشته..." class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px] text-slate-800">
+                        </div>
+                        <div class="flex-1 relative">
+                            <i class="fa-solid fa-calendar-days absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" placeholder="سال تولد یا فوت (مثال: ۱۳۷۰)" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px] text-slate-800 font-sans" dir="rtl">
+                        </div>
+                        <button type="button" class="bg-slate-800 text-white px-8 py-3 rounded-xl text-[14px] font-bold shadow-md hover:bg-brand-purple-dark transition-colors shrink-0">
+                            بگرد
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Masonry Gallery -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-4 sm:p-6">
+                    <div id="masonry-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-[120px] sm:auto-rows-[150px] gap-2 sm:gap-3">
+                        <!-- Items generated via JS to demonstrate random masonry logic -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Define Deceased Modal -->
+            <div id="define-deceased-modal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh]">
+                    <button onclick="document.getElementById('define-deceased-modal').classList.add('hidden'); document.getElementById('define-deceased-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 hover:text-slate-800 transition-colors z-10">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div class="bg-gradient-to-br from-brand-purple-light to-brand-purple-dark p-6 text-center text-white relative shrink-0">
+                        <div class="absolute inset-0 bg-white/5 opacity-50"></div>
+                        <i class="fa-solid fa-dove text-3xl mb-2 drop-shadow-md relative z-10"></i>
+                        <h2 class="text-lg font-black relative z-10">ثبت یادبود جدید</h2>
+                    </div>
+                    <div class="p-6 overflow-y-auto">
+                        <form class="flex flex-col gap-4">
+                            <!-- Image Upload -->
+                            <div class="flex justify-center mb-2">
+                                <div class="relative group cursor-pointer">
+                                    <div class="w-24 h-24 bg-slate-100 border-2 border-dashed border-slate-300 rounded-full flex flex-col items-center justify-center overflow-hidden group-hover:border-brand-pink transition-colors">
+                                        <i class="fa-solid fa-image text-2xl text-slate-400 group-hover:text-brand-pink transition-colors"></i>
+                                        <span class="text-[10px] text-slate-400 mt-1">عکس</span>
+                                    </div>
+                                    <div class="absolute -bottom-1 -end-1 bg-brand-pink text-white w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                        <i class="fa-solid fa-plus text-[14px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-[12px] font-bold text-slate-700 mb-1.5">نام و نام خانوادگی درگذشته</label>
+                                <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px]">
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-1">
+                                    <label class="block text-[12px] font-bold text-slate-700 mb-1.5">تاریخ تولد</label>
+                                    <input type="text" placeholder="۱۳XX" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px] font-sans" dir="ltr">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-[12px] font-bold text-slate-700 mb-1.5">تاریخ فوت</label>
+                                    <input type="text" placeholder="۱۴XX" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px] font-sans" dir="ltr">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-[12px] font-bold text-slate-700 mb-1.5">پیام یادبود شما</label>
+                                <textarea rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-[13px] resize-none" placeholder="متن دلخواه..."></textarea>
+                            </div>
+
+                            <!-- Invite Section -->
+                            <div class="border-t border-slate-100 pt-4 mt-2">
+                                <h3 class="text-[13px] font-black text-slate-800 mb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-user-plus text-brand-purple-light"></i>
+                                    دعوت از آشنایان
+                                </h3>
+                                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                                    <div class="flex gap-2">
+                                        <input type="text" placeholder="نام" class="w-1/2 bg-white border border-slate-200 rounded-lg py-2 px-3 text-[12px] focus:outline-none focus:border-brand-purple-light">
+                                        <input type="tel" placeholder="موبایل" class="w-1/2 bg-white border border-slate-200 rounded-lg py-2 px-3 text-[12px] focus:outline-none focus:border-brand-purple-light font-sans" dir="ltr">
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <label class="flex items-center gap-2 cursor-pointer text-[11px] font-bold text-slate-600">
+                                            <input type="checkbox" class="accent-brand-purple-dark w-4 h-4 rounded">
+                                            اجازه آپلود عکس/فیلم
+                                        </label>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-[11px] font-bold text-slate-600">مبلغ پیشنهادی:</span>
+                                            <input type="text" placeholder="دلخواه" class="w-20 bg-white border border-slate-200 rounded-lg py-1 px-2 text-[11px] text-center focus:outline-none focus:border-brand-purple-light font-sans" dir="ltr">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="w-full bg-white text-brand-purple-dark border border-brand-purple-dark border-dashed py-1.5 rounded-lg text-[12px] font-bold hover:bg-brand-purple-light/5 transition-colors">
+                                        + افزودن نفر بعدی
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="button" onclick="document.getElementById('define-deceased-modal').classList.add('hidden'); document.getElementById('define-deceased-modal').classList.remove('flex');" class="w-full bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all mt-2">
+                                ثبت یادبود
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Masonry Script -->
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const grid = document.getElementById('masonry-grid');
+                    const images = [
+                        'assets/images/a1.jpg', 'assets/images/a2.jpg', 'assets/images/a3.jpg', 
+                        'assets/images/a4.jpg', 'assets/images/a5.jpg', 'assets/images/a6.jpg',
+                        'assets/images/a7.jpg', 'assets/images/a8.jpg', 'assets/images/a9.jpg',
+                        'assets/images/a10.jpg', 'assets/images/portrait.png'
+                    ];
+                    const names = ['حاج رضا فولادی', 'مرحومه فاطمه رضایی', 'شهید احمدی', 'دکتر محمدی', 'مادر مهربان'];
+
+                    // Generate 20 items
+                    let html = '';
+                    const totalItems = 20;
+                    
+                    // Pick one random item to be the large one
+                    const largeIndex = Math.floor(Math.random() * totalItems);
+
+                    for (let i = 0; i < totalItems; i++) {
+                        const img = images[Math.floor(Math.random() * images.length)];
+                        const name = names[Math.floor(Math.random() * names.length)];
+                        
+                        let classes = 'relative overflow-hidden rounded-xl group cursor-pointer block';
+                        if (i === largeIndex) {
+                            classes += ' col-span-2 row-span-2';
+                        }
+                        
+                        html += \`
+                            <a href="deceased-detail.html" class="\${classes}">
+                                <img src="\${img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <span class="text-white font-black text-sm drop-shadow-md translate-y-4 group-hover:translate-y-0 transition-transform duration-300">\${name}</span>
+                                </div>
+                            </a>
+                        \`;
+                    }
+                    grid.innerHTML = html;
+                });
+            </script>
+        </main>
+    </div>
+
+
+    
+    <!-- OTP/Login Modal -->
+    <div id="otp-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <!-- Modal Container -->
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+            
+            <!-- Close Button -->
+            <button onclick="document.getElementById('otp-modal').classList.add('hidden'); document.getElementById('otp-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 hover:text-slate-800 transition-colors z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="bg-gradient-to-br from-brand-purple-light to-brand-purple-dark p-6 text-center text-white relative">
+                <div class="absolute inset-0 bg-white/5 opacity-50"></div>
+                <i class="fa-solid fa-shield-halved text-4xl mb-3 drop-shadow-md relative z-10"></i>
+                <h2 class="text-xl font-black relative z-10">ورود به یاسی شو</h2>
+                <p class="text-white/80 text-[13px] mt-1 relative z-10">برای ادامه شماره موبایل خود را وارد کنید</p>
+            </div>
+
+            <!-- Body (Dynamic Steps Mockup) -->
+            <div class="p-6 md:p-8 flex flex-col gap-6" id="modal-step-1">
+                <!-- Step 1: Phone Input -->
+                <div>
+                    <label class="block text-[13px] font-bold text-slate-700 mb-2">شماره موبایل</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-mobile-screen absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="tel" placeholder="09123456789" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800 tracking-widest font-sans" dir="ltr">
+                    </div>
+                </div>
+
+                <button onclick="document.getElementById('modal-step-1').classList.add('hidden'); document.getElementById('modal-step-2').classList.remove('hidden');" class="w-full bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    دریافت کد تایید
+                </button>
+                <div class="text-center">
+                    <p class="text-[11px] text-slate-500">با ورود شما <a href="#" class="text-brand-purple-dark font-bold underline">قوانین و مقررات</a> را می‌پذیرید.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: OTP & Registration (Hidden by default) -->
+            <div class="p-6 md:p-8 hidden flex-col gap-6" id="modal-step-2">
+                <div class="text-center mb-2">
+                    <p class="text-[13px] font-bold text-slate-700 mb-1">کد تایید پیامک شده را وارد کنید</p>
+                    <p class="text-[12px] text-slate-500 cursor-pointer hover:text-brand-pink" onclick="document.getElementById('modal-step-2').classList.add('hidden'); document.getElementById('modal-step-1').classList.remove('hidden');">ویرایش شماره: ۰۹۱۲۳۴۵۶۷۸۹ <i class="fa-solid fa-pen ms-1"></i></p>
+                </div>
+
+                <!-- OTP 4 Graphic Boxes -->
+                <div class="flex justify-center gap-3" dir="ltr">
+                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="7">
+                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="4">
+                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
+                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
+                </div>
+
+                <!-- Fake Registration Fields (Shown if user is new) -->
+                <div class="border-t border-slate-100 pt-5 mt-2 flex flex-col gap-4">
+                    <p class="text-[12px] text-brand-purple-dark font-bold text-center bg-brand-purple-light/10 py-1.5 rounded-lg">شما کاربر جدید هستید. لطفا اطلاعات زیر را تکمیل کنید.</p>
+                    
+                    <!-- Avatar Upload -->
+                    <div class="flex justify-center">
+                        <div class="relative group cursor-pointer">
+                            <div class="w-20 h-20 bg-slate-100 border-2 border-dashed border-slate-300 rounded-full flex items-center justify-center overflow-hidden group-hover:border-brand-pink transition-colors">
+                                <i class="fa-solid fa-camera text-2xl text-slate-400 group-hover:text-brand-pink transition-colors"></i>
+                            </div>
+                            <div class="absolute -bottom-1 -end-1 bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                <i class="fa-solid fa-plus text-[12px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Name Input -->
+                    <div>
+                        <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" placeholder="مثال: علی احمدی" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 ps-11 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800">
+                        </div>
+                    </div>
+                </div>
+
+                <a href="profile.html" class="w-full block text-center bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    تایید و ورود
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- Global Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full">
+        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
+                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
+                </a>
+                <div class="text-sm text-slate-600 font-medium">
+                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
+                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4">
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
+            تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
+        </div>
+    </footer>
+</body>
+
+</html>
