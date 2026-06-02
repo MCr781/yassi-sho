@@ -4,22 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>یاسی شو | پلتفرم مشارکت مردمی یاس</title>
+    <title>یاسی شو | جزئیات درگذشته</title>
 
     <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
-    <!-- Make sure FontAwesome is properly linked for the new icons -->
     <link rel="stylesheet" href="assets/css/all.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white flex flex-col min-h-screen font-sans">
 
     <!-- Header / Navbar -->
     <header class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm z-50 transition-all">
         <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center relative">
 
             <!-- Right side (Nav Links) -->
-                        <nav class="flex gap-8 text-[14px] font-bold text-slate-600">
+            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
                 <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
@@ -36,415 +35,184 @@
 
             <!-- Left side (Lang & Socials) -->
             <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
-                <div
-                    class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full">
                     فارسی | EN</div>
-                <div class="flex gap-3 text-lg">
-                    <i
-                        class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                <div class="hidden md:flex gap-3 text-lg">
+                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                 </div>
             </div>
 
         </div>
     </header>
 
-    <!-- Main Layout Container -->
-    <div class="max-w-[1300px] mx-auto px-4 pt-20 pb-20 flex flex-col lg:flex-row gap-12">
-
-        <!-- ================= SIDEBAR (Right side) ================= -->
-        <aside
-            class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-8 lg:border-l border-slate-200 lg:pl-10">
-
-            <!-- TL Logo -->
-            <img src="assets/images/tl-logo.png" alt="TL Logo"
-                class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
-
-            <!-- Filter Buttons Stack (Modernized) -->
-            <div class="w-[200px] flex flex-col gap-2.5">
-                <button
-                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
-                <button
-                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">مراکز</button>
-                <button
-                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">درگذشتگان</button>
-                <button
-                    class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">همه</button>
-            </div>
-
-            <!-- Intro Text -->
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 relative">
-                <i class="fa-solid fa-quote-right absolute top-3 right-3 text-slate-100 text-3xl"></i>
-                <p class="text-[13px] text-slate-600 text-justify leading-loose relative z-10">
-                    <strong class="text-brand-purple-dark font-black">یاسی شو</strong> یک پلتفرم بر بستر فضای وب است که
-                    بر اساس مشارکت افراد جهت ساخت و تکمیل پروژه های انجمن خیریه بیماران سرطانی یاس شامل:
-                    <br><span class="inline-block mt-2 font-medium text-slate-700"><i
-                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز رادیوتراپی</span>
-                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i
-                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز غربالگری خون</span>
-                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i
-                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>درمانگاه و مرکز بستری</span>
-                    <br><span class="inline-block mt-1 mb-2 font-medium text-slate-700"><i
-                            class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز آموزش و پیشگیری</span>
-                    <br>شکل گرفته است. با حضور خود، دعوت از دوستان و اضافه نمودن اقوام و یاران سفر کرده تان در این
-                    پروژه، انجمن یاس را یاری رسانید.
-                </p>
-            </div>
-
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center p-4 py-10 md:py-16">
+        <div class="bg-white rounded-[2rem] max-w-[1200px] w-full p-6 md:p-10 lg:p-12 shadow-2xl shadow-slate-200/50 flex flex-col lg:flex-row gap-10 lg:gap-16 border border-slate-100 relative overflow-hidden">
             
-            <!-- Login CTA -->
-            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
-                <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
-                <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
-                <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
-                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-2.5 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
-                    ورود / ثبت‌نام
-                </button>
-            </div>
-        </aside>
-
-        <!-- ================= MAIN CONTENT (Left side) ================= -->
-        <main class="w-full lg:flex-1 flex flex-col gap-10">
-            <!-- Content placeholder for deceased-detail.html -->
-            <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <!-- Right Column (Content) -->
+            <div class="w-full lg:w-3/5 flex flex-col order-2 lg:order-1 relative z-10">
                 
-                <!-- Right Side: Info & Gallery (lg:w-2/3) -->
-                <div class="w-full lg:w-2/3 flex flex-col gap-6">
-                    
-                    <!-- Main Profile Card -->
-                    <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100 relative overflow-hidden">
-                        <div class="absolute top-0 end-0 w-32 h-32 bg-brand-purple-light/10 rounded-bl-full -z-10"></div>
-                        
-                        <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
-                            <div class="shrink-0 relative">
-                                <img src="assets/images/portrait.png" class="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover shadow-lg border-4 border-white z-10 relative">
-                                <div class="absolute -bottom-3 -end-3 bg-brand-pink text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-md z-20 border-2 border-white">
-                                    درگذشته
-                                </div>
-                            </div>
-                            
-                            <div class="flex-1 text-center md:text-start flex flex-col gap-3 w-full">
-                                <div>
-                                    <h1 class="text-2xl md:text-3xl font-black text-slate-800 mb-2">حاج رضا فولادی</h1>
-                                    <div class="flex flex-wrap justify-center md:justify-start gap-3 text-[12px] font-bold text-slate-500">
-                                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-calendar-day text-brand-purple-light"></i> تولد: ۳ / ۱۲ / ۱۳۰۸</span>
-                                        <span class="text-slate-300">|</span>
-                                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-bed-pulse text-slate-400"></i> فوت: ۲۵ / ۹ / ۱۳۹۰</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 relative mt-2 text-start">
-                                    <i class="fa-solid fa-quote-right absolute top-2 start-2 text-slate-200 text-2xl"></i>
-                                    <p class="text-[13px] font-bold text-slate-800 mb-1 relative z-10">پدر عزیزم همیشه به یادت هستم</p>
-                                    <p class="text-[12px] text-slate-600 leading-relaxed relative z-10">خرم آن روز کز این منزل ویران بروم<br>راحت جان طلبم و از پی جانان بروم</p>
-                                </div>
-                                
-                                <div class="flex justify-between items-end mt-2">
-                                    <div class="flex items-center gap-2">
-                                        <img src="assets/images/creator.jpg" class="w-8 h-8 rounded-full border border-slate-200">
-                                        <div>
-                                            <p class="text-[11px] text-slate-400 font-medium">ایجاد شده توسط</p>
-                                            <p class="text-[12px] text-slate-700 font-bold">محمد رضا فولادی</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-[11px] text-slate-400">۱۵ / ۵ / ۱۴۰۱</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Memorial Gallery & Companions -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        <!-- Memorial Gallery -->
-                        <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex flex-col h-full">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-[15px] font-black text-slate-800 flex items-center gap-2">
-                                    <i class="fa-solid fa-images text-brand-purple-dark"></i> گالری یادبود
-                                </h3>
-                                <button onclick="document.getElementById('gallery-modal').classList.remove('hidden'); document.getElementById('gallery-modal').classList.add('flex');" class="text-[11px] font-bold text-brand-pink hover:underline">مشاهده همه (۱۵)</button>
-                            </div>
-                            
-                            <div class="grid grid-cols-3 gap-2 mb-4 flex-1">
-                                <img src="assets/images/a1.jpg" class="w-full h-20 object-cover rounded-xl shadow-sm cursor-pointer hover:scale-105 transition-transform">
-                                <img src="assets/images/a2.jpg" class="w-full h-20 object-cover rounded-xl shadow-sm cursor-pointer hover:scale-105 transition-transform">
-                                <div class="relative w-full h-20 rounded-xl shadow-sm overflow-hidden cursor-pointer hover:scale-105 transition-transform" onclick="document.getElementById('gallery-modal').classList.remove('hidden'); document.getElementById('gallery-modal').classList.add('flex');">
-                                    <img src="assets/images/a3.jpg" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                        <span class="text-white font-black text-sm">+۱۳</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button onclick="document.getElementById('upload-modal').classList.remove('hidden'); document.getElementById('upload-modal').classList.add('flex');" class="w-full bg-slate-50 border border-slate-200 border-dashed text-brand-purple-dark py-2.5 rounded-xl text-[12px] font-bold hover:bg-brand-purple-light/10 hover:border-brand-purple-light transition-all flex items-center justify-center gap-2 mt-auto">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> آپلود عکس/فیلم جدید
-                            </button>
-                        </div>
-                        
-                        <!-- Companions -->
-                        <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex flex-col h-full">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-[15px] font-black text-slate-800 flex items-center gap-2">
-                                    <i class="fa-solid fa-users text-brand-purple-dark"></i> همراهان
-                                </h3>
-                                <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md text-[11px] font-bold">۹ نفر</span>
-                            </div>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4 flex-1">
-                                <img src="assets/images/a1.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover hover:-translate-y-1 transition-transform cursor-pointer">
-                                <img src="assets/images/a2.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover hover:-translate-y-1 transition-transform cursor-pointer">
-                                <img src="assets/images/a3.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover hover:-translate-y-1 transition-transform cursor-pointer">
-                                <img src="assets/images/a4.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover hover:-translate-y-1 transition-transform cursor-pointer">
-                                <img src="assets/images/a5.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover hover:-translate-y-1 transition-transform cursor-pointer">
-                                <div class="w-10 h-10 rounded-full border-2 border-white shadow-sm bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 cursor-pointer">+۴</div>
-                            </div>
-                            
-                            <div class="bg-brand-purple-light/5 rounded-xl p-3 flex justify-between items-center mt-auto border border-brand-purple-light/10">
-                                <span class="text-[11px] font-bold text-brand-purple-dark">مجموع هدایا:</span>
-                                <div class="text-start">
-                                    <span class="text-[15px] font-black text-slate-800 font-sans tracking-tight" dir="ltr">45,002,790</span>
-                                    <span class="text-[10px] text-slate-500 font-bold">تومان</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Left Side: Donation Box (lg:w-1/3) -->
-                <div class="w-full lg:w-1/3">
-                    <div class="bg-gradient-to-b from-brand-pink to-[#b8184f] rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden text-center sticky top-24">
-                        <div class="absolute inset-0 bg-[url('assets/images/pattern.png')] opacity-10"></div>
-                        <div class="absolute -top-10 -end-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-                        <div class="absolute -bottom-10 -start-10 w-32 h-32 bg-black/10 rounded-full blur-xl"></div>
-                        
-                        <div class="relative z-10 flex flex-col items-center">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 text-white shadow-inner">
-                                <i class="fa-solid fa-hand-holding-heart text-3xl"></i>
-                            </div>
-                            
-                            <h3 class="text-white font-black text-lg mb-2">هدیه به نام درگذشته</h3>
-                            <p class="text-white/80 text-[12px] leading-relaxed mb-6">با پرداخت هدیه به یاسی شو، ثواب این کار خیر را به روح این عزیز هدیه کنید.</p>
-                            
-                            <form class="w-full flex flex-col gap-4 text-start">
-                                <!-- Mockup for unauthenticated user -->
-                                <div>
-                                    <label class="block text-[12px] font-bold text-white/90 mb-1.5 ps-1">نام شما</label>
-                                    <input type="text" class="w-full bg-white/10 border border-white/20 rounded-xl py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:bg-white/20 transition-all text-[13px]" placeholder="مثال: علی احمدی">
-                                </div>
-                                <div>
-                                    <label class="block text-[12px] font-bold text-white/90 mb-1.5 ps-1">شماره موبایل</label>
-                                    <input type="tel" class="w-full bg-white/10 border border-white/20 rounded-xl py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:bg-white/20 transition-all text-[13px] text-start font-sans tracking-widest" placeholder="0912..." dir="ltr">
-                                </div>
-                                
-                                <div class="mt-2">
-                                    <label class="block text-[13px] font-bold text-white mb-2 text-center w-full">مبلغ هدیه (تومان)</label>
-                                    <input type="text" class="w-full bg-white text-slate-800 font-black text-xl text-center rounded-xl py-3 px-3 shadow-inner focus:outline-none focus:ring-2 focus:ring-white/50 transition-all font-sans" value="100,000" dir="ltr">
-                                </div>
-                                
-                                <label class="flex items-center justify-center gap-2 cursor-pointer mt-1">
-                                    <input type="checkbox" class="accent-white w-4 h-4 rounded shadow-sm">
-                                    <span class="text-[11px] font-bold text-white/90">یادآوری ماهانه این هدیه</span>
-                                </label>
-
-                                <button type="button" class="w-full bg-white text-[#b8184f] font-black py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all mt-4 text-[14px]">
-                                    پرداخت و ثبت همراهی
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modals for Detail Page -->
-            <!-- Gallery Modal -->
-            <div id="gallery-modal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh]">
-                    <div class="flex justify-between items-center p-4 md:p-6 border-b border-slate-100 shrink-0">
-                        <h2 class="text-lg font-black text-slate-800 flex items-center gap-2">
-                            <i class="fa-solid fa-images text-brand-purple-dark"></i> گالری یادبود حاج رضا فولادی
-                        </h2>
-                        <button onclick="document.getElementById('gallery-modal').classList.add('hidden'); document.getElementById('gallery-modal').classList.remove('flex');" class="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 transition-colors">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="p-4 md:p-6 overflow-y-auto">
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            <div class="flex flex-col gap-2">
-                                <img src="assets/images/a1.jpg" class="w-full h-32 md:h-40 object-cover rounded-2xl shadow-sm">
-                                <div class="text-[10px] text-slate-500 flex justify-between px-1">
-                                    <span>توسط: علی فولادی</span>
-                                    <span>۱۴۰۲/۰۵/۱۰</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <img src="assets/images/a2.jpg" class="w-full h-32 md:h-40 object-cover rounded-2xl shadow-sm">
-                                <div class="text-[10px] text-slate-500 flex justify-between px-1">
-                                    <span>توسط: مریم احمدی</span>
-                                    <span>۱۴۰۲/۰۶/۱۲</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <img src="assets/images/a3.jpg" class="w-full h-32 md:h-40 object-cover rounded-2xl shadow-sm">
-                                <div class="text-[10px] text-slate-500 flex justify-between px-1">
-                                    <span>توسط: رضا حسینی</span>
-                                    <span>۱۴۰۲/۰۷/۰۱</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Upload Modal -->
-            <div id="upload-modal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-                <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
-                    <div class="flex justify-between items-center p-5 border-b border-slate-100 shrink-0">
-                        <h2 class="text-[15px] font-black text-slate-800 flex items-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up text-brand-purple-dark"></i> آپلود فایل جدید
-                        </h2>
-                        <button onclick="document.getElementById('upload-modal').classList.add('hidden'); document.getElementById('upload-modal').classList.remove('flex');" class="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 transition-colors">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="p-6">
-                        <form class="flex flex-col gap-4">
-                            <div>
-                                <label class="block text-[12px] font-bold text-slate-700 mb-1.5">عنوان فایل</label>
-                                <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-brand-purple-light transition-all text-[13px]" placeholder="مثال: عکس مراسم چهلم">
-                            </div>
-                            <div>
-                                <label class="block text-[12px] font-bold text-slate-700 mb-1.5">انتخاب فایل (عکس یا فیلم)</label>
-                                <div class="w-full h-32 bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center text-slate-400 cursor-pointer hover:bg-slate-100 hover:border-brand-purple-light transition-all">
-                                    <i class="fa-solid fa-file-arrow-up text-3xl mb-2"></i>
-                                    <span class="text-[12px] font-bold">کلیک کنید یا فایل را اینجا رها کنید</span>
-                                </div>
-                            </div>
-                            <button type="button" onclick="document.getElementById('upload-modal').classList.add('hidden'); document.getElementById('upload-modal').classList.remove('flex');" class="w-full bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all mt-2">
-                                آپلود و ثبت
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-
-    
-    <!-- OTP/Login Modal -->
-    <div id="otp-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <!-- Modal Container -->
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
-            
-            <!-- Close Button -->
-            <button onclick="document.getElementById('otp-modal').classList.add('hidden'); document.getElementById('otp-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 hover:text-slate-800 transition-colors z-10">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Header -->
-            <div class="bg-gradient-to-br from-brand-purple-light to-brand-purple-dark p-6 text-center text-white relative">
-                <div class="absolute inset-0 bg-white/5 opacity-50"></div>
-                <i class="fa-solid fa-shield-halved text-4xl mb-3 drop-shadow-md relative z-10"></i>
-                <h2 class="text-xl font-black relative z-10">ورود به یاسی شو</h2>
-                <p class="text-white/80 text-[13px] mt-1 relative z-10">برای ادامه شماره موبایل خود را وارد کنید</p>
-            </div>
-
-            <!-- Body (Dynamic Steps Mockup) -->
-            <div class="p-6 md:p-8 flex flex-col gap-6" id="modal-step-1">
-                <!-- Step 1: Phone Input -->
-                <div>
-                    <label class="block text-[13px] font-bold text-slate-700 mb-2">شماره موبایل</label>
-                    <div class="relative">
-                        <i class="fa-solid fa-mobile-screen absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="tel" placeholder="09123456789" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800 tracking-widest font-sans" dir="ltr">
-                    </div>
-                </div>
-
-                <button onclick="document.getElementById('modal-step-1').classList.add('hidden'); document.getElementById('modal-step-2').classList.remove('hidden');" class="w-full bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                    دریافت کد تایید
-                </button>
-                <div class="text-center">
-                    <p class="text-[11px] text-slate-500">با ورود شما <a href="#" class="text-brand-purple-dark font-bold underline">قوانین و مقررات</a> را می‌پذیرید.</p>
-                </div>
-            </div>
-
-            <!-- Step 2: OTP & Registration (Hidden by default) -->
-            <div class="p-6 md:p-8 hidden flex-col gap-6" id="modal-step-2">
-                <div class="text-center mb-2">
-                    <p class="text-[13px] font-bold text-slate-700 mb-1">کد تایید پیامک شده را وارد کنید</p>
-                    <p class="text-[12px] text-slate-500 cursor-pointer hover:text-brand-pink" onclick="document.getElementById('modal-step-2').classList.add('hidden'); document.getElementById('modal-step-1').classList.remove('hidden');">ویرایش شماره: ۰۹۱۲۳۴۵۶۷۸۹ <i class="fa-solid fa-pen ms-1"></i></p>
-                </div>
-
-                <!-- OTP 4 Graphic Boxes -->
-                <div class="flex justify-center gap-3" dir="ltr">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="7">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="4">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
-                </div>
-
-                <!-- Fake Registration Fields (Shown if user is new) -->
-                <div class="border-t border-slate-100 pt-5 mt-2 flex flex-col gap-4">
-                    <p class="text-[12px] text-brand-purple-dark font-bold text-center bg-brand-purple-light/10 py-1.5 rounded-lg">شما کاربر جدید هستید. لطفا اطلاعات زیر را تکمیل کنید.</p>
-                    
-                    <!-- Avatar Upload -->
-                    <div class="flex justify-center">
-                        <div class="relative group cursor-pointer">
-                            <div class="w-20 h-20 bg-slate-100 border-2 border-dashed border-slate-300 rounded-full flex items-center justify-center overflow-hidden group-hover:border-brand-pink transition-colors">
-                                <i class="fa-solid fa-camera text-2xl text-slate-400 group-hover:text-brand-pink transition-colors"></i>
-                            </div>
-                            <div class="absolute -bottom-1 -end-1 bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Name Input -->
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی</label>
+                <!-- Header Info (Creator) -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
+                    <div class="flex items-center gap-4">
                         <div class="relative">
-                            <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" placeholder="مثال: علی احمدی" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 ps-11 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800">
+                            <img src="assets/images/creator.jpg" class="w-14 h-14 rounded-full object-cover shadow-sm ring-2 ring-white">
+                            <div class="absolute -bottom-1 -end-1 bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div>
+                            <div class="text-[12px] text-slate-500 font-medium mb-0.5">ایجاد کننده</div>
+                            <div class="text-[15px] text-slate-800 font-bold">محمد رضا فولادی</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:items-end justify-center px-2 border-t sm:border-t-0 sm:border-s border-slate-200 pt-3 sm:pt-0 sm:ps-6">
+                        <div class="text-[12px] text-slate-500 font-medium mb-0.5">تاریخ ایجاد</div>
+                        <div class="text-[14px] text-slate-700 font-bold tracking-wider" dir="ltr">۱۴۰۱ / ۰۵ / ۱۵</div>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-8"></div>
+
+                <!-- Deceased Info -->
+                <div class="flex flex-col items-start gap-5">
+                    <div class="bg-emerald-500/10 text-emerald-700 px-4 py-1.5 rounded-full text-[13px] font-bold shadow-sm border border-emerald-500/20 flex items-center gap-2">
+                        <i class="fa-solid fa-leaf"></i> درگذشتگان
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-l from-slate-900 to-slate-600 mb-2">حاج رضا فولادی</h1>
+                    
+                    <div class="flex flex-wrap items-center gap-4 md:gap-8 bg-slate-50 px-5 py-3 rounded-2xl border border-slate-100 w-full">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-cake-candles text-brand-pink/70"></i>
+                            <span class="text-slate-500 text-sm">تولد:</span>
+                            <span class="font-bold text-slate-700" dir="ltr">۱۳۰۸ / ۱۲ / ۰۳</span>
+                        </div>
+                        <div class="w-px h-6 bg-slate-200 hidden md:block"></div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-dove text-brand-purple-light/70"></i>
+                            <span class="text-slate-500 text-sm">فوت:</span>
+                            <span class="font-bold text-slate-700" dir="ltr">۱۳۹۰ / ۰۹ / ۲۵</span>
+                        </div>
+                    </div>
+
+                    <div class="text-[16px] text-slate-600 font-medium leading-loose border-s-4 border-brand-pink/30 ps-4 py-1 mt-2 space-y-2 italic">
+                        <p>پدر عزیزم همیشه به یادت هستم</p>
+                        <p class="text-slate-500">خرم آن روز کز این منزل ویران بروم</p>
+                        <p class="text-slate-500">راحت جان طلبم و از پی جانان بروم</p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-8"></div>
+
+                <!-- Companions -->
+                <div>
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-[16px] font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-users text-brand-purple-light"></i> همراهان این درگذشته
+                        </h3>
+                        <div class="bg-brand-purple-light/10 text-brand-purple-dark px-3 py-1 rounded-full text-xs font-bold">۹ نفر</div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a10.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300 grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a11.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a12.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a13.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a4.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/portrait.png" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300 grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a2.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a3.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                        </div>
+                        <div class="group relative cursor-pointer">
+                            <img src="assets/images/a5.jpg" class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-[3px] border-white shadow-md group-hover:-translate-y-1 transition-all duration-300">
                         </div>
                     </div>
                 </div>
 
-                <a href="profile.html" class="w-full block text-center bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                    تایید و ورود
-                </a>
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-8"></div>
+
+                <!-- Donations -->
+                <div class="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-100 shadow-inner relative overflow-hidden">
+                    <!-- decorative blur -->
+                    <div class="absolute -top-10 -end-10 w-32 h-32 bg-brand-pink/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -start-10 w-32 h-32 bg-brand-purple-dark/10 rounded-full blur-2xl"></div>
+
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-white text-brand-purple-dark px-4 py-2 rounded-xl text-sm font-bold shadow-sm border border-brand-purple-light/20 flex items-center gap-2">
+                                <i class="fa-solid fa-chart-pie"></i> نمودار مشارکت
+                            </div>
+                        </div>
+                        <div class="text-[15px] font-bold text-slate-700 bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-100">
+                            مجموع: <span class="text-brand-pink ms-1 text-lg">۴۵,۰۰۲,۷۹۰</span> <span class="text-xs text-slate-500 font-normal">تومان</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center relative z-10 bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                        <p class="text-slate-800 font-bold text-[16px] md:text-[18px] mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-heart text-brand-pink text-xl"></i>
+                            می‌خواهم به یاد این درگذشته هدیه‌ای پرداخت کنم
+                        </p>
+                        
+                        <div class="w-full max-w-sm">
+                            <div class="relative">
+                                <span class="absolute start-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-bold">مبلغ (تومان)</span>
+                                <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 px-4 ps-24 text-center text-lg font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-pink/50 focus:border-brand-pink transition-all shadow-inner" placeholder="۵۰,۰۰۰" dir="ltr">
+                            </div>
+
+                            <label class="flex items-start gap-3 mt-5 cursor-pointer group text-start">
+                                <div class="relative flex items-start mt-0.5">
+                                    <input type="checkbox" id="monthly" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded-md checked:bg-brand-pink checked:border-brand-pink transition-all cursor-pointer">
+                                    <i class="fa-solid fa-check absolute inset-0 text-white text-[12px] flex items-center justify-center opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"></i>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-slate-700 group-hover:text-brand-pink transition-colors">مشارکت ماهانه مستمر</span>
+                                    <span class="text-[11px] text-slate-500 mt-1">با انتخاب این گزینه، پرداخت هدیه به صورت ماهانه به شما یادآوری می‌شود.</span>
+                                </div>
+                            </label>
+
+                            <button class="mt-8 w-full bg-gradient-to-r from-brand-pink to-[#ff4b72] text-white font-black text-[16px] py-4 rounded-2xl shadow-lg shadow-brand-pink/30 hover:shadow-brand-pink/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+                                پرداخت آنلاین <i class="fa-solid fa-arrow-left mt-0.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left Column (Image) -->
+            <div class="w-full lg:w-2/5 order-1 lg:order-2 relative z-10">
+                <div class="sticky top-24">
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-300 group">
+                        <img src="assets/images/a1.jpg" class="w-full aspect-[4/5] object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </div>
+    </main>
+
     <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full">
-        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
-                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
-                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
-                </a>
-                <div class="text-sm text-slate-600 font-medium">
-                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
-                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 w-full mt-auto">
+        <div class="max-w-[1300px] mx-auto px-4 text-center text-xs text-slate-400">
             تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
         </div>
     </footer>
