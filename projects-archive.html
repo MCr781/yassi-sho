@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پروژه های عمرانی | یاسی شو</title>
+
+    <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white font-sans min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
+
+            <!-- Right side (Nav Links) -->
+            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
+                <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
+                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
+            </nav>
+
+            <!-- Center Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
+                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
+            </div>
+
+            <!-- Left side (Lang & Socials) -->
+            <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
+                    فارسی | EN</div>
+                <div class="flex gap-3 text-lg">
+                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <div class="max-w-[1300px] mx-auto px-4 pt-20 pb-20 flex flex-col lg:flex-row gap-12 relative z-10 w-full">
+
+        <!-- ================= SIDEBAR (Right side) ================= -->
+        <aside class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-8 lg:border-l border-slate-200 lg:pl-10">
+            <!-- TL Logo -->
+            <img src="assets/images/tl-logo.png" alt="TL Logo"
+                class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
+
+            <!-- Filter Buttons Stack (Modernized) -->
+            <div class="w-[200px] flex flex-col gap-2.5">
+                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
+                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">مراکز</button>
+                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">درگذشتگان</button>
+                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">همه</button>
+            </div>
+
+            <!-- Intro Text -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 relative">
+                <i class="fa-solid fa-quote-right absolute top-3 right-3 text-slate-100 text-3xl"></i>
+                <p class="text-[13px] text-slate-600 text-justify leading-loose relative z-10">
+                    <strong class="text-brand-purple-dark font-black">یاسی شو</strong> یک پلتفرم بر بستر فضای وب است که
+                    بر اساس مشارکت افراد جهت ساخت و تکمیل پروژه های انجمن خیریه بیماران سرطانی یاس شامل:
+                    <br><span class="inline-block mt-2 font-medium text-slate-700"><i class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز رادیوتراپی</span>
+                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز غربالگری خون</span>
+                    <br><span class="inline-block mt-1 font-medium text-slate-700"><i class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>درمانگاه و مرکز بستری</span>
+                    <br><span class="inline-block mt-1 mb-2 font-medium text-slate-700"><i class="fa-solid fa-check text-brand-pink text-[10px] ml-1"></i>مرکز آموزش و پیشگیری</span>
+                    <br>شکل گرفته است. با حضور خود، دعوت از دوستان و اضافه نمودن اقوام و یاران سفر کرده تان در این پروژه، انجمن یاس را یاری رسانید.
+                </p>
+            </div>
+
+            <!-- Login CTA -->
+            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+                <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
+                <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
+                <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
+                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-2.5 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
+                    ورود / ثبت‌نام
+                </button>
+            </div>
+        </aside>
+
+        <!-- ================= MAIN CONTENT (Left side) ================= -->
+        <main class="w-full lg:flex-1 flex flex-col relative z-10">
+            
+            <!-- Page Title & Description -->
+            <div class="text-center mb-12 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-purple-light/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+                
+                <div class="inline-block bg-white border border-slate-100 text-brand-purple-dark px-6 py-2 rounded-full font-black text-sm shadow-sm mb-6 flex items-center gap-2 mx-auto">
+                    <i class="fa-solid fa-building-flag text-brand-pink"></i> مشارکت در ساخت
+                </div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 mb-6 leading-tight">پروژه‌های عمرانی <span class="text-transparent bg-clip-text bg-gradient-to-l from-brand-pink to-brand-purple-light">یاسی شو</span></h1>
+                <p class="text-slate-500 text-[15px] max-w-2xl mx-auto leading-loose font-medium">
+                    با مشارکت در ساخت و تجهیز مراکز درمانی و پیشگیری، گامی بزرگ در مسیر سلامت جامعه و امیدآفرینی برای بیماران سرطانی برداریم.
+                </p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="bg-brand-purple-dark text-white px-6 py-2.5 rounded-2xl text-[13px] font-black shadow-md hover:-translate-y-0.5 hover:shadow-lg transition-all">همه پروژه‌ها</button>
+                <button class="bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-2xl text-[13px] font-bold shadow-sm hover:bg-slate-50 hover:-translate-y-0.5 hover:text-brand-purple-dark transition-all">در حال احداث</button>
+                <button class="bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-2xl text-[13px] font-bold shadow-sm hover:bg-slate-50 hover:-translate-y-0.5 hover:text-brand-purple-dark transition-all">تکمیل شده</button>
+                <button class="bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-2xl text-[13px] font-bold shadow-sm hover:bg-slate-50 hover:-translate-y-0.5 hover:text-brand-purple-dark transition-all">تجهیزات پزشکی</button>
+            </div>
+
+            <!-- Projects Bento/Masonry Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 auto-rows-[250px] lg:auto-rows-[280px]">
+                
+                <!-- Card 1 (Featured Large - 2x2) -->
+                <a href="project-detail.html" class="sm:col-span-2 row-span-2 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a1.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-person-digging text-brand-pink"></i> در حال احداث</span>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-2xl md:text-3xl mb-4 drop-shadow-lg">مرکز جامع رادیوتراپی</h3>
+                            
+                            <div class="flex justify-between items-end mb-3 text-white/90">
+                                <div class="flex flex-col">
+                                    <span class="text-[12px] text-white/70 font-medium mb-1 drop-shadow-sm">مبلغ مورد نیاز</span>
+                                    <span class="text-lg md:text-xl font-black drop-shadow-md">۵۰ <span class="text-[11px] font-normal">میلیارد تومان</span></span>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[12px] text-white/70 font-medium mb-1 drop-shadow-sm">تامین شده</span>
+                                    <span class="text-lg md:text-xl font-black text-teal-300 drop-shadow-md">۱۲.۵ <span class="text-[11px] font-normal text-teal-300/80">میلیارد تومان</span></span>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full bg-white/20 rounded-full h-2 md:h-2.5 mb-3 overflow-hidden backdrop-blur-sm shadow-inner relative">
+                                <div class="bg-gradient-to-l from-emerald-400 to-teal-400 h-full rounded-full relative" style="width: 25%">
+                                    <div class="absolute inset-0 bg-white/30 animate-[pulse_2s_ease-in-out_infinite]"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] md:text-[14px] font-bold text-white drop-shadow-sm">۲۵٪ مشارکت</span>
+                                <span class="bg-white/10 border border-white/10 text-white text-[12px] px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 backdrop-blur-sm shadow-sm"><i class="fa-solid fa-users text-brand-pink"></i> ۲۴۵ نفر</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2 (Square - 1x1) -->
+                <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a5.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-5 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm"><i class="fa-solid fa-microscope text-brand-cyan me-1"></i> غربالگری</span>
+                        </div>
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-[15px] mb-3 drop-shadow-md leading-tight">آزمایشگاه تشخیص زودهنگام</h3>
+                            <div class="flex justify-between items-end mb-2">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">مورد نیاز</span>
+                                    <span class="text-[13px] font-black text-white drop-shadow-sm">۱۵ <span class="text-[8px] font-normal">M</span></span>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">تامین شده</span>
+                                    <span class="text-[13px] font-black text-teal-300 drop-shadow-sm">۹ <span class="text-[8px] font-normal text-teal-300/80">M</span></span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-white/20 rounded-full h-1.5 mb-2 overflow-hidden backdrop-blur-sm shadow-inner">
+                                <div class="bg-gradient-to-l from-emerald-400 to-teal-400 h-full rounded-full relative" style="width: 60%">
+                                    <div class="absolute inset-0 bg-white/30 animate-[pulse_2s_ease-in-out_infinite]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3 (Square - 1x1) -->
+                <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a10.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-5 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm"><i class="fa-solid fa-bed-pulse text-brand-purple-light me-1"></i> تجهیزات</span>
+                        </div>
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-[15px] mb-3 drop-shadow-md leading-tight">بخش مراقبت‌های ویژه (ICU)</h3>
+                            <div class="flex justify-between items-end mb-2">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">مورد نیاز</span>
+                                    <span class="text-[13px] font-black text-white drop-shadow-sm">۳۰ <span class="text-[8px] font-normal">M</span></span>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">تامین شده</span>
+                                    <span class="text-[13px] font-black text-teal-300 drop-shadow-sm">۳ <span class="text-[8px] font-normal text-teal-300/80">M</span></span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-white/20 rounded-full h-1.5 mb-2 overflow-hidden backdrop-blur-sm shadow-inner">
+                                <div class="bg-gradient-to-l from-emerald-400 to-teal-400 h-full rounded-full relative" style="width: 10%">
+                                    <div class="absolute inset-0 bg-white/30 animate-[pulse_2s_ease-in-out_infinite]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4 (Wide - 2x1) -->
+                <a href="project-detail.html" class="sm:col-span-2 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a11.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold px-3.5 py-1 rounded-full shadow-sm"><i class="fa-solid fa-house-medical text-amber-300 me-1"></i> اسکان بیماران</span>
+                        </div>
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-xl mb-3 drop-shadow-md">همراه‌سرای یاس</h3>
+                            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                                <div class="flex gap-6 text-white/90">
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-white/70 font-medium mb-0.5 drop-shadow-sm">مورد نیاز</span>
+                                        <span class="text-[15px] font-black drop-shadow-sm">۲۰ <span class="text-[9px] font-normal">میلیارد تومان</span></span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-[10px] text-white/70 font-medium mb-0.5 drop-shadow-sm">تامین شده</span>
+                                        <span class="text-[15px] font-black text-teal-300 drop-shadow-sm">۱۶ <span class="text-[9px] font-normal text-teal-300/80">میلیارد تومان</span></span>
+                                    </div>
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <div class="flex justify-between items-center mb-1.5">
+                                        <span class="text-[10px] text-white/80 font-bold">۸۰٪ تکمیل شده</span>
+                                    </div>
+                                    <div class="w-full bg-white/20 rounded-full h-2 overflow-hidden backdrop-blur-sm shadow-inner">
+                                        <div class="bg-gradient-to-l from-emerald-400 to-teal-400 h-full rounded-full relative" style="width: 80%">
+                                            <div class="absolute inset-0 bg-white/30 animate-[pulse_2s_ease-in-out_infinite]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5 (Square - 1x1) -->
+                <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a4.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-5 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-emerald-500/90 backdrop-blur-md border border-emerald-400/50 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm"><i class="fa-solid fa-check-circle me-1"></i> تکمیل شده</span>
+                        </div>
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-[15px] mb-3 drop-shadow-md leading-tight">درمانگاه تخصصی بیماران</h3>
+                            <div class="flex justify-between items-end mb-2">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">مورد نیاز</span>
+                                    <span class="text-[13px] font-black text-white drop-shadow-sm">۸ <span class="text-[8px] font-normal">M</span></span>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">تامین شده</span>
+                                    <span class="text-[13px] font-black text-emerald-400 drop-shadow-sm">۸ <span class="text-[8px] font-normal text-emerald-400/80">M</span></span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-white/20 rounded-full h-1.5 mb-2 overflow-hidden backdrop-blur-sm shadow-inner">
+                                <div class="bg-emerald-400 h-full rounded-full relative" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6 (Square - 1x1) -->
+                <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50">
+                    <img src="assets/images/a12.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute inset-0 p-5 flex flex-col justify-between">
+                        <div class="flex justify-end">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm"><i class="fa-solid fa-leaf text-brand-pink me-1"></i> محیط زیست</span>
+                        </div>
+                        <div class="mt-auto">
+                            <h3 class="text-white font-black text-[15px] mb-3 drop-shadow-md leading-tight">فضای سبز و استراحتگاه</h3>
+                            <div class="flex justify-between items-end mb-2">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">مورد نیاز</span>
+                                    <span class="text-[13px] font-black text-white drop-shadow-sm">۵ <span class="text-[8px] font-normal">M</span></span>
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[9px] text-white/70 font-medium mb-0.5">تامین شده</span>
+                                    <span class="text-[13px] font-black text-teal-300 drop-shadow-sm">۲ <span class="text-[8px] font-normal text-teal-300/80">M</span></span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-white/20 rounded-full h-1.5 mb-2 overflow-hidden backdrop-blur-sm shadow-inner">
+                                <div class="bg-gradient-to-l from-emerald-400 to-teal-400 h-full rounded-full relative" style="width: 40%">
+                                    <div class="absolute inset-0 bg-white/30 animate-[pulse_2s_ease-in-out_infinite]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </main>
+    </div>
+<!-- Global Footer -->
+<footer class="bg-white border-t border-slate-200 pt-10 pb-6 w-full mt-auto">
+    <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
+            <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
+                <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
+            </a>
+            <div class="text-sm text-slate-600 font-medium">
+                <p>پلتفرم مشارکت مردمی یاسی شو</p>
+                <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+            </div>
+        </div>
+
+        <div class="flex gap-4">
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
+        تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
+    </div>
+</footer>
+</body>
+
+</html>
+                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
+                </a>
+                <div class="text-sm text-slate-600 font-medium">
+                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
+                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4">
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
+                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
+            تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
+        </div>
+    </footer>
+</body>
+
+</html>

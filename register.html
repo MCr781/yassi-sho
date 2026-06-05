@@ -9,117 +9,117 @@
     <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
     <link rel="stylesheet" href="assets/css/all.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <style>
-        .maroon-ribbon {
-            background-color: #8c2140; /* burgundy/maroon color from image */
-        }
-        .teal-btn {
-            background-color: #318f8e; /* teal color from image */
-        }
-        .grey-bar {
-            background: linear-gradient(to bottom, #f3f4f6, #e5e7eb, #f3f4f6);
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-        }
-    </style>
 </head>
 
 <body class="bg-white text-slate-800 selection:bg-brand-pink selection:text-white font-sans min-h-screen flex flex-col">
 
-    <!-- Top Right Ribbon -->
-    <div class="absolute top-0 end-0 maroon-ribbon text-white px-6 py-2 rounded-bl-3xl font-black text-xl z-50">
-        صفحه عضویت
-    </div>
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
 
-    <!-- Custom Header matching photo-3.jpg -->
-    <header class="w-full max-w-[1200px] mx-auto px-4 mt-20 md:mt-24 relative z-40">
-        <div class="h-10 w-full grey-bar rounded-full flex items-center justify-between px-6 relative">
-            
-            <!-- Right Links -->
-            <nav class="flex gap-4 text-xs font-bold text-slate-800 w-1/3">
-                <a href="about.html" class="hover:text-brand-purple-dark transition-colors">درباره ما</a>
-                <a href="contact.html" class="hover:text-brand-purple-dark transition-colors">تماس با ما</a>
-                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark transition-colors">انجمن یاس</a>
+            <!-- Right side (Nav Links) -->
+            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
+                <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
+                <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
+                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
             <!-- Center Logo -->
-            <div class="absolute start-1/2 -translate-x-1/2 -top-12 z-50 cursor-pointer" onclick="window.location.href='index.html'">
-                <!-- Since we don't have the exact logo from the mockup, we use the header logo but scaled up -->
-                <img src="assets/images/header-logo.png" alt="YasiShow Logo" class="h-32 object-contain drop-shadow-xl filter brightness-110">
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
+                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </div>
 
-            <!-- Left Socials & Lang -->
-            <div class="flex items-center gap-4 text-slate-800 text-xs font-bold w-1/3 justify-end">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors">فارسی / EN</div>
-                <div class="flex gap-1.5 text-base">
-                    <!-- Specific colors based on the design mockup -->
-                    <i class="fa-brands fa-instagram text-pink-600 hover:scale-110 transition-transform cursor-pointer"></i>
-                    <i class="fa-brands fa-whatsapp text-green-500 hover:scale-110 transition-transform cursor-pointer"></i>
-                    <i class="fa-brands fa-pinterest text-red-600 hover:scale-110 transition-transform cursor-pointer"></i>
-                    <i class="fa-brands fa-twitter text-blue-400 hover:scale-110 transition-transform cursor-pointer"></i>
-                    <i class="fa-brands fa-youtube text-red-600 hover:scale-110 transition-transform cursor-pointer"></i>
-                    <div class="bg-red-500 rounded-sm w-4 h-4 flex items-center justify-center text-white text-[10px] hover:scale-110 transition-transform cursor-pointer">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
+            <!-- Left side (Lang & Socials) -->
+            <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
+                    فارسی | EN</div>
+                <div class="flex gap-3 text-lg">
+                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                 </div>
             </div>
+
         </div>
     </header>
 
     <!-- Main Form Area -->
-    <main class="flex-1 w-full max-w-[900px] mx-auto px-4 mt-20 mb-16 flex flex-col items-center">
+    <main class="flex-1 w-full max-w-[950px] mx-auto px-4 mt-16 mb-16 flex flex-col items-center relative z-10">
         
-        <div class="w-full flex flex-col md:flex-row gap-12 md:gap-16 items-center justify-center">
+        <!-- Premium Card Container -->
+        <div class="bg-white w-full rounded-[2.5rem] shadow-2xl shadow-slate-200/50 p-8 md:p-14 border border-slate-100 relative overflow-hidden">
             
-            <!-- Right Column: Form Inputs (RTL: Label first, then Input) -->
-            <div class="flex-1 flex flex-col gap-4 w-full max-w-[450px] order-2 md:order-1">
-                <!-- Row 1 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">نام و نام خانوادگی</label>
-                    <input type="text" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm">
-                </div>
-                <!-- Row 2 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">شماره همراه</label>
-                    <input type="tel" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm text-end" dir="ltr">
-                </div>
-                <!-- Row 3 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">شغل</label>
-                    <input type="text" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm">
-                </div>
-                <!-- Row 4 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">میزان تحصیلات</label>
-                    <input type="text" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm">
-                </div>
-                <!-- Row 5 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">استان</label>
-                    <input type="text" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm">
-                </div>
-                <!-- Row 6 -->
-                <div class="flex items-center gap-4">
-                    <label class="w-32 text-end font-bold text-slate-800 text-sm md:text-[15px] shrink-0">شهر</label>
-                    <input type="text" class="flex-1 border-[3px] border-slate-300 rounded-full h-11 px-4 focus:outline-none focus:border-brand-purple-light transition-colors bg-transparent text-sm">
+            <!-- Subtle background glows -->
+            <div class="absolute -top-20 -end-20 w-40 h-40 bg-brand-pink/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -start-20 w-40 h-40 bg-[#20b2aa]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Sleek Modern Badge/Title -->
+            <div class="relative z-10 flex justify-center mb-10">
+                <div class="bg-slate-50 border border-slate-100 text-brand-purple-dark px-6 py-2 rounded-full font-black text-lg shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus text-brand-pink"></i> عضویت در یاسی شو
                 </div>
             </div>
 
-            <!-- Left Column: Upload Photo -->
-            <div class="w-full md:w-[280px] flex-shrink-0 order-1 md:order-2 flex justify-center">
-                <div class="w-[260px] h-[260px] border-[3px] border-slate-300 rounded-[40px] flex items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-slate-50 transition-all group shadow-sm bg-white relative overflow-hidden">
-                    <span class="font-bold text-lg text-slate-800 group-hover:text-teal-600 transition-colors">بارگذاری عکس</span>
-                    <input type="file" class="absolute inset-0 opacity-0 cursor-pointer">
+            <div class="w-full flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center relative z-10">
+                
+                <!-- Right Column: Form Inputs (RTL: Label first, then Input) -->
+                <div class="flex-1 flex flex-col gap-5 w-full max-w-[450px] order-2 md:order-1">
+                    <!-- Row 1 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">نام و نام خانوادگی</label>
+                        <input type="text" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium font-sans">
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">شماره همراه</label>
+                        <input type="tel" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium text-end tracking-wider font-sans" dir="ltr">
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">شغل</label>
+                        <input type="text" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium font-sans">
+                    </div>
+                    <!-- Row 4 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">میزان تحصیلات</label>
+                        <input type="text" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium font-sans">
+                    </div>
+                    <!-- Row 5 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">استان</label>
+                        <input type="text" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium font-sans">
+                    </div>
+                    <!-- Row 6 -->
+                    <div class="flex items-center gap-4">
+                        <label class="w-32 text-end font-bold text-slate-700 text-sm md:text-[15px] shrink-0">شهر</label>
+                        <input type="text" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl h-12 px-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-purple-light/40 focus:border-brand-purple-light shadow-inner transition-all text-sm text-slate-800 font-medium font-sans">
+                    </div>
                 </div>
+
+                <!-- Left Column: Upload Photo Dropzone -->
+                <div class="w-full md:w-[280px] flex-shrink-0 order-1 md:order-2 flex justify-center">
+                    <div class="w-[260px] h-[260px] bg-slate-50/50 border-2 border-dashed border-slate-300 rounded-[2.5rem] flex flex-col items-center justify-center cursor-pointer hover:border-[#20b2aa] hover:bg-[#20b2aa]/5 transition-all duration-300 group relative shadow-sm hover:shadow-md">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 group-hover:text-[#20b2aa] transition-colors"></i>
+                        </div>
+                        <span class="font-sans font-black text-lg text-slate-600 group-hover:text-[#20b2aa] transition-colors">بارگذاری عکس</span>
+                        <span class="font-sans text-xs text-slate-400 mt-2 font-medium">برای انتخاب کلیک کنید</span>
+                        <input type="file" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" accept="image/*">
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-14 w-full flex justify-center relative z-10">
+                <button onclick="window.location.href='profile.html'" class="font-sans bg-gradient-to-r from-[#20b2aa] to-[#128a87] text-white font-black text-[18px] py-4 px-24 rounded-[1.25rem] shadow-lg shadow-[#20b2aa]/30 hover:shadow-[#20b2aa]/50 transition-all duration-300 hover:-translate-y-1 min-w-[280px] flex items-center justify-center gap-3">
+                    ثبت نام <i class="fa-solid fa-arrow-left"></i>
+                </button>
             </div>
             
-        </div>
-
-        <!-- Submit Button -->
-        <div class="mt-14 w-full flex justify-center">
-            <button onclick="window.location.href='profile.html'" class="teal-btn text-white font-bold text-xl py-2.5 px-20 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 min-w-[250px]">
-                ثبت نام
-            </button>
         </div>
 
     </main>
