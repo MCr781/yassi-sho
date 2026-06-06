@@ -59,7 +59,7 @@
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
             <!-- Filter Buttons Stack (Modernized) -->
-            <div class="w-[200px] flex flex-col gap-2.5">
+            <div class="w-full max-w-[200px] flex flex-col gap-2.5">
                 <button
                     class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
                 <button
@@ -91,7 +91,7 @@
 
             
             <!-- Login CTA -->
-            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+            <div class="relative w-full max-w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
                 <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
                 <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
                 <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
@@ -346,7 +346,7 @@
     <!-- OTP/Login Modal -->
     <div id="otp-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
         <!-- Modal Container -->
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh] overflow-y-auto">
             
             <!-- Close Button -->
             <button onclick="document.getElementById('otp-modal').classList.add('hidden'); document.getElementById('otp-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 hover:text-slate-800 transition-colors z-10">
@@ -429,7 +429,7 @@
         </div>
     </div>
     <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full">
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
         <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
                 <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
@@ -442,12 +442,12 @@
             </div>
             
             <div class="flex gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-                </div>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
             </div>
         </div>
         <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">

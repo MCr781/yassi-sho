@@ -67,37 +67,32 @@
 <body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm z-50 transition-all">
-        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center relative">
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
 
             <!-- Right side (Nav Links) -->
-            <nav class="flex gap-8 text-[14px] font-bold text-slate-600 hidden md:flex">
-                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
                 <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
-            <div class="md:hidden">
-                <i class="fa-solid fa-bars text-xl text-slate-600 cursor-pointer"></i>
-            </div>
 
-            <!-- Center Overlapping Logo -->
-            <div class="absolute start-1/2 -translate-x-1/2 -bottom-8 z-50 group cursor-pointer" onclick="window.location.href='index.html'">
-                <div class="bg-white p-2 rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/images/header-logo.png" alt="YasiShow Logo"
-                        class="h-20 drop-shadow-sm object-contain group-hover:scale-105 transition-transform duration-300">
-                </div>
+            <!-- Center Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
+                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </div>
 
             <!-- Left side (Lang & Socials) -->
             <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full hidden sm:block">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
                     فارسی | EN</div>
                 <div class="flex gap-3 text-lg">
-                    <a href="profile.html" class="text-brand-purple-dark hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer bg-brand-purple-light/10 px-3 py-1 rounded-full flex items-center gap-2 text-sm">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="hidden sm:inline">پروفایل</span>
-                    </a>
+                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                 </div>
             </div>
 
@@ -136,38 +131,57 @@
                     <span class="bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۱</span>
                     نوع تابلو و تعداد
                 </h2>
-                <div class="grid grid-cols-2 gap-3 mb-5">
-                    <label class="relative border-2 border-brand-pink rounded-xl p-3 cursor-pointer hover:bg-brand-pink/5 transition-colors bg-brand-pink/5 group">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
+                    <label class="relative border-2 border-brand-pink rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all bg-brand-pink/5 group">
                         <input type="radio" name="boardType" value="ویژه" class="hidden peer" checked onchange="updateBoardType(this)">
-                        <div class="absolute top-3 end-3 opacity-100 text-brand-pink">
-                            <i class="fa-solid fa-circle-check"></i>
+                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-100 transition-opacity">
+                            <i class="fa-solid fa-check text-[10px]"></i>
                         </div>
-                        <div class="font-bold text-brand-purple-dark text-sm mt-1">نوع ویژه</div>
-                        <div class="text-brand-pink font-black mt-2 text-sm" data-price="500000">۵۰۰,۰۰۰ تومان</div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
+                        </div>
+                        <div class="font-black text-brand-purple-dark text-[14px] mb-1">نوع ویژه</div>
+                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۱۲۰ در ۸۰</div>
+                        <div class="text-brand-pink font-black text-sm mt-auto" data-price="500000">۵۰۰,۰۰۰ تومان</div>
                     </label>
-                    <label class="relative border-2 border-slate-100 rounded-xl p-3 cursor-pointer hover:bg-slate-50 transition-colors group">
+
+                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
                         <input type="radio" name="boardType" value="درجه یک" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-3 end-3 opacity-0 peer-checked:opacity-100 text-brand-pink transition-opacity">
-                            <i class="fa-solid fa-circle-check"></i>
+                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-check text-[10px]"></i>
                         </div>
-                        <div class="font-bold text-slate-700 text-sm mt-1 group-hover:text-brand-purple-dark transition-colors">درجه یک</div>
-                        <div class="text-slate-500 font-black mt-2 text-sm peer-checked:text-brand-pink transition-colors" data-price="400000">۴۰۰,۰۰۰ تومان</div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
+                        </div>
+                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه یک</div>
+                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۱۰۰ در ۷۰</div>
+                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="400000">۴۰۰,۰۰۰ تومان</div>
                     </label>
-                    <label class="relative border-2 border-slate-100 rounded-xl p-3 cursor-pointer hover:bg-slate-50 transition-colors group">
+
+                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
                         <input type="radio" name="boardType" value="درجه دو" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-3 end-3 opacity-0 peer-checked:opacity-100 text-brand-pink transition-opacity">
-                            <i class="fa-solid fa-circle-check"></i>
+                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-check text-[10px]"></i>
                         </div>
-                        <div class="font-bold text-slate-700 text-sm mt-1 group-hover:text-brand-purple-dark transition-colors">درجه دو</div>
-                        <div class="text-slate-500 font-black mt-2 text-sm peer-checked:text-brand-pink transition-colors" data-price="300000">۳۰۰,۰۰۰ تومان</div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
+                        </div>
+                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه دو</div>
+                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۸۰ در ۶۰</div>
+                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="300000">۳۰۰,۰۰۰ تومان</div>
                     </label>
-                    <label class="relative border-2 border-slate-100 rounded-xl p-3 cursor-pointer hover:bg-slate-50 transition-colors group">
+
+                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
                         <input type="radio" name="boardType" value="درجه سه" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-3 end-3 opacity-0 peer-checked:opacity-100 text-brand-pink transition-opacity">
-                            <i class="fa-solid fa-circle-check"></i>
+                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-check text-[10px]"></i>
                         </div>
-                        <div class="font-bold text-slate-700 text-sm mt-1 group-hover:text-brand-purple-dark transition-colors">درجه سه</div>
-                        <div class="text-slate-500 font-black mt-2 text-sm peer-checked:text-brand-pink transition-colors" data-price="200000">۲۰۰,۰۰۰ تومان</div>
+                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
+                        </div>
+                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه سه</div>
+                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۶۰ در ۴۰</div>
+                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="200000">۲۰۰,۰۰۰ تومان</div>
                     </label>
                 </div>
                 
@@ -326,15 +340,15 @@
                 <div class="flex-1 flex flex-col items-center justify-center gap-[5%] z-10 w-full relative pt-[2%] nastaliq-fallback">
                     
                     <div class="w-full text-end px-[8%]">
-                        <span class="text-[3vw] sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">سرکار خانم حمیده سلمان زاده</span>
+                        <span class="text-base min-[400px]:text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">سرکار خانم حمیده سلمان زاده</span>
                     </div>
 
                     <div class="w-full text-center px-[4%]">
-                        <h2 class="text-[4vw] sm:text-3xl md:text-4xl lg:text-5xl font-black text-brand-purple-dark leading-snug py-2 tracking-tighter" id="preview-msg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
+                        <h2 class="text-xl min-[400px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-brand-purple-dark leading-snug py-2 tracking-tighter" id="preview-msg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
                     </div>
 
                     <div class="w-full text-end px-[8%] mt-auto pb-[2%]">
-                        <span class="text-[3vw] sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف: ماهانی</span>
+                        <span class="text-base min-[400px]:text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف: ماهانی</span>
                     </div>
 
                 </div>
@@ -350,7 +364,7 @@
     </main>
 
     <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full">
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
         <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
                 <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
@@ -363,12 +377,12 @@
             </div>
             
             <div class="flex gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-                </div>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
             </div>
         </div>
         <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
@@ -406,7 +420,7 @@
             });
 
             // Update price
-            basePrice = parseInt(radio.nextElementSibling.nextElementSibling.nextElementSibling.getAttribute('data-price'));
+            basePrice = parseInt(radio.closest('label').querySelector('[data-price]').getAttribute('data-price'));
             
             // Update preview type
             document.getElementById('preview-type').innerText = radio.value;

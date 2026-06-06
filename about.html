@@ -15,39 +15,32 @@
 <body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm z-50 transition-all">
-        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center relative">
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
 
             <!-- Right side (Nav Links) -->
-                        <nav class="flex gap-8 text-[14px] font-bold text-slate-600">
-                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
                 <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
-            <!-- Center Overlapping Logo -->
-            <div class="absolute left-1/2 -translate-x-1/2 -bottom-8 z-50 group cursor-pointer">
-                <div class="bg-white p-2 rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/images/header-logo.png" alt="YasiShow Logo"
-                        class="h-20 drop-shadow-sm object-contain group-hover:scale-105 transition-transform duration-300">
-                </div>
+            <!-- Center Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
+                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </div>
 
             <!-- Left side (Lang & Socials) -->
             <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
-                <div
-                    class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
                     فارسی | EN</div>
                 <div class="flex gap-3 text-lg">
-                    <i
-                        class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i
-                        class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                 </div>
             </div>
 
@@ -66,7 +59,7 @@
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
             <!-- Filter Buttons Stack (Modernized) -->
-            <div class="w-[200px] flex flex-col gap-2.5">
+            <div class="w-full max-w-[200px] flex flex-col gap-2.5">
                 <button
                     class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
                 <button
@@ -98,7 +91,7 @@
 
             
             <!-- Login CTA -->
-            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+            <div class="relative w-full max-w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
                 <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
                 <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
                 <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
@@ -110,7 +103,76 @@
 
         <!-- ================= MAIN CONTENT (Left side) ================= -->
         <main class="w-full lg:flex-1 flex flex-col gap-10">
-            <!-- Content placeholder for about.html -->
+            <!-- 1. Hero Section -->
+            <section class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden relative">
+                <div class="absolute top-0 end-0 w-64 h-64 bg-brand-pink/5 rounded-full blur-3xl"></div>
+                <div class="p-8 md:p-12 relative z-10">
+                    <h1 class="text-3xl md:text-4xl font-black text-brand-purple-dark mb-6 text-center">داستان یاسی شو</h1>
+                    <div class="w-full aspect-[21/9] md:aspect-[21/7] bg-slate-100 rounded-2xl overflow-hidden mb-6 relative group shadow-inner">
+                        <img src="assets/images/a1.jpg" alt="داستان یاسی شو" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <p class="text-slate-600 leading-loose text-justify font-medium">
+                        یاسی شو با هدف ایجاد بستری شفاف، سریع و آسان برای مشارکت‌های مردمی در پروژه‌های درمانی بیماران سرطانی شکل گرفت. ما معتقدیم که هر کمک کوچک می‌تواند در کنار هم، امیدی بزرگ برای بیماران و خانواده‌های آنان بیافریند. این پلتفرم به شما اجازه می‌دهد تا به یاد عزیزان از دست رفته خود، در ساخت و تجهیز مراکز درمانی سهیم باشید.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. Founder Section -->
+            <section class="bg-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-2/3 order-2 md:order-1">
+                        <h2 class="text-2xl font-black text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-leaf text-brand-pink"></i> بنیانگذار یاسی شو
+                        </h2>
+                        <h3 class="text-lg font-bold text-brand-purple-light mb-4">آقای محمدرضا فولادی</h3>
+                        <p class="text-slate-600 leading-loose text-justify font-medium">
+                            ایده اولیه یاسی شو از یک دغدغه شخصی نشأت گرفت. زمانی که جای خالی یک سیستم یکپارچه برای هدایت کمک‌های خیرخواهانه به سمت نیازهای واقعی بیماران سرطانی احساس می‌شد. آقای فولادی با تکیه بر سال‌ها تجربه در فعالیت‌های اجتماعی، تصمیم به ایجاد پلتفرمی گرفت که نه تنها جمع‌آوری کمک‌ها را تسهیل می‌کند، بلکه نام و یاد درگذشتگان را نیز به زیباترین شکل ممکن گرامی می‌دارد.
+                        </p>
+                    </div>
+                    <div class="w-full md:w-1/3 order-1 md:order-2 flex justify-center md:justify-end">
+                        <div class="relative">
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-brand-pink to-brand-purple-light rounded-2xl opacity-20 blur-lg"></div>
+                            <img src="assets/images/portrait.png" alt="بنیانگذار" class="w-48 h-64 md:w-full md:h-auto object-cover rounded-2xl shadow-lg relative z-10 border-4 border-white">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Mission Grid -->
+            <section class="bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-sm border border-slate-100 p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute bottom-0 start-0 w-64 h-64 bg-brand-purple-dark/5 rounded-full blur-3xl"></div>
+                <h2 class="text-2xl font-black text-slate-800 mb-8 text-center relative z-10">ماموریت‌های اصلی ما</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                    
+                    <!-- Mission Item -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all group text-center">
+                        <div class="w-16 h-16 mx-auto bg-brand-pink/10 text-brand-pink rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hand-holding-medical text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 mb-2">تسهیل درمان</h3>
+                        <p class="text-[13px] text-slate-500 leading-relaxed">کمک به تامین هزینه‌های سنگین دارو و تجهیزات پزشکی بیماران مبتلا به سرطان.</p>
+                    </div>
+
+                    <!-- Mission Item -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all group text-center">
+                        <div class="w-16 h-16 mx-auto bg-brand-purple-light/10 text-brand-purple-dark rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hospital text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 mb-2">توسعه زیرساخت</h3>
+                        <p class="text-[13px] text-slate-500 leading-relaxed">مشارکت مستقیم در ساخت و تجهیز مراکز درمانی تخصصی سرطان در کرمان.</p>
+                    </div>
+
+                    <!-- Mission Item -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all group text-center sm:col-span-2 lg:col-span-1">
+                        <div class="w-16 h-16 mx-auto bg-amber-100 text-yellow-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-dove text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 mb-2">زنده نگه داشتن یادها</h3>
+                        <p class="text-[13px] text-slate-500 leading-relaxed">ایجاد بستری ماندگار برای گرامیداشت یاد درگذشتگان با انجام کارهای خیر به نام آنان.</p>
+                    </div>
+
+                </div>
+            </section>
         </main>
     </div>
 
@@ -119,7 +181,7 @@
     <!-- OTP/Login Modal -->
     <div id="otp-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
         <!-- Modal Container -->
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh] overflow-y-auto">
             
             <!-- Close Button -->
             <button onclick="document.getElementById('otp-modal').classList.add('hidden'); document.getElementById('otp-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full hover:bg-slate-200 hover:text-slate-800 transition-colors z-10">
@@ -202,7 +264,7 @@
         </div>
     </div>
     <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full">
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
         <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
                 <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
@@ -215,12 +277,12 @@
             </div>
             
             <div class="flex gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-                </div>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
             </div>
         </div>
         <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">

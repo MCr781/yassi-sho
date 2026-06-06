@@ -14,30 +14,28 @@
 <body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white flex flex-col min-h-screen font-sans">
 
     <!-- Header / Navbar -->
-    <header class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 shadow-sm z-50 transition-all">
-        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center relative">
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
+        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
 
             <!-- Right side (Nav Links) -->
             <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
-                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
                 <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
-            <!-- Center Overlapping Logo -->
-            <div class="absolute left-1/2 -translate-x-1/2 -bottom-8 z-50 group cursor-pointer">
-                <div class="bg-white p-2 rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/images/header-logo.png" alt="YasiShow Logo"
-                        class="h-20 drop-shadow-sm object-contain group-hover:scale-105 transition-transform duration-300">
-                </div>
+            <!-- Center Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
+                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </div>
 
             <!-- Left side (Lang & Socials) -->
             <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1 rounded-full">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
                     فارسی | EN</div>
-                <div class="hidden md:flex gap-3 text-lg">
+                <div class="flex gap-3 text-lg">
                     <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                     <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                     <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
@@ -216,7 +214,7 @@
                         <div class="w-full max-w-sm flex flex-col gap-4 text-start">
                             
                             <!-- Guest Fields (Hidden if logged in, shown for demo) -->
-                            <div class="flex flex-col gap-4 border border-brand-purple-light/20 bg-brand-purple-light/5 p-4 rounded-2xl relative">
+                            <div id="guest-fields" class="flex flex-col gap-4 border border-brand-purple-light/20 bg-brand-purple-light/5 p-4 rounded-2xl relative">
                                 <span class="absolute -top-2.5 right-4 bg-brand-purple-light text-white text-[10px] px-2 py-0.5 rounded-full font-bold">فقط برای کاربران مهمان</span>
                                 
                                 <div class="flex items-center gap-3 mb-2">
@@ -282,8 +280,28 @@
     </main>
 
     <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 w-full mt-auto">
-        <div class="max-w-[1300px] mx-auto px-4 text-center text-xs text-slate-400">
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
+        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
+                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
+                </a>
+                <div class="text-sm text-slate-600 font-medium">
+                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
+                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+            </div>
+        </div>
+        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
             تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
         </div>
     </footer>
@@ -354,7 +372,7 @@
 
     <!-- Upload Memorial Modal -->
     <div id="upload-memorial-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh] overflow-y-auto">
             <!-- Header -->
             <div class="bg-slate-800 p-6 text-center text-white relative">
                 <button onclick="document.getElementById('upload-memorial-modal').classList.add('hidden'); document.getElementById('upload-memorial-modal').classList.remove('flex');" class="absolute top-4 end-4 w-8 h-8 flex items-center justify-center bg-white/10 text-white/80 rounded-full hover:bg-white/20 transition-colors">
@@ -389,6 +407,18 @@
             </form>
         </div>
     </div>
+    <script>
+        // Mockup logic for Employer presentation
+        const isLoggedIn = true; // Change to false to see guest fields
+
+        if (isLoggedIn) {
+            const guestFields = document.getElementById('guest-fields');
+            if (guestFields) {
+                guestFields.classList.add('hidden');
+                guestFields.classList.remove('flex');
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -19,7 +19,7 @@
 
             <!-- Right side (Nav Links) -->
             <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
-                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
                 <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
@@ -56,7 +56,7 @@
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
             <!-- Filter Buttons Stack (Modernized) -->
-            <div class="w-[200px] flex flex-col gap-2.5">
+            <div class="w-full max-w-[200px] flex flex-col gap-2.5">
                 <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
                 <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">مراکز</button>
                 <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">درگذشتگان</button>
@@ -78,7 +78,7 @@
             </div>
 
             <!-- Login CTA -->
-            <div class="relative w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+            <div class="relative w-full max-w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
                 <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
                 <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
                 <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
@@ -309,37 +309,36 @@
 
             </div>
 
+            <!-- Pagination -->
+            <div class="flex justify-center items-center gap-2 mt-8">
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all shadow-sm">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-brand-purple-dark text-white font-bold shadow-md hover:-translate-y-0.5 transition-all">
+                    ۱
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all shadow-sm">
+                    ۲
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all shadow-sm">
+                    ۳
+                </button>
+                <span class="w-10 h-10 flex items-center justify-center text-slate-400 font-black tracking-widest">
+                    ...
+                </span>
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all shadow-sm">
+                    ۱۲
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all shadow-sm">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+            </div>
         </main>
     </div>
 <!-- Global Footer -->
-<footer class="bg-white border-t border-slate-200 pt-10 pb-6 w-full mt-auto">
-    <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
-            <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
-                <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
-            </a>
-            <div class="text-sm text-slate-600 font-medium">
-                <p>پلتفرم مشارکت مردمی یاسی شو</p>
-                <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
-            </div>
-        </div>
-
-        <div class="flex gap-4">
-            <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-            </div>
-            <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-            </div>
-        </div>
-    </div>
-    <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
-        تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
-    </div>
-</footer>
-</body>
-
-</html>
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
+        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
                 <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
                     <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
                 </a>
@@ -350,12 +349,12 @@
             </div>
             
             <div class="flex gap-4">
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-shield-halved text-3xl text-slate-300"></i>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm">
-                    <i class="fa-solid fa-building-columns text-3xl text-slate-300"></i>
-                </div>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
+                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
+                </a>
             </div>
         </div>
         <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
