@@ -14,28 +14,33 @@
 <body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white font-sans min-h-screen flex flex-col">
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 h-20 shadow-sm z-50 transition-all">
-        <div class="max-w-[1400px] mx-auto px-4 h-full flex justify-between items-center">
+    <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm z-50 transition-all">
+        <div class="relative max-w-[1400px] mx-auto px-3 sm:px-4 h-16 md:h-20 flex justify-between items-center gap-3">
 
-            <!-- Right side (Nav Links) -->
-            <nav class="hidden md:flex gap-8 text-[14px] font-bold text-slate-600">
+            <!-- Mobile: Hamburger Button (right side / start in RTL) -->
+            <button onclick="document.getElementById('mobile-menu').classList.remove('hidden'); document.body.classList.add('overflow-hidden');" class="md:hidden shrink-0 w-10 h-10 flex items-center justify-center bg-slate-100 text-slate-700 rounded-full hover:bg-slate-200 active:bg-slate-300 transition-colors" aria-label="منو">
+                <i class="fa-solid fa-bars text-base"></i>
+            </button>
+
+            <!-- Right side (Nav Links) - Desktop only -->
+            <nav class="hidden md:flex gap-6 lg:gap-8 text-[14px] font-bold text-slate-600">
                 <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
                 <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
-            <!-- Center Logo -->
-            <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer group">
+            <!-- Center Logo (flex on mobile, absolute on desktop) -->
+            <a href="index.html" class="flex-1 md:flex-none md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center cursor-pointer group">
                 <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
-                    class="h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
-            </div>
+                    class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
+            </a>
 
             <!-- Left side (Lang & Socials) -->
-            <div class="flex items-center gap-6 text-slate-500 text-[13px] font-bold">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-3 py-1.5 rounded-full">
+            <div class="flex items-center gap-2 md:gap-6 text-slate-500 text-[13px] font-bold shrink-0">
+                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-2.5 py-1.5 md:px-3 rounded-full text-[11px] md:text-[13px]">
                     فارسی | EN</div>
-                <div class="flex gap-3 text-lg">
+                <div class="hidden sm:flex gap-3 text-lg">
                     <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                     <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
                     <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
@@ -46,25 +51,69 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] hidden md:hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.classList.remove('overflow-hidden');"></div>
+        <div class="absolute top-0 right-0 h-full w-72 max-w-[85vw] bg-white shadow-2xl flex flex-col overflow-y-auto">
+            <div class="h-16 px-4 flex items-center justify-between border-b border-slate-200 bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white">
+                <span class="font-black text-[15px]">منوی یاسی شو</span>
+                <button onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.classList.remove('overflow-hidden');" class="w-9 h-9 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors" aria-label="بستن">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col p-4 gap-1">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-home w-5 text-center text-brand-purple-light"></i> خانه
+                </a>
+                <a href="about.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-circle-info w-5 text-center text-brand-purple-light"></i> درباره ما
+                </a>
+                <a href="contact.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-envelope w-5 text-center text-brand-purple-light"></i> تماس با ما
+                </a>
+                <a href="https://yaas.org.ir" target="_blank" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-external-link w-5 text-center text-brand-purple-light"></i> انجمن یاس
+                </a>
+            </nav>
+            <div class="px-4 pt-2 pb-6 mt-2 border-t border-slate-100">
+                <p class="text-[11px] font-bold text-slate-400 mb-3">ما را در شبکه‌های اجتماعی دنبال کنید</p>
+                <div class="flex gap-2">
+                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-pink-50 text-pink-600 rounded-xl hover:bg-pink-100 transition-colors">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-blue-50 text-blue-500 rounded-xl hover:bg-blue-100 transition-colors">
+                        <i class="fa-brands fa-telegram text-lg"></i>
+                    </a>
+                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-green-50 text-green-500 rounded-xl hover:bg-green-100 transition-colors">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Layout Container -->
-    <div class="max-w-[1300px] mx-auto px-4 pt-20 pb-20 flex flex-col lg:flex-row gap-12 relative z-10 w-full">
+    <div class="max-w-[1300px] mx-auto px-4 pt-16 md:pt-20 pb-10 md:pb-20 flex flex-col lg:flex-row gap-8 md:gap-12 relative z-10 w-full">
 
         <!-- ================= SIDEBAR (Right side) ================= -->
-        <aside class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-8 lg:border-l border-slate-200 lg:pl-10">
+        <aside class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-6 md:gap-8 lg:border-l border-slate-200 lg:pl-10">
             <!-- TL Logo -->
             <img src="assets/images/tl-logo.png" alt="TL Logo"
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
-            <!-- Filter Buttons Stack (Modernized) -->
-            <div class="w-full max-w-[200px] flex flex-col gap-2.5">
-                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">افراد</button>
-                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">مراکز</button>
-                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">درگذشتگان</button>
-                <button class="bg-slate-800 text-white py-2 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 w-full">همه</button>
+            <!-- Filter Buttons (Stack on desktop, horizontal scrollable row on mobile) -->
+            <div class="w-full max-w-[280px] flex flex-row flex-nowrap md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0 -mx-1 px-1 snap-x">
+                <button class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">افراد</button>
+                <button class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">مراکز</button>
+                <button class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">درگذشتگان</button>
+                <button class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">همه</button>
             </div>
 
-            <!-- Intro Text -->
-            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 relative">
+            <!-- Intro Text (hidden on mobile to save vertical space) -->
+            <div class="hidden sm:block bg-white p-5 rounded-2xl shadow-sm border border-slate-100 relative w-full">
                 <i class="fa-solid fa-quote-right absolute top-3 right-3 text-slate-100 text-3xl"></i>
                 <p class="text-[13px] text-slate-600 text-justify leading-loose relative z-10">
                     <strong class="text-brand-purple-dark font-black">یاسی شو</strong> یک پلتفرم بر بستر فضای وب است که
@@ -78,11 +127,11 @@
             </div>
 
             <!-- Login CTA -->
-            <div class="relative w-full max-w-[260px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-6 border border-white/10 text-center">
+            <div class="relative w-full max-w-[320px] bg-gradient-to-br from-brand-purple-light to-[#311b92] rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] mt-2 md:mt-6 border border-white/10 text-center">
                 <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
                 <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
                 <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
-                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-2.5 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
+                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-3 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
                     ورود / ثبت‌نام
                 </button>
             </div>
