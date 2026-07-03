@@ -14,9 +14,9 @@
     <style>
         /* Custom styles for the board preview border to match the design */
         .board-border-pattern {
-            background-color: #f8fafc;
+            background-color: var(--board-bg, #f8fafc);
             border: 12px solid #fff;
-            box-shadow: 0 0 0 1px #cbd5e1, inset 0 0 0 2px #60a5fa, inset 0 0 0 6px #bfdbfe;
+            box-shadow: 0 0 0 1px #cbd5e1, inset 0 0 0 2px var(--board-accent, #60a5fa), inset 0 0 0 6px color-mix(in srgb, var(--board-accent, #60a5fa) 30%, transparent);
             position: relative;
         }
         .board-border-pattern::before,
@@ -60,7 +60,7 @@
         /* Iran Nastaliq font for the board preview text (Step 4) */
         .nastaliq-text {
             font-family: 'IranNastaliq', 'Vazirmatn', serif;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         /* ---- Multi-step wizard (Step 4) ---- */
@@ -70,13 +70,16 @@
             transition: width .4s ease;
         }
 
-        /* ---- Vertical board preview (Step 4) ----
-           The physical silver flower boards are portrait/vertical. The preview
-           now uses a 3:4 aspect ratio (portrait) to match. */
+        /* ---- Vertical board preview (Step 5 fix) ----
+           Height increased by 30%: was 3:4, now 3:5.2 (taller portrait).
+           Theme colors change via CSS variables set by JS when switching type. */
         .ys-board-preview-vertical {
-            aspect-ratio: 3 / 4;
-            max-width: 420px;
+            aspect-ratio: 3 / 5;
+            max-width: 400px;
             margin: 0 auto;
+            /* Theme variables — overridden by JS on board type change */
+            --board-accent: #7b2c83;
+            --board-bg: #f5f3fa;
         }
 
         /* ---- Guide/Samples modal ---- */
@@ -293,7 +296,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img src="assets/images/board-sample-special.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-special.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-black text-brand-purple-dark text-[13px] mb-1">نوع ویژه</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۲۰×۸۰</div>
@@ -306,7 +309,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img src="assets/images/board-sample-grade1.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade1.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه یک</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۰۰×۷۰</div>
@@ -319,7 +322,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img src="assets/images/board-sample-grade2.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade2.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه دو</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۸۰×۶۰</div>
@@ -332,7 +335,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img src="assets/images/board-sample-grade3.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade3.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه سه</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۶۰×۴۰</div>
@@ -489,42 +492,40 @@
                 <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded-full"><i class="fa-solid fa-eye me-1"></i>بروزرسانی زنده</span>
             </div>
 
-            <!-- Vertical Board Preview (Step 4: portrait orientation + Nastaliq font) -->
-            <div class="ys-board-preview-vertical w-full bg-white rounded-lg shadow-2xl overflow-hidden relative flex flex-col p-[5%] group transition-all duration-300 board-border-pattern mx-auto">
+            <!-- Vertical Board Preview (Step 5: taller, bigger fonts, theme colors, no labels) -->
+            <div class="ys-board-preview-vertical w-full rounded-lg shadow-2xl overflow-hidden relative flex flex-col p-[5%] group transition-all duration-300 board-border-pattern mx-auto" id="board-preview-frame">
 
                 <!-- Vertical Pattern for sides -->
                 <div class="absolute inset-0 board-vertical-pattern pointer-events-none"></div>
 
                 <!-- Header of Board -->
                 <div class="flex justify-between items-start z-10 w-full relative">
-                    <div class="flex flex-col items-center opacity-90 w-[18%] max-w-[70px]">
+                    <div class="flex flex-col items-center opacity-90 w-[20%] max-w-[75px]">
                         <img src="assets/images/header-logo.png" alt="Yas Charity" class="w-full object-contain filter drop-shadow-sm hue-rotate-[190deg] brightness-75">
-                        <div class="text-[8px] text-center font-black text-blue-900 mt-1 leading-tight tracking-tighter">یاس کرمان<br><span class="font-sans text-[6px]">YAS CHARITY</span></div>
+                        <div class="text-[10px] text-center font-black mt-1 leading-tight tracking-tighter" style="color: var(--board-accent);">یاس کرمان<br><span class="font-sans text-[8px]">YAS CHARITY</span></div>
                     </div>
-                    <div class="flex flex-col text-[9px] text-blue-900 font-bold gap-1 bg-white/60 backdrop-blur-sm px-2 py-1 rounded border border-blue-100 shadow-sm mt-1">
+                    <div class="flex flex-col text-[11px] font-bold gap-1 bg-white/60 backdrop-blur-sm px-2.5 py-1.5 rounded border shadow-sm mt-1" style="color: var(--board-accent); border-color: var(--board-accent);">
                         <div class="flex items-center gap-1"><span class="text-slate-500 font-medium">مسجد:</span> <span id="preview-mosque">طالبی-1</span></div>
                         <div class="flex items-center gap-1"><span class="text-slate-500 font-medium">نوع:</span> <span id="preview-type">ویژه</span></div>
                     </div>
                 </div>
 
-                <!-- Body of Board (Nastaliq Text — vertical layout) -->
-                <div class="flex-1 flex flex-col items-center justify-between gap-[3%] z-10 w-full relative pt-[4%] pb-[2%]">
+                <!-- Body of Board (Nastaliq Text — vertical layout, NO small labels) -->
+                <div class="flex-1 flex flex-col items-center justify-around gap-[4%] z-10 w-full relative pt-[5%] pb-[3%]">
 
-                    <!-- "تقدیم به" + recipient name (top) -->
+                    <!-- Recipient name (top) — NO "تقدیم به" label -->
                     <div class="w-full text-center px-[6%]">
-                        <div class="text-[10px] text-slate-500 mb-1">تقدیم به</div>
-                        <span class="nastaliq-text text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">خانواده محترم سلمان زاده</span>
+                        <span class="nastaliq-text text-xl sm:text-3xl md:text-4xl font-black text-slate-800 leading-relaxed block" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">خانواده محترم سلمان زاده</span>
                     </div>
 
                     <!-- Condolence message (center, largest) -->
                     <div class="w-full text-center px-[4%] flex-1 flex items-center justify-center">
-                        <h2 class="nastaliq-text text-base sm:text-xl md:text-2xl lg:text-3xl text-brand-purple-dark leading-loose tracking-tight" id="preview-msg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">خانواده محترم داغدار، از طرف انجمن خیریه یاس کرمان، مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
+                        <h2 class="nastaliq-text text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-loose" id="preview-msg" style="color: var(--board-accent); text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">خانواده محترم داغدار، از طرف انجمن خیریه یاس کرمان، مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
                     </div>
 
-                    <!-- Sender (bottom) -->
+                    <!-- Sender (bottom) — NO "از طرف" label -->
                     <div class="w-full text-center px-[6%]">
-                        <div class="text-[10px] text-slate-500 mb-1">از طرف</div>
-                        <span class="nastaliq-text text-base sm:text-xl md:text-2xl font-black text-slate-800 leading-relaxed block" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف ماهانی</span>
+                        <span class="nastaliq-text text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف ماهانی</span>
                     </div>
                 </div>
             </div>
@@ -643,6 +644,7 @@
                             <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
                             <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
                             <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="terms.html" class="ys-footer-link">قوانین و مقررات</a></li>
                             <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
                             <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
                         </ul>
@@ -754,6 +756,21 @@
             // Update preview type
             document.getElementById('preview-type').innerText = radio.value;
 
+            // Step 5: Update preview theme colors based on board type
+            var themes = {
+                'ویژه':    { accent: '#7b2c83', bg: '#f5f3fa' },
+                'درجه یک': { accent: '#3b82f6', bg: '#f0f5fa' },
+                'درجه دو': { accent: '#16a34a', bg: '#f5faf5' },
+                'درجه سه': { accent: '#ea580c', bg: '#faf8f5' }
+            };
+            var theme = themes[radio.value] || themes['ویژه'];
+            var frame = document.getElementById('board-preview-frame');
+            if (frame) {
+                frame.style.setProperty('--board-accent', theme.accent);
+                frame.style.setProperty('--board-bg', theme.bg);
+                frame.style.backgroundColor = theme.bg;
+            }
+
             calculateTotal();
         }
 
@@ -859,9 +876,19 @@
                     btnSubmit.classList.add('hidden');
                     btnSubmit.classList.remove('flex');
                 }
-                // Scroll to top of wizard on mobile
+                // Only scroll on mobile AND only if the wizard top is
+                // above the viewport (i.e. the user can't see the step
+                // header). This prevents the jarring scroll-up/down when
+                // clicking Next/Prev while the wizard is already visible.
                 if (window.innerWidth < 1024) {
-                    document.getElementById('order-form').scrollIntoView({behavior:'smooth', block:'start'});
+                    var formEl = document.getElementById('order-form');
+                    var formRect = formEl.getBoundingClientRect();
+                    if (formRect.top < -50) {  // wizard top is well above viewport
+                        window.scrollTo({
+                            top: window.scrollY + formRect.top - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             },
 
