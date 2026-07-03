@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white has-mobile-trustbar">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm z-50 transition-all">
@@ -37,15 +37,55 @@
                     class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
-            <!-- Left side (Lang & Socials) -->
-            <div class="flex items-center gap-2 md:gap-6 text-slate-500 text-[13px] font-bold shrink-0">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-2.5 py-1.5 md:px-3 rounded-full text-[11px] md:text-[13px]">
-                    فارسی | EN</div>
-                <div class="hidden sm:flex gap-3 text-lg">
-                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+            <!-- Left side (Auth + Socials) — Step 1 update -->
+            <div class="flex items-center gap-2 md:gap-4 text-slate-500 text-[13px] font-bold shrink-0">
+                <!-- Social Icons (Aparat replaces YouTube) -->
+                <div class="hidden sm:flex gap-3 text-lg items-center">
+                    <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon"></i></a>
+                </div>
+
+                <!-- Auth: Logged-out state -->
+                <div id="auth-loggedout">
+                    <button type="button" onclick="YasiAuth.openLogin()" class="flex items-center gap-1.5 cursor-pointer bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white px-2.5 py-1.5 md:px-4 rounded-full text-[11px] md:text-[13px] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap">
+                        <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
+                        ورود / عضویت
+                    </button>
+                </div>
+
+                <!-- Auth: Logged-in state (hidden by default; toggle via YasiAuth.setLoggedIn) -->
+                <div id="auth-loggedin" class="hidden relative">
+                    <button type="button" data-profile-trigger onclick="YasiAuth.toggleProfileMenu()" class="flex items-center gap-2 cursor-pointer bg-slate-100 hover:bg-slate-200 transition-colors ps-1 pe-2 py-1 md:pe-3 rounded-full text-[11px] md:text-[13px]">
+                        <span class="w-7 h-7 rounded-full bg-gradient-to-br from-brand-purple-light to-brand-purple-dark text-white flex items-center justify-center text-[12px] font-black shrink-0">ع</span>
+                        <span id="auth-username" class="hidden sm:inline text-slate-700 max-w-[130px] truncate">پروفایل علی صیدنژاد</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+                    </button>
+                    <!-- Profile management dropdown -->
+                    <div id="profile-dropdown" class="ys-profile-dropdown hidden absolute end-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
+                        <div class="px-4 py-2 border-b border-slate-100 mb-1">
+                            <p class="text-[11px] text-slate-400 font-bold">حساب کاربری شما</p>
+                            <p class="text-[13px] text-slate-800 font-black truncate">علی صیدنژاد</p>
+                        </div>
+                        <a href="profile.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-user w-4 text-center text-brand-purple-light"></i> پروفایل من
+                        </a>
+                        <a href="profile.html#projects" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-folder w-4 text-center text-brand-purple-light"></i> مشارکت‌های من
+                        </a>
+                        <a href="board-order.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-table-columns w-4 text-center text-brand-purple-light"></i> تابلوهای من
+                        </a>
+                        <a href="profile.html#settings" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-gear w-4 text-center text-brand-purple-light"></i> تنظیمات حساب
+                        </a>
+                        <div class="border-t border-slate-100 mt-1 pt-1">
+                            <button type="button" onclick="YasiAuth.setLoggedOut()" class="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-red-600 hover:bg-red-50 font-bold">
+                                <i class="fa-solid fa-right-from-bracket w-4 text-center"></i> خروج از حساب
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -88,20 +128,20 @@
                     <a href="#" class="flex-1 h-11 flex items-center justify-center bg-green-50 text-green-500 rounded-xl hover:bg-green-100 transition-colors">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                     </a>
-                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors">
-                        <i class="fa-brands fa-youtube text-lg"></i>
+                    <a href="#" aria-label="آپارات" class="flex-1 h-11 flex items-center justify-center bg-[#ed145b]/10 rounded-xl hover:bg-[#ed145b]/20 transition-colors">
+                        <i class="aparat-icon" style="font-size:1.25rem"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Layout Container -->
-    <div class="max-w-[1300px] mx-auto px-4 pt-16 md:pt-20 pb-10 md:pb-20 flex flex-col lg:flex-row gap-8 md:gap-12">
+    <!-- Main Layout Container — Step 2: .ys-layout-reorder pushes sidebar below main on mobile -->
+    <div class="ys-layout-reorder max-w-[1300px] mx-auto px-4 pt-16 md:pt-20 pb-10 md:pb-20 flex flex-col lg:flex-row gap-8 md:gap-12">
 
         <!-- ================= SIDEBAR (Right side) ================= -->
         <aside
-            class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-6 md:gap-8 lg:border-l border-slate-200 lg:pl-10">
+            class="ys-sidebar w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-6 md:gap-8 lg:border-l border-slate-200 lg:pl-10">
 
             <!-- TL Logo -->
             <img src="assets/images/tl-logo.png" alt="TL Logo"
@@ -151,7 +191,7 @@
         </aside>
 
         <!-- ================= MAIN CONTENT (Left side) ================= -->
-        <main class="w-full lg:flex-1 flex flex-col gap-10">
+        <main class="ys-main w-full lg:flex-1 flex flex-col gap-10">
 
             <!-- 1. Colorful Bento Grid (Modernized with Gradients, Spacing, and Radii) -->
             <div class="grid grid-cols-2 md:grid-cols-4 grid-rows-3 gap-3 md:gap-4 h-auto md:h-[420px]">
@@ -167,21 +207,21 @@
                     class="bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-2xl flex flex-col items-center justify-center p-4 text-white text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                     <i
                         class="fa-solid fa-users text-2xl mb-2 opacity-80 group-hover:scale-110 transition-transform"></i>
-                    داوطلبان
+                    درگذشتگان
                 </div>
 
                 <div
-                    class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex flex-col items-center justify-center p-4 text-white text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
+                    class="disabled-box bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex flex-col items-center justify-center p-4 text-white text-base font-bold shadow-md transition-all duration-300 cursor-pointer group">
                     <i
-                        class="fa-solid fa-chart-line text-2xl mb-2 opacity-80 group-hover:scale-110 transition-transform"></i>
+                        class="fa-solid fa-chart-line text-2xl mb-2 opacity-80"></i>
                     گزارش مالی
                 </div>
 
                 <div
                     class="bg-gradient-to-br from-purple-400 to-fuchsia-500 rounded-2xl flex flex-col items-center justify-center p-4 text-white text-base font-bold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                     <i
-                        class="fa-solid fa-bed-pulse text-2xl mb-2 opacity-80 group-hover:scale-110 transition-transform"></i>
-                    بیماران
+                        class="fa-solid fa-photo-film text-2xl mb-2 opacity-80 group-hover:scale-110 transition-transform"></i>
+                    رسانه یاس
                 </div>
 
                 <!-- Tall Right Middle (Spans 2 rows) -->
@@ -288,102 +328,127 @@
                     </div>
                 </div>
             </div>
+            <!-- 3. Deceased Archive — Seamless Mosaic (Step 2 redesign) -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-0 overflow-hidden">
+                <div class="ys-mosaic">
+                    <!-- Add-deceased tile (1x1) -->
+                    <a href="profile.html" class="ys-mosaic-add" aria-label="تعریف درگذشته">
+                        <i class="fa-solid fa-user-plus text-2xl mb-1"></i>
+                        <span class="text-xs font-bold">تعریف درگذشته</span>
+                    </a>
 
-            <!-- 3. Deceased Archive Masonry Grid -->
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-3 md:p-4">
-                <div id="masonry-container" class="relative w-full opacity-0 transition-opacity duration-500">
-                    
-                    <!-- 1. Define Deceased Box -->
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <a href="profile.html" class="block w-full aspect-square rounded-2xl bg-brand-pink/5 border-2 border-brand-pink border-dashed flex flex-col items-center justify-center group cursor-pointer hover:bg-brand-pink hover:border-solid hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                            <i class="fa-solid fa-user-plus text-brand-pink text-3xl group-hover:text-white group-hover:scale-110 transition-all mb-2"></i>
-                            <span class="text-brand-pink font-bold text-sm group-hover:text-white transition-colors">تعریف درگذشته</span>
-                        </a>
-                    </div>
-
-                    <!-- Deceased Items -->
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/portrait.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحوم محمد رضایی</span>
-                            </div>
+                    <!-- Deceased items. Some carry .mosaic-large to span 2x2.
+                         The grid uses auto-flow:dense so the layout stays
+                         compact no matter which items are enlarged. -->
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/portrait.png" alt="مرحوم محمد رضایی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم محمد رضایی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a2.jpg" alt="مرحومه فاطمه حسینی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه فاطمه حسینی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="mosaic-large group">
+                        <img src="assets/images/a3.jpg" alt="مرحوم علی کریمی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم علی کریمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a4.jpg" alt="مرحومه زهرا موسوی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه زهرا موسوی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a5.jpg" alt="مرحوم حسن نجفی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم حسن نجفی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/portrait.png" alt="مرحومه مریم کمالی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه مریم کمالی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a1.jpg" alt="مرحوم رضا هاشمی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم رضا هاشمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="mosaic-large group">
+                        <img src="assets/images/a1.jpg" alt="مشارکت در طرح‌های یاس">
+                        <div class="ys-mosaic-overlay" style="opacity:1; align-items:center;">
+                            <span class="block text-center">
+                                <strong class="block text-base font-black mb-1">مشارکت در طرح‌های یاس</strong>
+                                <span class="inline-block bg-brand-pink text-white text-[11px] px-3 py-1 rounded-full">مشاهده پروژه‌ها</span>
+                            </span>
                         </div>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحومه فاطمه حسینی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحوم علی کریمی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحومه زهرا موسوی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a5.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحوم حسن نجفی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/portrait.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحومه مریم کمالی</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحوم رضا هاشمی</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Promotional large item -->
-                    <div class="masonry-item mb-4 w-[calc(100%-0.5rem)] sm:w-[calc(66.666%-0.66rem)] md:w-[calc(50%-0.75rem)] lg:w-[calc(40%-0.8rem)]">
-                        <a href="projects-archive.html" class="block w-full aspect-video rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer border border-brand-pink/20">
-                            <img src="assets/images/a1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-6">
-                                <span class="text-white font-black text-xl drop-shadow-md mb-2">مشارکت در طرح‌های یاس</span>
-                                <span class="bg-brand-pink text-white text-xs px-3 py-1 rounded-full">مشاهده پروژه‌ها</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="masonry-item mb-4 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.66rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
-                        <div class="w-full aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:z-10 transition-all duration-300 relative group cursor-pointer">
-                            <img src="assets/images/a2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-dark/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                                <span class="text-white font-bold text-sm drop-shadow-md">مرحومه زینب یعقوبی</span>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a2.jpg" alt="مرحومه زینب یعقوبی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه زینب یعقوبی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a6.jpg" alt="مرحوم کریم احمدی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم کریم احمدی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a7.jpg" alt="مرحومه سارا نوری">
+                        <div class="ys-mosaic-overlay"><span>مرحومه سارا نوری</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a8.jpg" alt="مرحوم جواد مرادی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم جواد مرادی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a9.jpg" alt="مرحومه لیلا رستمی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه لیلا رستمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="mosaic-large group">
+                        <img src="assets/images/a10.jpg" alt="مرحوم محمدرضا کاظمی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم محمدرضا کاظمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a11.jpg" alt="مرحومه نرگس صادقی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه نرگس صادقی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a12.jpg" alt="مرحوم امیر عباسی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم امیر عباسی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a13.jpg" alt="مرحومه هما جعفری">
+                        <div class="ys-mosaic-overlay"><span>مرحومه هما جعفری</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a3.jpg" alt="مرحوم بهرام شریفی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم بهرام شریفی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a5.jpg" alt="مرحومه مهری قاسمی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه مهری قاسمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a7.jpg" alt="مرحوم فرهاد تهرانی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم فرهاد تهرانی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a9.jpg" alt="مرحومه الهام رحیمی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه الهام رحیمی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a11.jpg" alt="مرحوم کاوه نجفی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم کاوه نجفی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a2.jpg" alt="مرحومه پری شیرازی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه پری شیرازی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a4.jpg" alt="مرحوم منصور کیانی">
+                        <div class="ys-mosaic-overlay"><span>مرحوم منصور کیانی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a6.jpg" alt="مرحومه آذر مرادی">
+                        <div class="ys-mosaic-overlay"><span>مرحومه آذر مرادی</span></div>
+                    </a>
+                    <a href="deceased-detail.html" class="group">
+                        <img src="assets/images/a8.jpg" alt="مرحوم شهاب اکبری">
+                        <div class="ys-mosaic-overlay"><span>مرحوم شهاب اکبری</span></div>
+                    </a>
                 </div>
             </div>
 
@@ -477,118 +542,149 @@
 
         </div>
     </div>
-    <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
-        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
-                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
-                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
-                </a>
-                <div class="text-sm text-slate-600 font-medium">
-                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
-                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+        <!-- Global Footer — Step 1 redesign -->
+    <footer class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-200 mt-12 w-full z-10 relative">
+        <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+
+                <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
+                <div class="md:col-span-4 flex flex-col gap-4">
+                    <a href="index.html" class="inline-block">
+                        <img src="assets/images/site-logo-banner.png" alt="یاسی شو" class="h-12 md:h-14 object-contain">
+                    </a>
+                    <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
+                        یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
+                    </p>
+                    <div class="flex flex-col gap-2 text-[12px] text-slate-600 font-medium">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-purple-light w-4 mt-0.5"></i>
+                            <span>کرمان، انجمن خیریه حمایت از بیماران سرطانی یاس</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-purple-light w-4"></i>
+                            <span dir="ltr">۰۳۴ - ۳۲۲۱۲۳۴۵</span>
+                        </div>
+                        <a href="mailto:info@yassishow.ir" class="flex items-center gap-2 hover:text-brand-pink transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-purple-light w-4"></i>
+                            <span dir="ltr">info@yassishow.ir</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CENTER column: useful links + latest projects -->
+                <div class="md:col-span-5 grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-link text-[12px] text-brand-pink"></i> پیوندها
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="index.html" class="ys-footer-link">خانه</a></li>
+                            <li><a href="about.html" class="ys-footer-link">درباره ما</a></li>
+                            <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
+                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
+                            <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-[12px] text-brand-pink"></i> پروژه‌های اخیر
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز رادیوتراپی یاس</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز غربالگری خون</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>درمانگاه و مرکز بستری</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز آموزش و پیشگیری</span></a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>سفیران یاسی شو</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LEFT column: trust badges -->
+                <div class="md:col-span-3">
+                    <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-[12px] text-brand-pink"></i> نمادهای اعتماد
+                    </h4>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <!-- 1. Enamad (real asset) -->
+                        <a href="#" title="اینماد" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <img src="assets/images/enamad.png" alt="اینماد" class="h-9 object-contain" onerror="this.style.display='none'">
+                            </div>
+                            <span class="ys-trust-label">اینماد</span>
+                        </a>
+                        <!-- 2. Bank Mellat (placeholder) -->
+                        <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-amber-700 leading-tight">بانک ملت</span>
+                            </div>
+                            <span class="ys-trust-label">درگاه پرداخت</span>
+                        </a>
+                        <!-- 3. National Charity Network (placeholder) -->
+                        <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <i class="fa-solid fa-hand-holding-heart text-[#16a34a] text-xl"></i>
+                            </div>
+                            <span class="ys-trust-label">شبکه ملی نیکوکاری</span>
+                        </a>
+                        <!-- 4. INCDA (placeholder) -->
+                        <a href="#" title="INCDA" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-blue-700 leading-tight">INCDA</span>
+                            </div>
+                            <span class="ys-trust-label">مرکز داده</span>
+                        </a>
+                    </div>
+                    <!-- Secondary trust row: Samandehi -->
+                    <div class="mt-2.5 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
+                        <img src="assets/images/samandehi.png" alt="ساماندهی" class="h-6 w-6 object-contain" onerror="this.style.display='none'">
+                        <span class="text-[10px] text-slate-500 font-bold leading-tight">درگاه ثبت ساماندهی</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="flex gap-4">
-                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
-                </a>
-                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
-                </a>
+
+            <!-- Bottom bar: copyright + socials -->
+            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-500 text-center md:text-right">
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                </p>
+                <div class="flex gap-2 text-base">
+                    <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="w-8 h-8 flex items-center justify-center bg-blue-50 text-blue-500 rounded-lg hover:bg-blue-100 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="w-8 h-8 flex items-center justify-center bg-green-50 text-green-500 rounded-lg hover:bg-green-100 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="w-8 h-8 flex items-center justify-center bg-[#ed145b]/10 rounded-lg hover:bg-[#ed145b]/20 transition-colors"><i class="aparat-icon" style="font-size:1rem"></i></a>
+                </div>
             </div>
         </div>
-        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
-            تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
-        </div>
     </footer>
-    <script>
-        function applyMasonry() {
-            const container = document.getElementById('masonry-container');
-            if (!container) return;
-
-            const items = Array.from(container.querySelectorAll('.masonry-item'));
-            if (items.length === 0) return;
-
-            // Determine columns based on screen width to match the CSS w-[calc(...)] classes
-            let columns = 2; // mobile
-            if (window.innerWidth >= 640) columns = 3; // sm
-            if (window.innerWidth >= 768) columns = 4; // md
-            if (window.innerWidth >= 1024) columns = 5; // lg
-
-            const containerWidth = container.getBoundingClientRect().width;
-            
-            // Calculate column width and gap
-            // Using logic: containerWidth = (columns * colWidth) + ((columns - 1) * gap)
-            // For simplicity based on our classes, let's read the first item's rendered width
-            const itemWidth = items[0].getBoundingClientRect().width;
-            const gap = (containerWidth - (columns * itemWidth)) / (columns > 1 ? columns - 1 : 1);
-
-            // Array to keep track of the current height of each column
-            const columnHeights = new Array(columns).fill(0);
-
-            items.forEach((item, index) => {
-                // Determine if this is a double-width item (Promotional large item)
-                const isDouble = item.classList.contains('w-[calc(100%-0.5rem)]') || 
-                                 item.classList.contains('sm:w-[calc(66.666%-0.66rem)]') ||
-                                 item.classList.contains('md:w-[calc(50%-0.75rem)]');
-                
-                let targetCol = 0;
-                let minHeight = Math.min(...columnHeights);
-                targetCol = columnHeights.indexOf(minHeight);
-
-                // If double width, find the column that can fit it (simplification: just find min height that has room to the right in RTL context)
-                let itemCols = 1;
-                if (isDouble && columns > 1) {
-                    itemCols = 2;
-                    // Find the lowest height where two adjacent columns are somewhat close
-                    // Simplification for RTL: we place from right to left (col 0 is rightmost)
-                    let bestFitCol = -1;
-                    let bestFitHeight = Infinity;
-                    for(let i = 0; i <= columns - itemCols; i++) {
-                        let maxH = Math.max(columnHeights[i], columnHeights[i+1]);
-                        if(maxH < bestFitHeight) {
-                            bestFitHeight = maxH;
-                            bestFitCol = i;
-                        }
-                    }
-                    targetCol = bestFitCol !== -1 ? bestFitCol : 0;
-                    minHeight = Math.max(columnHeights[targetCol], columnHeights[targetCol+1]);
-                }
-
-                // RTL Positioning: column 0 is on the right
-                const rightPos = targetCol * (itemWidth + gap);
-                const topPos = minHeight;
-
-                item.style.position = 'absolute';
-                item.style.right = `${rightPos}px`;
-                item.style.top = `${topPos}px`;
-
-                // Update column heights
-                const itemHeight = item.getBoundingClientRect().height;
-                const newHeight = topPos + itemHeight + (gap > 0 ? gap : 16); // Add bottom margin/gap
-                
-                for(let i=0; i < itemCols; i++) {
-                    columnHeights[targetCol + i] = newHeight;
-                }
-            });
-
-            // Set container height to max column height
-            const maxColHeight = Math.max(...columnHeights);
-            container.style.height = `${maxColHeight}px`;
-            
-            // Show container after layout
-            container.classList.remove('opacity-0');
-        }
-
-        // Run on load and resize
-        window.addEventListener('load', () => {
-            // Slight delay to ensure images are loaded, or use a ResizeObserver/imagesLoaded logic
-            setTimeout(applyMasonry, 100);
-        });
-        window.addEventListener('resize', applyMasonry);
-    </script>
+    <!-- Mobile-only sticky bottom trust-symbol bar — Step 1 -->
+    <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
+        <div class="flex items-stretch h-14 px-1">
+            <a href="index.html" class="ys-trust-item" aria-label="خانه">
+                <i class="fa-solid fa-house text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">خانه</span>
+            </a>
+            <a href="projects-archive.html" class="ys-trust-item" aria-label="پروژه‌ها">
+                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">پروژه‌ها</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="اینماد" title="نماد اعتماد الکترونیک">
+                <img src="assets/images/enamad.png" alt="اینماد" class="h-5 w-5 object-contain" onerror="this.style.display='none'">
+                <span class="ys-trust-item-label">اینماد</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="پرداخت امن" title="پرداخت امن">
+                <i class="fa-solid fa-lock text-brand-purple-dark text-base"></i>
+                <span class="ys-trust-item-label">پرداخت امن</span>
+            </a>
+            <a href="contact.html" class="ys-trust-item" aria-label="پشتیبانی" title="پشتیبانی">
+                <i class="fa-solid fa-headset text-brand-pink text-base"></i>
+                <span class="ys-trust-item-label">پشتیبانی</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Shared front-end interactions (auth state, dropdown, login modal) -->
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

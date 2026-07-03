@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-white text-slate-800 selection:bg-brand-pink selection:text-white font-sans min-h-screen flex flex-col">
+<body class="bg-white text-slate-800 selection:bg-brand-pink selection:text-white font-sans min-h-screen flex flex-col has-mobile-trustbar">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm z-50 transition-all">
@@ -36,15 +36,55 @@
                     class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
-            <!-- Left side (Lang & Socials) -->
-            <div class="flex items-center gap-2 md:gap-6 text-slate-500 text-[13px] font-bold shrink-0">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-2.5 py-1.5 md:px-3 rounded-full text-[11px] md:text-[13px]">
-                    فارسی | EN</div>
-                <div class="hidden sm:flex gap-3 text-lg">
-                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+            <!-- Left side (Auth + Socials) — Step 1 update -->
+            <div class="flex items-center gap-2 md:gap-4 text-slate-500 text-[13px] font-bold shrink-0">
+                <!-- Social Icons (Aparat replaces YouTube) -->
+                <div class="hidden sm:flex gap-3 text-lg items-center">
+                    <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon"></i></a>
+                </div>
+
+                <!-- Auth: Logged-out state -->
+                <div id="auth-loggedout">
+                    <button type="button" onclick="YasiAuth.openLogin()" class="flex items-center gap-1.5 cursor-pointer bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white px-2.5 py-1.5 md:px-4 rounded-full text-[11px] md:text-[13px] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap">
+                        <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
+                        ورود / عضویت
+                    </button>
+                </div>
+
+                <!-- Auth: Logged-in state (hidden by default; toggle via YasiAuth.setLoggedIn) -->
+                <div id="auth-loggedin" class="hidden relative">
+                    <button type="button" data-profile-trigger onclick="YasiAuth.toggleProfileMenu()" class="flex items-center gap-2 cursor-pointer bg-slate-100 hover:bg-slate-200 transition-colors ps-1 pe-2 py-1 md:pe-3 rounded-full text-[11px] md:text-[13px]">
+                        <span class="w-7 h-7 rounded-full bg-gradient-to-br from-brand-purple-light to-brand-purple-dark text-white flex items-center justify-center text-[12px] font-black shrink-0">ع</span>
+                        <span id="auth-username" class="hidden sm:inline text-slate-700 max-w-[130px] truncate">پروفایل علی صیدنژاد</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+                    </button>
+                    <!-- Profile management dropdown -->
+                    <div id="profile-dropdown" class="ys-profile-dropdown hidden absolute end-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
+                        <div class="px-4 py-2 border-b border-slate-100 mb-1">
+                            <p class="text-[11px] text-slate-400 font-bold">حساب کاربری شما</p>
+                            <p class="text-[13px] text-slate-800 font-black truncate">علی صیدنژاد</p>
+                        </div>
+                        <a href="profile.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-user w-4 text-center text-brand-purple-light"></i> پروفایل من
+                        </a>
+                        <a href="profile.html#projects" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-folder w-4 text-center text-brand-purple-light"></i> مشارکت‌های من
+                        </a>
+                        <a href="board-order.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-table-columns w-4 text-center text-brand-purple-light"></i> تابلوهای من
+                        </a>
+                        <a href="profile.html#settings" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-gear w-4 text-center text-brand-purple-light"></i> تنظیمات حساب
+                        </a>
+                        <div class="border-t border-slate-100 mt-1 pt-1">
+                            <button type="button" onclick="YasiAuth.setLoggedOut()" class="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-red-600 hover:bg-red-50 font-bold">
+                                <i class="fa-solid fa-right-from-bracket w-4 text-center"></i> خروج از حساب
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -87,8 +127,8 @@
                     <a href="#" class="flex-1 h-11 flex items-center justify-center bg-green-50 text-green-500 rounded-xl hover:bg-green-100 transition-colors">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                     </a>
-                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors">
-                        <i class="fa-brands fa-youtube text-lg"></i>
+                    <a href="#" aria-label="آپارات" class="flex-1 h-11 flex items-center justify-center bg-[#ed145b]/10 rounded-xl hover:bg-[#ed145b]/20 transition-colors">
+                        <i class="aparat-icon" style="font-size:1.25rem"></i>
                     </a>
                 </div>
             </div>
@@ -173,6 +213,149 @@
 
     </main>
 
+    <!-- Global Footer — Step 1 redesign -->
+    <footer class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-200 mt-12 w-full z-10 relative">
+        <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+
+                <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
+                <div class="md:col-span-4 flex flex-col gap-4">
+                    <a href="index.html" class="inline-block">
+                        <img src="assets/images/site-logo-banner.png" alt="یاسی شو" class="h-12 md:h-14 object-contain">
+                    </a>
+                    <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
+                        یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
+                    </p>
+                    <div class="flex flex-col gap-2 text-[12px] text-slate-600 font-medium">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-purple-light w-4 mt-0.5"></i>
+                            <span>کرمان، انجمن خیریه حمایت از بیماران سرطانی یاس</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-purple-light w-4"></i>
+                            <span dir="ltr">۰۳۴ - ۳۲۲۱۲۳۴۵</span>
+                        </div>
+                        <a href="mailto:info@yassishow.ir" class="flex items-center gap-2 hover:text-brand-pink transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-purple-light w-4"></i>
+                            <span dir="ltr">info@yassishow.ir</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CENTER column: useful links + latest projects -->
+                <div class="md:col-span-5 grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-link text-[12px] text-brand-pink"></i> پیوندها
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="index.html" class="ys-footer-link">خانه</a></li>
+                            <li><a href="about.html" class="ys-footer-link">درباره ما</a></li>
+                            <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
+                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
+                            <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-[12px] text-brand-pink"></i> پروژه‌های اخیر
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز رادیوتراپی یاس</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز غربالگری خون</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>درمانگاه و مرکز بستری</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز آموزش و پیشگیری</span></a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>سفیران یاسی شو</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LEFT column: trust badges -->
+                <div class="md:col-span-3">
+                    <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-[12px] text-brand-pink"></i> نمادهای اعتماد
+                    </h4>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <!-- 1. Enamad (real asset) -->
+                        <a href="#" title="اینماد" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <img src="assets/images/enamad.png" alt="اینماد" class="h-9 object-contain" onerror="this.style.display='none'">
+                            </div>
+                            <span class="ys-trust-label">اینماد</span>
+                        </a>
+                        <!-- 2. Bank Mellat (placeholder) -->
+                        <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-amber-700 leading-tight">بانک ملت</span>
+                            </div>
+                            <span class="ys-trust-label">درگاه پرداخت</span>
+                        </a>
+                        <!-- 3. National Charity Network (placeholder) -->
+                        <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <i class="fa-solid fa-hand-holding-heart text-[#16a34a] text-xl"></i>
+                            </div>
+                            <span class="ys-trust-label">شبکه ملی نیکوکاری</span>
+                        </a>
+                        <!-- 4. INCDA (placeholder) -->
+                        <a href="#" title="INCDA" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-blue-700 leading-tight">INCDA</span>
+                            </div>
+                            <span class="ys-trust-label">مرکز داده</span>
+                        </a>
+                    </div>
+                    <!-- Secondary trust row: Samandehi -->
+                    <div class="mt-2.5 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
+                        <img src="assets/images/samandehi.png" alt="ساماندهی" class="h-6 w-6 object-contain" onerror="this.style.display='none'">
+                        <span class="text-[10px] text-slate-500 font-bold leading-tight">درگاه ثبت ساماندهی</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar: copyright + socials -->
+            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-500 text-center md:text-right">
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                </p>
+                <div class="flex gap-2 text-base">
+                    <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="w-8 h-8 flex items-center justify-center bg-blue-50 text-blue-500 rounded-lg hover:bg-blue-100 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="w-8 h-8 flex items-center justify-center bg-green-50 text-green-500 rounded-lg hover:bg-green-100 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="w-8 h-8 flex items-center justify-center bg-[#ed145b]/10 rounded-lg hover:bg-[#ed145b]/20 transition-colors"><i class="aparat-icon" style="font-size:1rem"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Mobile-only sticky bottom trust-symbol bar — Step 1 -->
+    <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
+        <div class="flex items-stretch h-14 px-1">
+            <a href="index.html" class="ys-trust-item" aria-label="خانه">
+                <i class="fa-solid fa-house text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">خانه</span>
+            </a>
+            <a href="projects-archive.html" class="ys-trust-item" aria-label="پروژه‌ها">
+                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">پروژه‌ها</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="اینماد" title="نماد اعتماد الکترونیک">
+                <img src="assets/images/enamad.png" alt="اینماد" class="h-5 w-5 object-contain" onerror="this.style.display='none'">
+                <span class="ys-trust-item-label">اینماد</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="پرداخت امن" title="پرداخت امن">
+                <i class="fa-solid fa-lock text-brand-purple-dark text-base"></i>
+                <span class="ys-trust-item-label">پرداخت امن</span>
+            </a>
+            <a href="contact.html" class="ys-trust-item" aria-label="پشتیبانی" title="پشتیبانی">
+                <i class="fa-solid fa-headset text-brand-pink text-base"></i>
+                <span class="ys-trust-item-label">پشتیبانی</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Shared front-end interactions (auth state, dropdown, login modal) -->
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

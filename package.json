@@ -5,6 +5,7 @@
     "dev": "npx tailwindcss -i src/input.css -o assets/css/style.css --watch"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
     "tailwindcss": "^4.2.4"
   }
 }

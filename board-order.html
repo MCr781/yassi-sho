@@ -7,6 +7,7 @@
     <title>سفارش تابلو گل نقره | یاسی شو</title>
 
     <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="assets/css/iran-nastaliq.css">
     <link rel="stylesheet" href="assets/css/all.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
@@ -56,15 +57,40 @@
             transform: rotate(180deg);
         }
 
-        /* Calligraphic font fallback since we only have Vazirmatn */
-        .nastaliq-fallback {
-            font-family: 'Vazirmatn', sans-serif; /* We rely on black/bold Vazirmatn if Nastaliq is missing */
-            letter-spacing: -1px;
+        /* Iran Nastaliq font for the board preview text (Step 4) */
+        .nastaliq-text {
+            font-family: 'IranNastaliq', 'Vazirmatn', serif;
+            line-height: 1.8;
+        }
+
+        /* ---- Multi-step wizard (Step 4) ---- */
+        .ys-wizard-step { display: none; }
+        .ys-wizard-step.active { display: block; }
+        .ys-wizard-progress-bar {
+            transition: width .4s ease;
+        }
+
+        /* ---- Vertical board preview (Step 4) ----
+           The physical silver flower boards are portrait/vertical. The preview
+           now uses a 3:4 aspect ratio (portrait) to match. */
+        .ys-board-preview-vertical {
+            aspect-ratio: 3 / 4;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* ---- Guide/Samples modal ---- */
+        .ys-board-sample-card {
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .ys-board-sample-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white">
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white has-mobile-trustbar">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm z-50 transition-all">
@@ -89,15 +115,55 @@
                     class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
-            <!-- Left side (Lang & Socials) -->
-            <div class="flex items-center gap-2 md:gap-6 text-slate-500 text-[13px] font-bold shrink-0">
-                <div class="cursor-pointer hover:text-brand-purple-dark transition-colors bg-slate-100 px-2.5 py-1.5 md:px-3 rounded-full text-[11px] md:text-[13px]">
-                    فارسی | EN</div>
-                <div class="hidden sm:flex gap-3 text-lg">
-                    <i class="fa-brands fa-instagram text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-telegram text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-whatsapp text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
-                    <i class="fa-brands fa-youtube text-red-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"></i>
+            <!-- Left side (Auth + Socials) — Step 1 update -->
+            <div class="flex items-center gap-2 md:gap-4 text-slate-500 text-[13px] font-bold shrink-0">
+                <!-- Social Icons (Aparat replaces YouTube) -->
+                <div class="hidden sm:flex gap-3 text-lg items-center">
+                    <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon"></i></a>
+                </div>
+
+                <!-- Auth: Logged-out state -->
+                <div id="auth-loggedout">
+                    <button type="button" onclick="YasiAuth.openLogin()" class="flex items-center gap-1.5 cursor-pointer bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white px-2.5 py-1.5 md:px-4 rounded-full text-[11px] md:text-[13px] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap">
+                        <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
+                        ورود / عضویت
+                    </button>
+                </div>
+
+                <!-- Auth: Logged-in state (hidden by default; toggle via YasiAuth.setLoggedIn) -->
+                <div id="auth-loggedin" class="hidden relative">
+                    <button type="button" data-profile-trigger onclick="YasiAuth.toggleProfileMenu()" class="flex items-center gap-2 cursor-pointer bg-slate-100 hover:bg-slate-200 transition-colors ps-1 pe-2 py-1 md:pe-3 rounded-full text-[11px] md:text-[13px]">
+                        <span class="w-7 h-7 rounded-full bg-gradient-to-br from-brand-purple-light to-brand-purple-dark text-white flex items-center justify-center text-[12px] font-black shrink-0">ع</span>
+                        <span id="auth-username" class="hidden sm:inline text-slate-700 max-w-[130px] truncate">پروفایل علی صیدنژاد</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+                    </button>
+                    <!-- Profile management dropdown -->
+                    <div id="profile-dropdown" class="ys-profile-dropdown hidden absolute end-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
+                        <div class="px-4 py-2 border-b border-slate-100 mb-1">
+                            <p class="text-[11px] text-slate-400 font-bold">حساب کاربری شما</p>
+                            <p class="text-[13px] text-slate-800 font-black truncate">علی صیدنژاد</p>
+                        </div>
+                        <a href="profile.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-user w-4 text-center text-brand-purple-light"></i> پروفایل من
+                        </a>
+                        <a href="profile.html#projects" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-folder w-4 text-center text-brand-purple-light"></i> مشارکت‌های من
+                        </a>
+                        <a href="board-order.html" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-table-columns w-4 text-center text-brand-purple-light"></i> تابلوهای من
+                        </a>
+                        <a href="profile.html#settings" class="flex items-center gap-3 px-4 py-2.5 text-[13px] text-slate-700 hover:bg-slate-50 font-bold">
+                            <i class="fa-solid fa-gear w-4 text-center text-brand-purple-light"></i> تنظیمات حساب
+                        </a>
+                        <div class="border-t border-slate-100 mt-1 pt-1">
+                            <button type="button" onclick="YasiAuth.setLoggedOut()" class="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-red-600 hover:bg-red-50 font-bold">
+                                <i class="fa-solid fa-right-from-bracket w-4 text-center"></i> خروج از حساب
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -140,20 +206,20 @@
                     <a href="#" class="flex-1 h-11 flex items-center justify-center bg-green-50 text-green-500 rounded-xl hover:bg-green-100 transition-colors">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                     </a>
-                    <a href="#" class="flex-1 h-11 flex items-center justify-center bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors">
-                        <i class="fa-brands fa-youtube text-lg"></i>
+                    <a href="#" aria-label="آپارات" class="flex-1 h-11 flex items-center justify-center bg-[#ed145b]/10 rounded-xl hover:bg-[#ed145b]/20 transition-colors">
+                        <i class="aparat-icon" style="font-size:1.25rem"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Layout Container -->
+    <!-- Main Layout Container — Step 4: Multi-step Wizard + Vertical Preview -->
     <main class="max-w-[1300px] mx-auto px-4 pt-16 md:pt-24 pb-10 md:pb-24 flex flex-col lg:flex-row gap-6 lg:gap-12 relative">
 
-        <!-- FORM SECTION -->
+        <!-- ===== WIZARD SECTION (Right on desktop, top on mobile) ===== -->
         <div class="w-full lg:w-5/12 flex flex-col gap-6" id="order-form">
-            
+
             <div class="mb-2">
                 <nav class="flex text-slate-400 text-xs mb-4" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 space-x-reverse md:space-x-3 text-sm">
@@ -171,239 +237,299 @@
                     </ol>
                 </nav>
                 <h1 class="text-3xl font-black text-brand-purple-dark mb-2">سفارش تابلو گل نقره</h1>
-                <p class="text-sm text-slate-500 leading-relaxed">اطلاعات سفارش خود را در فرم زیر وارد کنید. پیش‌نمایش تابلو همزمان با تایپ شما بروزرسانی می‌شود.</p>
+                <p class="text-sm text-slate-500 leading-relaxed">اطلاعات سفارش خود را در ۴ مرحله وارد کنید. پیش‌نمایش تابلو همزمان با تایپ شما بروزرسانی می‌شود.</p>
             </div>
 
-            <!-- Step 1: Type -->
-            <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
-                    <span class="bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۱</span>
-                    نوع تابلو و تعداد
-                </h2>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
-                    <label class="relative border-2 border-brand-pink rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all bg-brand-pink/5 group">
-                        <input type="radio" name="boardType" value="ویژه" class="hidden peer" checked onchange="updateBoardType(this)">
-                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-100 transition-opacity">
-                            <i class="fa-solid fa-check text-[10px]"></i>
-                        </div>
-                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
-                        </div>
-                        <div class="font-black text-brand-purple-dark text-[14px] mb-1">نوع ویژه</div>
-                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۱۲۰ در ۸۰</div>
-                        <div class="text-brand-pink font-black text-sm mt-auto" data-price="500000">۵۰۰,۰۰۰ تومان</div>
-                    </label>
-
-                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
-                        <input type="radio" name="boardType" value="درجه یک" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-check text-[10px]"></i>
-                        </div>
-                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
-                        </div>
-                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه یک</div>
-                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۱۰۰ در ۷۰</div>
-                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="400000">۴۰۰,۰۰۰ تومان</div>
-                    </label>
-
-                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
-                        <input type="radio" name="boardType" value="درجه دو" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-check text-[10px]"></i>
-                        </div>
-                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
-                        </div>
-                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه دو</div>
-                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۸۰ در ۶۰</div>
-                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="300000">۳۰۰,۰۰۰ تومان</div>
-                    </label>
-
-                    <label class="relative border-2 border-slate-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
-                        <input type="radio" name="boardType" value="درجه سه" class="hidden peer" onchange="updateBoardType(this)">
-                        <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
-                            <i class="fa-solid fa-check text-[10px]"></i>
-                        </div>
-                        <div class="w-full aspect-[4/3] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                            <img src="assets/images/board-mockup.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-300">
-                        </div>
-                        <div class="font-bold text-slate-700 text-[14px] mb-1 group-hover:text-brand-purple-dark transition-colors peer-checked:font-black peer-checked:text-brand-purple-dark">درجه سه</div>
-                        <div class="text-[10px] font-bold text-slate-500 bg-white px-1 py-1 rounded border border-slate-100 mb-3 w-full">سایز: ۶۰ در ۴۰</div>
-                        <div class="text-slate-500 font-black text-sm mt-auto peer-checked:text-brand-pink transition-colors" data-price="200000">۲۰۰,۰۰۰ تومان</div>
-                    </label>
+            <!-- Wizard Progress Bar -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-slate-500">مرحله <span id="ys-current-step">۱</span> از ۴</span>
+                    <span class="text-xs font-bold text-brand-purple-dark" id="ys-step-label">نوع تابلو و تعداد</span>
                 </div>
-                
-                <div class="border-t border-slate-100 pt-5">
-                    <div class="flex items-center justify-between">
-                        <label class="block text-sm font-bold text-slate-700">تعداد تابلو:</label>
-                        <div class="flex items-center gap-4 bg-slate-50 p-1.5 rounded-full border border-slate-200">
-                            <button type="button" class="w-8 h-8 rounded-full bg-white text-brand-pink shadow-sm hover:bg-brand-pink hover:text-white transition-colors flex items-center justify-center font-bold" onclick="changeQty(1)"><i class="fa-solid fa-plus text-xs"></i></button>
-                            <span id="qty-display" class="font-black text-lg w-6 text-center text-brand-purple-dark">۱</span>
-                            <button type="button" class="w-8 h-8 rounded-full bg-white text-slate-500 shadow-sm hover:bg-slate-200 transition-colors flex items-center justify-center font-bold" onclick="changeQty(-1)"><i class="fa-solid fa-minus text-xs"></i></button>
-                        </div>
+                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="ys-wizard-progress-bar h-full bg-gradient-to-r from-brand-purple to-brand-pink rounded-full" id="ys-progress-bar" style="width:25%"></div>
+                </div>
+                <!-- Step dots -->
+                <div class="flex justify-between mt-3 px-1">
+                    <div class="flex flex-col items-center gap-1" data-step-dot="1">
+                        <div class="w-7 h-7 rounded-full bg-brand-pink text-white flex items-center justify-center text-xs font-black shadow-md ys-step-dot-circle">۱</div>
+                        <span class="text-[9px] font-bold text-slate-400">نوع تابلو</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1" data-step-dot="2">
+                        <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xs font-black ys-step-dot-circle">۲</div>
+                        <span class="text-[9px] font-bold text-slate-400">متن تابلو</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1" data-step-dot="3">
+                        <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xs font-black ys-step-dot-circle">۳</div>
+                        <span class="text-[9px] font-bold text-slate-400">اطلاعات ارسال</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1" data-step-dot="4">
+                        <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xs font-black ys-step-dot-circle">۴</div>
+                        <span class="text-[9px] font-bold text-slate-400">سفارش‌دهنده</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 2: Content -->
+            <!-- Wizard Steps Container -->
             <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
-                    <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۲</span>
-                    متن تابلو
-                </h2>
-                
-                <div class="space-y-5">
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">تقدیم به (نام متوفی یا خانواده)</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" id="input-to" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: خانواده محترم سلمان زاده" oninput="updatePreview()" value="خانواده محترم سلمان زاده">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">متن تسلیت</label>
-                        <select id="input-msg-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm mb-3 transition-all cursor-pointer" onchange="handleMsgSelect()">
-                            <option value="مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</option>
-                            <option value="با نهایت تاسف و تاثر درگذشت عزیز از دست رفته را تسلیت عرض می‌کنیم">با نهایت تاسف و تاثر درگذشت عزیز از دست رفته را تسلیت عرض می‌کنیم</option>
-                            <option value="اندوه ما در غم از دست دادن آن عزیز بزرگوار در واژه‌ها نمی‌گنجد">اندوه ما در غم از دست دادن آن عزیز بزرگوار در واژه‌ها نمی‌گنجد</option>
-                            <option value="custom">متن دلخواه...</option>
-                        </select>
-                        <textarea id="input-msg" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm resize-none h-24 transition-all" placeholder="متن تسلیت خود را بنویسید..." oninput="updatePreview()">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</textarea>
+
+                <!-- ===== STEP 1: Board Type & Guide ===== -->
+                <div class="ys-wizard-step active" data-step="1">
+                    <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
+                        <span class="bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۱</span>
+                        نوع تابلو و تعداد
+                    </h2>
+
+                    <!-- Guide/Samples button -->
+                    <button type="button" onclick="document.getElementById('board-guide-modal').classList.remove('hidden'); document.getElementById('board-guide-modal').classList.add('flex');" class="w-full mb-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-sm font-bold py-2.5 px-4 rounded-xl border border-indigo-100 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-images"></i> راهنما و نمونه تابلوها
+                    </button>
+
+                    <!-- Board type options with thumbnails -->
+                    <div class="grid grid-cols-2 gap-3 md:gap-4 mb-6">
+                        <label class="relative border-2 border-brand-pink rounded-2xl p-3 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all bg-brand-pink/5 group">
+                            <input type="radio" name="boardType" value="ویژه" class="hidden peer" checked onchange="updateBoardType(this)">
+                            <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-100 transition-opacity">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                                <img src="assets/images/board-sample-special.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="font-black text-brand-purple-dark text-[13px] mb-1">نوع ویژه</div>
+                            <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۲۰×۸۰</div>
+                            <div class="text-brand-pink font-black text-xs mt-auto" data-price="500000">۵۰۰,۰۰۰ ت</div>
+                        </label>
+
+                        <label class="relative border-2 border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
+                            <input type="radio" name="boardType" value="درجه یک" class="hidden peer" onchange="updateBoardType(this)">
+                            <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                                <img src="assets/images/board-sample-grade1.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه یک</div>
+                            <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۰۰×۷۰</div>
+                            <div class="text-slate-500 font-black text-xs mt-auto peer-checked:text-brand-pink" data-price="400000">۴۰۰,۰۰۰ ت</div>
+                        </label>
+
+                        <label class="relative border-2 border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
+                            <input type="radio" name="boardType" value="درجه دو" class="hidden peer" onchange="updateBoardType(this)">
+                            <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                                <img src="assets/images/board-sample-grade2.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه دو</div>
+                            <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۸۰×۶۰</div>
+                            <div class="text-slate-500 font-black text-xs mt-auto peer-checked:text-brand-pink" data-price="300000">۳۰۰,۰۰۰ ت</div>
+                        </label>
+
+                        <label class="relative border-2 border-slate-100 rounded-2xl p-3 flex flex-col items-center text-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all hover:bg-slate-50 group">
+                            <input type="radio" name="boardType" value="درجه سه" class="hidden peer" onchange="updateBoardType(this)">
+                            <div class="absolute top-2 start-2 w-6 h-6 rounded-full bg-white flex items-center justify-center text-brand-pink shadow-sm z-10 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
+                                <img src="assets/images/board-sample-grade3.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه سه</div>
+                            <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۶۰×۴۰</div>
+                            <div class="text-slate-500 font-black text-xs mt-auto peer-checked:text-brand-pink" data-price="200000">۲۰۰,۰۰۰ ت</div>
+                        </label>
                     </div>
 
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">از طرف (ارسال کننده)</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-pen-nib absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" id="input-from" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: از طرف ماهانی" oninput="updatePreview()" value="از طرف ماهانی">
+                    <!-- Quantity -->
+                    <div class="border-t border-slate-100 pt-5">
+                        <div class="flex items-center justify-between">
+                            <label class="block text-sm font-bold text-slate-700">تعداد تابلو:</label>
+                            <div class="flex items-center gap-4 bg-slate-50 p-1.5 rounded-full border border-slate-200">
+                                <button type="button" class="w-8 h-8 rounded-full bg-white text-brand-pink shadow-sm hover:bg-brand-pink hover:text-white transition-colors flex items-center justify-center font-bold" onclick="changeQty(1)"><i class="fa-solid fa-plus text-xs"></i></button>
+                                <span id="qty-display" class="font-black text-lg w-6 text-center text-brand-purple-dark">۱</span>
+                                <button type="button" class="w-8 h-8 rounded-full bg-white text-slate-500 shadow-sm hover:bg-slate-200 transition-colors flex items-center justify-center font-bold" onclick="changeQty(-1)"><i class="fa-solid fa-minus text-xs"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Step 3: Delivery Info -->
-            <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
-                    <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۳</span>
-                    اطلاعات ارسال
-                </h2>
-                
-                <div class="space-y-5">
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">مسجد / محل برگزاری</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-mosque absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <select id="input-mosque" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all cursor-pointer" onchange="updatePreview()">
-                                <option value="مسجد طالبی-1">مسجد طالبی (سالن ۱)</option>
-                                <option value="مسجد طالبی-2">مسجد طالبی (سالن ۲)</option>
-                                <option value="مسجد جامع">مسجد جامع</option>
-                                <option value="مسجد الرضا">مسجد الرضا</option>
-                                <option value="سایر">سایر (هماهنگی تلفنی)</option>
+                <!-- ===== STEP 2: Board Text ===== -->
+                <div class="ys-wizard-step" data-step="2">
+                    <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
+                        <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۲</span>
+                        متن تابلو
+                    </h2>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">تقدیم به (نام متوفی یا خانواده)</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input type="text" id="input-to" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: خانواده محترم سلمان زاده" oninput="updatePreview()" value="خانواده محترم سلمان زاده">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">متن تسلیت</label>
+                            <select id="input-msg-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm mb-3 transition-all cursor-pointer" onchange="handleMsgSelect()">
+                                <option value="خانواده محترم داغدار، از طرف انجمن خیریه یاس کرمان، مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم">متن پیش‌فرض انجمن یاس</option>
+                                <option value="مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</option>
+                                <option value="با نهایت تاسف و تاثر درگذشت عزیز از دست رفته را تسلیت عرض می‌کنیم">با نهایت تاسف و تاثر...</option>
+                                <option value="custom">متن دلخواه...</option>
                             </select>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[13px] font-bold text-slate-700 mb-2">تاریخ مراسم</label>
-                            <div class="relative">
-                                <i class="fa-solid fa-calendar absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: ۱۴۰۳/۰۴/۱۲">
-                            </div>
+                            <textarea id="input-msg" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm resize-none h-24 transition-all" placeholder="متن تسلیت خود را بنویسید..." oninput="updatePreview()">خانواده محترم داغدار، از طرف انجمن خیریه یاس کرمان، مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</textarea>
                         </div>
                         <div>
-                            <label class="block text-[13px] font-bold text-slate-700 mb-2">ساعت مراسم</label>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">از طرف (ارسال کننده)</label>
                             <div class="relative">
-                                <i class="fa-solid fa-clock absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                                <input type="time" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all text-end font-sans" dir="ltr">
+                                <i class="fa-solid fa-pen-nib absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input type="text" id="input-from" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: از طرف ماهانی" oninput="updatePreview()" value="از طرف ماهانی">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Step 4: Sender Info -->
-            <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
-                    <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۴</span>
-                    اطلاعات سفارش‌دهنده
-                </h2>
-                
-                <div class="space-y-5">
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی شما</label>
-                        <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="برای ثبت در سیستم و پیگیری">
-                    </div>
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">شماره تماس (جهت هماهنگی)</label>
-                        <input type="tel" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all text-start font-sans tracking-wider" dir="ltr" placeholder="09123456789">
+                <!-- ===== STEP 3: Delivery Info ===== -->
+                <div class="ys-wizard-step" data-step="3">
+                    <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
+                        <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۳</span>
+                        اطلاعات ارسال
+                    </h2>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">مسجد / محل برگزاری</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-mosque absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <select id="input-mosque" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all cursor-pointer" onchange="updatePreview()">
+                                    <option value="مسجد طالبی-1">مسجد طالبی (سالن ۱)</option>
+                                    <option value="مسجد طالبی-2">مسجد طالبی (سالن ۲)</option>
+                                    <option value="مسجد جامع">مسجد جامع</option>
+                                    <option value="مسجد الرضا">مسجد الرضا</option>
+                                    <option value="سایر">سایر (هماهنگی تلفنی)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[13px] font-bold text-slate-700 mb-2">تاریخ مراسم</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-calendar absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="مثال: ۱۴۰۳/۰۴/۱۲">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[13px] font-bold text-slate-700 mb-2">ساعت مراسم</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-clock absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="time" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 ps-11 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all text-end font-sans" dir="ltr">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- ===== STEP 4: Sender Info + Submit ===== -->
+                <div class="ys-wizard-step" data-step="4">
+                    <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-3">
+                        <span class="bg-brand-purple-light text-white w-7 h-7 rounded-full flex items-center justify-center text-sm shadow-md">۴</span>
+                        اطلاعات سفارش‌دهنده
+                    </h2>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی شما</label>
+                            <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all" placeholder="برای ثبت در سیستم و پیگیری">
+                        </div>
+                        <div>
+                            <label class="block text-[13px] font-bold text-slate-700 mb-2">شماره تماس (جهت هماهنگی)</label>
+                            <input type="tel" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-brand-purple-light focus:ring-2 focus:ring-brand-purple-light/20 text-sm transition-all text-start font-sans tracking-wider" dir="ltr" placeholder="09123456789">
+                        </div>
+                    </div>
+
+                    <!-- Summary + Submit -->
+                    <div class="mt-6 bg-gradient-to-br from-slate-50 to-slate-100 p-5 rounded-2xl border border-slate-200">
+                        <div class="flex justify-between items-center mb-2 text-sm">
+                            <span class="text-slate-500 font-bold">نوع تابلو:</span>
+                            <span class="font-black text-brand-purple-dark" id="summary-type">ویژه</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2 text-sm">
+                            <span class="text-slate-500 font-bold">تعداد:</span>
+                            <span class="font-black text-brand-purple-dark" id="summary-qty">۱ عدد</span>
+                        </div>
+                        <div class="border-t border-slate-200 my-3"></div>
+                        <div class="flex justify-between items-end">
+                            <span class="font-bold text-slate-500 text-sm">مبلغ قابل پرداخت:</span>
+                            <span class="font-black text-2xl text-brand-pink"><span id="total-price">۵۰۰,۰۰۰</span> <span class="text-sm text-slate-600 font-bold">تومان</span></span>
+                        </div>
+                        <button class="w-full mt-4 bg-gradient-to-r from-brand-pink to-rose-500 text-white font-black py-4 rounded-xl shadow-[0_8px_20px_rgba(236,72,153,0.3)] hover:shadow-[0_10px_25px_rgba(236,72,153,0.4)] hover:-translate-y-1 transition-all text-lg flex items-center justify-center gap-3" onclick="window.location.href='payment.html'">
+                            <i class="fa-solid fa-credit-card"></i>
+                            تایید و پرداخت آنلاین
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Submit Box (Sticky Mobile) -->
-            <div class="bg-white p-5 rounded-3xl shadow-[0_-10px_30px_rgba(0,0,0,0.05)] border border-slate-100 sticky bottom-4 z-40 mt-4">
-                <div class="flex justify-between items-end mb-4 px-2">
-                    <span class="font-bold text-slate-500 text-sm">مبلغ قابل پرداخت:</span>
-                    <span class="font-black text-2xl text-brand-pink"><span id="total-price">۵۰۰,۰۰۰</span> <span class="text-sm text-slate-600 font-bold">تومان</span></span>
-                </div>
-                <button class="w-full bg-gradient-to-r from-brand-pink to-rose-500 text-white font-black py-4 rounded-xl shadow-[0_8px_20px_rgba(236,72,153,0.3)] hover:shadow-[0_10px_25px_rgba(236,72,153,0.4)] hover:-translate-y-1 transition-all text-lg flex items-center justify-center gap-3" onclick="window.location.href='payment.html'">
-                    <i class="fa-solid fa-credit-card"></i>
-                    تایید و پرداخت آنلاین
+            <!-- Wizard Navigation Buttons -->
+            <div class="flex items-center justify-between gap-3 mt-2">
+                <button type="button" onclick="ysWizard.prev()" id="ys-btn-prev" class="flex items-center gap-2 bg-white border border-slate-200 text-slate-600 font-bold text-sm px-5 py-3 rounded-xl shadow-sm hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                    <i class="fa-solid fa-arrow-right text-xs"></i> مرحله قبل
+                </button>
+                <button type="button" onclick="ysWizard.next()" id="ys-btn-next" class="flex items-center gap-2 bg-gradient-to-r from-brand-purple to-brand-pink text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    مرحله بعد <i class="fa-solid fa-arrow-left text-xs"></i>
+                </button>
+                <button type="button" onclick="ysWizard.goTo(4)" id="ys-btn-submit" class="hidden flex items-center gap-2 bg-gradient-to-r from-brand-pink to-rose-500 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <i class="fa-solid fa-check"></i> تکمیل سفارش
                 </button>
             </div>
 
         </div>
 
-        <!-- PREVIEW SECTION -->
-        <div class="w-full lg:w-7/12 sticky top-24 self-start order-first lg:order-last z-10">
+        <!-- ===== PREVIEW SECTION (Left on desktop, below wizard on mobile) ===== -->
+        <div class="w-full lg:w-7/12 lg:sticky lg:top-24 self-start z-10">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-black text-slate-800">پیش‌نمایش تابلو</h2>
                 <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded-full"><i class="fa-solid fa-eye me-1"></i>بروزرسانی زنده</span>
             </div>
-            
-            <!-- Board Aspect Ratio Container (Landscape) -->
-            <div class="w-full aspect-[4/3] sm:aspect-[16/11] bg-white rounded-lg shadow-2xl overflow-hidden relative flex flex-col p-[4%] group transition-all duration-300 board-border-pattern mx-auto max-w-[800px]">
-                
+
+            <!-- Vertical Board Preview (Step 4: portrait orientation + Nastaliq font) -->
+            <div class="ys-board-preview-vertical w-full bg-white rounded-lg shadow-2xl overflow-hidden relative flex flex-col p-[5%] group transition-all duration-300 board-border-pattern mx-auto">
+
                 <!-- Vertical Pattern for sides -->
                 <div class="absolute inset-0 board-vertical-pattern pointer-events-none"></div>
 
                 <!-- Header of Board -->
                 <div class="flex justify-between items-start z-10 w-full relative">
-                    <!-- Logo Top Left (Start side) -->
-                    <div class="flex flex-col items-center opacity-90 w-[15%] max-w-[80px]">
+                    <div class="flex flex-col items-center opacity-90 w-[18%] max-w-[70px]">
                         <img src="assets/images/header-logo.png" alt="Yas Charity" class="w-full object-contain filter drop-shadow-sm hue-rotate-[190deg] brightness-75">
-                        <div class="text-[1vw] sm:text-[10px] text-center font-black text-blue-900 mt-1 leading-tight tracking-tighter">یاس کرمان<br><span class="font-sans text-[0.8vw] sm:text-[8px]">YAS CHARITY</span></div>
+                        <div class="text-[8px] text-center font-black text-blue-900 mt-1 leading-tight tracking-tighter">یاس کرمان<br><span class="font-sans text-[6px]">YAS CHARITY</span></div>
                     </div>
-
-                    <!-- Small Info Box (Mosque, Type) -->
-                    <div class="flex flex-col text-[1.2vw] sm:text-xs text-blue-900 font-bold gap-1 bg-white/60 backdrop-blur-sm px-2 py-1 rounded border border-blue-100 shadow-sm mt-1">
+                    <div class="flex flex-col text-[9px] text-blue-900 font-bold gap-1 bg-white/60 backdrop-blur-sm px-2 py-1 rounded border border-blue-100 shadow-sm mt-1">
                         <div class="flex items-center gap-1"><span class="text-slate-500 font-medium">مسجد:</span> <span id="preview-mosque">طالبی-1</span></div>
                         <div class="flex items-center gap-1"><span class="text-slate-500 font-medium">نوع:</span> <span id="preview-type">ویژه</span></div>
                     </div>
                 </div>
 
-                <!-- Body of Board (Text) -->
-                <div class="flex-1 flex flex-col items-center justify-center gap-[5%] z-10 w-full relative pt-[2%] nastaliq-fallback">
-                    
-                    <div class="w-full text-end px-[8%]">
-                        <span class="text-base min-[400px]:text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">سرکار خانم حمیده سلمان زاده</span>
+                <!-- Body of Board (Nastaliq Text — vertical layout) -->
+                <div class="flex-1 flex flex-col items-center justify-between gap-[3%] z-10 w-full relative pt-[4%] pb-[2%]">
+
+                    <!-- "تقدیم به" + recipient name (top) -->
+                    <div class="w-full text-center px-[6%]">
+                        <div class="text-[10px] text-slate-500 mb-1">تقدیم به</div>
+                        <span class="nastaliq-text text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block" id="preview-to" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">خانواده محترم سلمان زاده</span>
                     </div>
 
-                    <div class="w-full text-center px-[4%]">
-                        <h2 class="text-xl min-[400px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-brand-purple-dark leading-snug py-2 tracking-tighter" id="preview-msg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
+                    <!-- Condolence message (center, largest) -->
+                    <div class="w-full text-center px-[4%] flex-1 flex items-center justify-center">
+                        <h2 class="nastaliq-text text-base sm:text-xl md:text-2xl lg:text-3xl text-brand-purple-dark leading-loose tracking-tight" id="preview-msg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.15);">خانواده محترم داغدار، از طرف انجمن خیریه یاس کرمان، مصیبت وارده را صمیمانه تسلیت عرض می‌نماییم</h2>
                     </div>
 
-                    <div class="w-full text-end px-[8%] mt-auto pb-[2%]">
-                        <span class="text-base min-[400px]:text-lg sm:text-2xl md:text-3xl font-black text-slate-800 leading-relaxed block tracking-tight" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف: ماهانی</span>
+                    <!-- Sender (bottom) -->
+                    <div class="w-full text-center px-[6%]">
+                        <div class="text-[10px] text-slate-500 mb-1">از طرف</div>
+                        <span class="nastaliq-text text-base sm:text-xl md:text-2xl font-black text-slate-800 leading-relaxed block" id="preview-from" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">از طرف ماهانی</span>
                     </div>
-
                 </div>
             </div>
 
-            <!-- Disclaimer / Info -->
+            <!-- Disclaimer -->
             <div class="mt-6 bg-indigo-50 border border-indigo-100 p-4 rounded-2xl text-xs sm:text-[13px] font-medium flex gap-3 shadow-sm text-indigo-800 leading-loose">
                 <i class="fa-solid fa-hand-holding-heart text-2xl shrink-0 mt-1 text-indigo-400"></i>
                 <p>عواید حاصل از سفارش تابلوهای گل نقره، تماماً صرف هزینه‌های دارو و درمان بیماران مبتلا به سرطان انجمن یاس کرمان می‌گردد. تابلوها یک ساعت پیش از شروع مراسم در محل مقرر نصب خواهند شد.</p>
@@ -412,30 +538,184 @@
 
     </main>
 
-    <!-- Global Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-12 w-full z-10 relative">
-        <div class="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
-                <a href="https://yaas.org.ir" target="_blank" class="hover:opacity-80 transition-opacity">
-                    <img src="assets/images/header-logo.png" alt="Yaas Charity" class="h-12 object-contain">
-                </a>
-                <div class="text-sm text-slate-600 font-medium">
-                    <p>پلتفرم مشارکت مردمی یاسی شو</p>
-                    <p class="text-xs text-slate-400 mt-1">متعلق به انجمن خیریه حمایت از بیماران سرطانی یاس کرمان</p>
+    <!-- ===== Guide/Samples Modal (Step 4) ===== -->
+    <div id="board-guide-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div class="bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden relative flex flex-col">
+            <div class="bg-gradient-to-l from-brand-purple-light to-brand-purple-dark px-6 py-4 flex justify-between items-center text-white">
+                <h3 class="font-black text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-images"></i> راهنما و نمونه تابلوهای گل نقره
+                </h3>
+                <button type="button" onclick="document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');" class="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto">
+                <p class="text-sm text-slate-500 mb-5 text-center">برای مشاهده جزئیات هر تابلو روی آن کلیک کنید. تابلوها بر اساس کیفیت و سایز در چهار درجه ارائه می‌شوند.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Sample 1: Special -->
+                    <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.getElementById('boardType[value=\'ویژه\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'ویژه\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
+                        <div class="aspect-[3/4] overflow-hidden bg-white">
+                            <img src="assets/images/board-sample-special.png" alt="نوع ویژه" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 text-center">
+                            <h4 class="font-black text-brand-purple-dark text-sm mb-1">نوع ویژه</h4>
+                            <p class="text-[11px] text-slate-500 mb-2">سایز: ۱۲۰ × ۸۰ سانتی‌متر</p>
+                            <span class="inline-block bg-brand-pink text-white text-xs font-black px-3 py-1 rounded-full">۵۰۰,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    <!-- Sample 2: Grade 1 -->
+                    <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه یک\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه یک\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
+                        <div class="aspect-[3/4] overflow-hidden bg-white">
+                            <img src="assets/images/board-sample-grade1.png" alt="درجه یک" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 text-center">
+                            <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه یک</h4>
+                            <p class="text-[11px] text-slate-500 mb-2">سایز: ۱۰۰ × ۷۰ سانتی‌متر</p>
+                            <span class="inline-block bg-brand-pink text-white text-xs font-black px-3 py-1 rounded-full">۴۰۰,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    <!-- Sample 3: Grade 2 -->
+                    <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه دو\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه دو\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
+                        <div class="aspect-[3/4] overflow-hidden bg-white">
+                            <img src="assets/images/board-sample-grade2.png" alt="درجه دو" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 text-center">
+                            <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه دو</h4>
+                            <p class="text-[11px] text-slate-500 mb-2">سایز: ۸۰ × ۶۰ سانتی‌متر</p>
+                            <span class="inline-block bg-brand-pink text-white text-xs font-black px-3 py-1 rounded-full">۳۰۰,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    <!-- Sample 4: Grade 3 -->
+                    <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه سه\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه سه\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
+                        <div class="aspect-[3/4] overflow-hidden bg-white">
+                            <img src="assets/images/board-sample-grade3.png" alt="درجه سه" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 text-center">
+                            <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه سه</h4>
+                            <p class="text-[11px] text-slate-500 mb-2">سایز: ۶۰ × ۴۰ سانتی‌متر</p>
+                            <span class="inline-block bg-brand-pink text-white text-xs font-black px-3 py-1 rounded-full">۲۰۰,۰۰۰ تومان</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="flex gap-4">
-                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="assets/images/enamad.png" alt="Enamad" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
-                </a>
-                <a href="#" class="bg-white border border-slate-200 rounded-lg p-2 flex items-center justify-center w-20 h-24 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="assets/images/samandehi.png" alt="Bank Gateway" class="h-16 object-contain" onerror="this.src='assets/images/header-logo.png'">
-                </a>
-            </div>
         </div>
-        <div class="max-w-[1300px] mx-auto px-4 mt-8 pt-4 border-t border-slate-100 text-center text-xs text-slate-400">
-            تمامی حقوق برای انجمن خیریه یاس کرمان محفوظ است.
+    </div>
+
+
+            <!-- Global Footer — Step 1 redesign -->
+    <footer class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-200 mt-12 w-full z-10 relative">
+        <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+
+                <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
+                <div class="md:col-span-4 flex flex-col gap-4">
+                    <a href="index.html" class="inline-block">
+                        <img src="assets/images/site-logo-banner.png" alt="یاسی شو" class="h-12 md:h-14 object-contain">
+                    </a>
+                    <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
+                        یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
+                    </p>
+                    <div class="flex flex-col gap-2 text-[12px] text-slate-600 font-medium">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-purple-light w-4 mt-0.5"></i>
+                            <span>کرمان، انجمن خیریه حمایت از بیماران سرطانی یاس</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-purple-light w-4"></i>
+                            <span dir="ltr">۰۳۴ - ۳۲۲۱۲۳۴۵</span>
+                        </div>
+                        <a href="mailto:info@yassishow.ir" class="flex items-center gap-2 hover:text-brand-pink transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-purple-light w-4"></i>
+                            <span dir="ltr">info@yassishow.ir</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CENTER column: useful links + latest projects -->
+                <div class="md:col-span-5 grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-link text-[12px] text-brand-pink"></i> پیوندها
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="index.html" class="ys-footer-link">خانه</a></li>
+                            <li><a href="about.html" class="ys-footer-link">درباره ما</a></li>
+                            <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
+                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
+                            <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-[12px] text-brand-pink"></i> پروژه‌های اخیر
+                        </h4>
+                        <ul class="flex flex-col gap-2.5 text-[13px]">
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز رادیوتراپی یاس</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز غربالگری خون</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>درمانگاه و مرکز بستری</span></a></li>
+                            <li><a href="project-detail.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>مرکز آموزش و پیشگیری</span></a></li>
+                            <li><a href="projects-archive.html" class="ys-footer-link flex items-start gap-1.5"><span class="text-brand-pink mt-1 text-[8px]">●</span><span>سفیران یاسی شو</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LEFT column: trust badges -->
+                <div class="md:col-span-3">
+                    <h4 class="text-[14px] font-black text-brand-purple-dark mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-[12px] text-brand-pink"></i> نمادهای اعتماد
+                    </h4>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <!-- 1. Enamad (real asset) -->
+                        <a href="#" title="اینماد" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <img src="assets/images/enamad.png" alt="اینماد" class="h-9 object-contain" onerror="this.style.display='none'">
+                            </div>
+                            <span class="ys-trust-label">اینماد</span>
+                        </a>
+                        <!-- 2. Bank Mellat (placeholder) -->
+                        <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-amber-700 leading-tight">بانک ملت</span>
+                            </div>
+                            <span class="ys-trust-label">درگاه پرداخت</span>
+                        </a>
+                        <!-- 3. National Charity Network (placeholder) -->
+                        <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <i class="fa-solid fa-hand-holding-heart text-[#16a34a] text-xl"></i>
+                            </div>
+                            <span class="ys-trust-label">شبکه ملی نیکوکاری</span>
+                        </a>
+                        <!-- 4. INCDA (placeholder) -->
+                        <a href="#" title="INCDA" class="ys-trust-badge">
+                            <div class="ys-trust-mark">
+                                <span class="text-[11px] font-black text-blue-700 leading-tight">INCDA</span>
+                            </div>
+                            <span class="ys-trust-label">مرکز داده</span>
+                        </a>
+                    </div>
+                    <!-- Secondary trust row: Samandehi -->
+                    <div class="mt-2.5 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
+                        <img src="assets/images/samandehi.png" alt="ساماندهی" class="h-6 w-6 object-contain" onerror="this.style.display='none'">
+                        <span class="text-[10px] text-slate-500 font-bold leading-tight">درگاه ثبت ساماندهی</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar: copyright + socials -->
+            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-500 text-center md:text-right">
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                </p>
+                <div class="flex gap-2 text-base">
+                    <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="تلگرام" class="w-8 h-8 flex items-center justify-center bg-blue-50 text-blue-500 rounded-lg hover:bg-blue-100 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="واتساپ" class="w-8 h-8 flex items-center justify-center bg-green-50 text-green-500 rounded-lg hover:bg-green-100 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="آپارات" class="w-8 h-8 flex items-center justify-center bg-[#ed145b]/10 rounded-lg hover:bg-[#ed145b]/20 transition-colors"><i class="aparat-icon" style="font-size:1rem"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -529,7 +809,97 @@
         // Initialize
         updatePreview();
         calculateTotal();
+        
+        // ===== Step 4: Multi-step Wizard Controller =====
+        var ysWizard = {
+            current: 1,
+            total: 4,
+            labels: ['نوع تابلو و تعداد', 'متن تابلو', 'اطلاعات ارسال', 'اطلاعات سفارش‌دهنده'],
+
+            goTo: function(step) {
+                if (step < 1 || step > this.total) return;
+                this.current = step;
+                // Toggle step visibility
+                document.querySelectorAll('.ys-wizard-step').forEach(function(el) {
+                    var s = parseInt(el.getAttribute('data-step'));
+                    el.classList.toggle('active', s === step);
+                });
+                // Update progress bar
+                var pct = (step / this.total) * 100;
+                document.getElementById('ys-progress-bar').style.width = pct + '%';
+                document.getElementById('ys-current-step').innerText = toPersianNum(step);
+                document.getElementById('ys-step-label').innerText = this.labels[step - 1];
+                // Update step dots
+                document.querySelectorAll('[data-step-dot]').forEach(function(dot) {
+                    var ds = parseInt(dot.getAttribute('data-step-dot'));
+                    var circle = dot.querySelector('.ys-step-dot-circle');
+                    if (ds <= step) {
+                        circle.classList.remove('bg-slate-200', 'text-slate-400');
+                        circle.classList.add('bg-brand-pink', 'text-white', 'shadow-md');
+                    } else {
+                        circle.classList.add('bg-slate-200', 'text-slate-400');
+                        circle.classList.remove('bg-brand-pink', 'text-white', 'shadow-md');
+                    }
+                });
+                // Toggle buttons
+                document.getElementById('ys-btn-prev').disabled = (step === 1);
+                var btnNext = document.getElementById('ys-btn-next');
+                var btnSubmit = document.getElementById('ys-btn-submit');
+                if (step === this.total) {
+                    btnNext.classList.add('hidden');
+                    btnSubmit.classList.remove('hidden');
+                    btnSubmit.classList.add('flex');
+                    // Update summary
+                    document.getElementById('summary-type').innerText =
+                        document.querySelector('input[name="boardType"]:checked').value;
+                    document.getElementById('summary-qty').innerText = toPersianNum(currentQty) + ' عدد';
+                    calculateTotal();
+                } else {
+                    btnNext.classList.remove('hidden');
+                    btnSubmit.classList.add('hidden');
+                    btnSubmit.classList.remove('flex');
+                }
+                // Scroll to top of wizard on mobile
+                if (window.innerWidth < 1024) {
+                    document.getElementById('order-form').scrollIntoView({behavior:'smooth', block:'start'});
+                }
+            },
+
+            next: function() { this.goTo(this.current + 1); },
+            prev: function() { this.goTo(this.current - 1); }
+        };
+
+        // Initialize wizard on step 1
+        ysWizard.goTo(1);
+
     </script>
+    <!-- Mobile-only sticky bottom trust-symbol bar — Step 1 -->
+    <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
+        <div class="flex items-stretch h-14 px-1">
+            <a href="index.html" class="ys-trust-item" aria-label="خانه">
+                <i class="fa-solid fa-house text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">خانه</span>
+            </a>
+            <a href="projects-archive.html" class="ys-trust-item" aria-label="پروژه‌ها">
+                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">پروژه‌ها</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="اینماد" title="نماد اعتماد الکترونیک">
+                <img src="assets/images/enamad.png" alt="اینماد" class="h-5 w-5 object-contain" onerror="this.style.display='none'">
+                <span class="ys-trust-item-label">اینماد</span>
+            </a>
+            <a href="#" class="ys-trust-item" aria-label="پرداخت امن" title="پرداخت امن">
+                <i class="fa-solid fa-lock text-brand-purple-dark text-base"></i>
+                <span class="ys-trust-item-label">پرداخت امن</span>
+            </a>
+            <a href="contact.html" class="ys-trust-item" aria-label="پشتیبانی" title="پشتیبانی">
+                <i class="fa-solid fa-headset text-brand-pink text-base"></i>
+                <span class="ys-trust-item-label">پشتیبانی</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Shared front-end interactions (auth state, dropdown, login modal) -->
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
