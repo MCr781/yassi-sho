@@ -43,30 +43,36 @@
         root.className = 'fixed inset-0 z-[200] hidden items-center justify-center p-4';
         root.innerHTML =
             '<!-- Close -->' +
-            '<button type="button" class="absolute top-4 end-4 w-11 h-11 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center" data-ys-lb="close" aria-label="بستن">' +
+            '<button type="button" class="absolute top-4 end-4 w-11 h-11 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center z-50" data-ys-lb="close" aria-label="بستن">' +
               '<i class="fa-solid fa-xmark text-lg"></i>' +
             '</button>' +
             '<!-- Prev -->' +
-            '<button type="button" class="absolute top-1/2 -translate-y-1/2 start-4 w-12 h-12 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center" data-ys-lb="prev" aria-label="قبلی">' +
+            '<button type="button" class="absolute top-1/2 -translate-y-1/2 start-4 w-12 h-12 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center z-50" data-ys-lb="prev" aria-label="قبلی">' +
               '<i class="fa-solid fa-chevron-right text-lg"></i>' +
             '</button>' +
             '<!-- Next -->' +
-            '<button type="button" class="absolute top-1/2 -translate-y-1/2 end-4 w-12 h-12 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center" data-ys-lb="next" aria-label="بعدی">' +
+            '<button type="button" class="absolute top-1/2 -translate-y-1/2 end-4 w-12 h-12 rounded-full ys-lightbox-nav-btn text-white flex items-center justify-center z-50" data-ys-lb="next" aria-label="بعدی">' +
               '<i class="fa-solid fa-chevron-left text-lg"></i>' +
             '</button>' +
-            '<!-- Stage (image or video) + meta -->' +
-            '<div class="w-full max-w-4xl flex flex-col items-center">' +
-              '<div class="w-full flex items-center justify-center min-h-[40vh]">' +
-                '<div id="ys-lightbox-stage" class="max-w-full"></div>' +
+            '<!-- Main content: image + info card -->' +
+            '<div class="w-full max-w-5xl flex flex-col items-center z-40">' +
+              '<!-- Image/video stage with rounded frame -->' +
+              '<div class="w-full flex items-center justify-center min-h-[35vh] max-h-[60vh]">' +
+                '<div id="ys-lightbox-stage" class="max-w-full max-h-[60vh] rounded-2xl overflow-hidden shadow-2xl"></div>' +
               '</div>' +
-              '<div class="mt-4 text-center text-white max-w-2xl">' +
-                '<h4 id="ys-lightbox-title" class="text-lg font-black"></h4>' +
-                '<p id="ys-lightbox-date" class="text-[12px] text-white/60 mt-1" dir="ltr"></p>' +
-                '<p id="ys-lightbox-desc" class="text-[13px] text-white/80 leading-relaxed mt-2"></p>' +
+              '<!-- Info card -->' +
+              '<div class="mt-4 bg-white/10 backdrop-blur-md rounded-2xl px-6 py-4 max-w-2xl w-full border border-white/10">' +
+                '<div class="flex items-center justify-between mb-2">' +
+                  '<h4 id="ys-lightbox-title" class="text-lg font-black text-white"></h4>' +
+                  '<span id="ys-lightbox-date" class="text-[12px] text-white/50 font-bold" dir="ltr"></span>' +
+                '</div>' +
+                '<p id="ys-lightbox-desc" class="text-[13px] text-white/70 leading-relaxed"></p>' +
               '</div>' +
+              '<!-- Thumbnail strip for quick navigation -->' +
+              '<div class="mt-4 flex gap-2 max-w-2xl overflow-x-auto pb-2" id="ys-lightbox-thumbs"></div>' +
             '</div>' +
             '<!-- Counter -->' +
-            '<div class="absolute bottom-4 start-4 text-white/70 text-xs font-bold" id="ys-lightbox-counter"></div>';
+            '<div class="absolute bottom-4 start-4 text-white/70 text-xs font-bold bg-black/40 px-3 py-1.5 rounded-full" id="ys-lightbox-counter"></div>';
         document.body.appendChild(root);
 
         // Event delegation for the lightbox controls
@@ -118,6 +124,34 @@
         root.querySelector('#ys-lightbox-desc').textContent = item.desc;
         root.querySelector('#ys-lightbox-counter').textContent =
             (idx + 1) + ' / ' + GALLERY_DATA.length;
+        renderThumbs(idx);
+    }
+
+    function renderThumbs(activeIdx) {
+        var container = root.querySelector('#ys-lightbox-thumbs');
+        if (!container) return;
+        container.innerHTML = '';
+        GALLERY_DATA.forEach(function(item, i) {
+            var thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'ys-lightbox-thumb shrink-0' + (i === activeIdx ? ' active' : '');
+            thumb.style.width = '48px';
+            thumb.style.height = '48px';
+            thumb.style.backgroundImage = 'url("' + item.src + '")';
+            thumb.style.backgroundSize = 'cover';
+            thumb.style.backgroundPosition = 'center';
+            thumb.setAttribute('aria-label', item.title);
+            thumb.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showItem(i);
+            });
+            container.appendChild(thumb);
+        });
+        // Scroll active thumb into view
+        var active = container.children[activeIdx];
+        if (active) {
+            active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        }
     }
 
     function showItem(idx) {
@@ -207,3 +241,84 @@
         }
     });
 })();
+
+    /* ------------------------------------------------------------------
+       Gallery modal pagination (for "مشاهده همه" modal with many items)
+       ------------------------------------------------------------------ */
+    window.YasiGalleryPaged = {
+        currentPage: 1,
+        perPage: 8,
+
+        init: function(gridId, items) {
+            this.grid = document.getElementById(gridId);
+            this.items = items || [];
+            this.totalPages = Math.ceil(this.items.length / this.perPage);
+            this.currentPage = 1;
+            this.render();
+        },
+
+        render: function() {
+            if (!this.grid) return;
+            var start = (this.currentPage - 1) * this.perPage;
+            var end = Math.min(start + this.perPage, this.items.length);
+            var html = '';
+            for (var i = start; i < end; i++) {
+                var item = this.items[i];
+                var idx = i;
+                html += '<div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(' + idx + ')">';
+                html += '<div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">';
+                if (item.type === 'video') {
+                    html += '<div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">';
+                    html += '<i class="fa-solid fa-play text-white text-3xl opacity-90 group-hover:scale-110 transition-transform"></i>';
+                    html += '</div>';
+                }
+                html += '<img src="' + item.src + '" alt="' + (item.title || '') + '" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">';
+                html += '</div>';
+                html += '<div class="text-xs text-slate-600 flex justify-between px-1">';
+                html += '<span class="font-bold truncate">' + (item.title || '') + '</span>';
+                html += '<span class="text-slate-400 shrink-0" dir="ltr">' + (item.date || '') + '</span>';
+                html += '</div>';
+                html += '</div>';
+            }
+            this.grid.innerHTML = html;
+            this.renderPagination();
+        },
+
+        renderPagination: function() {
+            var existing = document.getElementById('ys-gallery-pagination');
+            if (existing) existing.remove();
+            if (this.totalPages <= 1) return;
+
+            var pager = document.createElement('div');
+            pager.id = 'ys-gallery-pagination';
+            pager.className = 'flex items-center justify-center gap-2 mt-6';
+            var self = this;
+            function btn(label, page, active, disabled) {
+                var b = document.createElement('button');
+                b.className = 'w-9 h-9 flex items-center justify-center rounded-lg text-sm font-bold transition-all ' +
+                    (active ? 'bg-brand-purple-dark text-white shadow-md' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50');
+                if (disabled) { b.disabled = true; b.classList.add('opacity-40', 'cursor-not-allowed'); }
+                b.textContent = label;
+                b.onclick = function() { self.goTo(page); };
+                return b;
+            }
+            pager.appendChild(btn('›', self.currentPage - 1, false, self.currentPage === 1));
+            for (var p = 1; p <= self.totalPages; p++) {
+                pager.appendChild(btn(self.toPersian(p), p, p === self.currentPage, false));
+            }
+            pager.appendChild(btn('‹', self.currentPage + 1, false, self.currentPage === self.totalPages));
+            this.grid.parentElement.appendChild(pager);
+        },
+
+        toPersian: function(n) {
+            var d = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+            return String(n).replace(/\d/g, function(x) { return d[x]; });
+        },
+
+        goTo: function(page) {
+            if (page < 1 || page > this.totalPages) return;
+            this.currentPage = page;
+            this.render();
+            this.grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };

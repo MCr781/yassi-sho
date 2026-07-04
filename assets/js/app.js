@@ -63,14 +63,7 @@
          * home page where the modal is available.
          */
         openLogin: function () {
-            var modal = document.getElementById('otp-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.classList.add('overflow-hidden');
-            } else {
-                window.location.href = 'index.html#login';
-            }
+            window.location.href = 'register.html';
         }
     };
 

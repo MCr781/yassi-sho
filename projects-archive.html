@@ -23,27 +23,29 @@
             </button>
 
             <!-- Right side (Nav Links) - Desktop only -->
-            <nav class="hidden md:flex gap-6 lg:gap-8 text-[14px] font-bold text-slate-600">
-                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
+            <nav class="hidden md:flex gap-4 lg:gap-6 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="deceased-detail.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درگذشتگان</a>
+                <a href="board-order.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تابلو گل نقره</a>
+                <a href="projects-archive.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">طرح‌ها</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
-                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
             <!-- Center Logo (flex on mobile, absolute on desktop) -->
             <a href="index.html" class="flex-1 md:flex-none md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center cursor-pointer group">
-                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
-                    class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
+                <img src="assets/images/logo.png" alt="لوگوی یاسی شو"
+                    class="h-12 md:h-16 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
             <!-- Left side (Auth + Socials) — Step 1 update -->
             <div class="flex items-center gap-2 md:gap-4 text-slate-500 text-[13px] font-bold shrink-0">
                 <!-- Social Icons (Aparat replaces YouTube) -->
-                <div class="hidden sm:flex gap-3 text-lg items-center">
+                <div class="hidden sm:flex gap-4 text-2xl items-center">
                     <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon"></i></a>
+                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer" style="height:1em;line-height:1"><i class="aparat-icon" style="display:block"></i></a>
                 </div>
 
                 <!-- Auth: Logged-out state -->
@@ -105,14 +107,20 @@
                 <a href="index.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-home w-5 text-center text-brand-purple-light"></i> خانه
                 </a>
+                <a href="deceased-detail.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-dove w-5 text-center text-brand-purple-light"></i> درگذشتگان
+                </a>
+                <a href="board-order.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-table-columns w-5 text-center text-brand-purple-light"></i> تابلو گل نقره
+                </a>
+                <a href="projects-archive.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-folder w-5 text-center text-brand-purple-light"></i> طرح‌ها
+                </a>
                 <a href="about.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-circle-info w-5 text-center text-brand-purple-light"></i> درباره ما
                 </a>
                 <a href="contact.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-envelope w-5 text-center text-brand-purple-light"></i> تماس با ما
-                </a>
-                <a href="https://yaas.org.ir" target="_blank" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
-                    <i class="fa-solid fa-external-link w-5 text-center text-brand-purple-light"></i> انجمن یاس
                 </a>
             </nav>
             <div class="px-4 pt-2 pb-6 mt-2 border-t border-slate-100">
@@ -141,7 +149,7 @@
         <!-- ================= SIDEBAR (Right side) ================= -->
         <aside class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-6 md:gap-8 lg:border-l border-slate-200 lg:pl-10">
             <!-- TL Logo -->
-            <img src="assets/images/tl-logo.png" alt="TL Logo"
+            <img src="assets/images/association-logo.png" alt="لوگوی انجمن خیریه یاس"
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
             <!-- Filter Buttons (Stack on desktop, horizontal scrollable row on mobile) -->
@@ -171,9 +179,9 @@
                 <i class="fa-solid fa-user-circle text-4xl text-white/90 mb-4 drop-shadow-md"></i>
                 <h3 class="text-white font-bold text-[15px] mb-2">حساب کاربری یاسی شو</h3>
                 <p class="text-white/70 text-[12px] leading-relaxed mb-5">برای مدیریت درگذشتگان، تابلوهای سفارش داده شده و مشاهده تاریخچه مشارکت‌ها وارد شوید.</p>
-                <button onclick="document.getElementById('otp-modal').classList.remove('hidden'); document.getElementById('otp-modal').classList.add('flex');" class="bg-white text-brand-purple-dark w-full py-3 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors">
+                <a href="register.html" class="bg-white text-brand-purple-dark w-full py-3 rounded-full text-[13px] font-black shadow-md hover:bg-slate-50 transition-colors block text-center">
                     ورود / ثبت‌نام
-                </button>
+                </a>
             </div>
         </aside>
 
@@ -206,7 +214,7 @@
                 
                 <!-- Card 1 (Featured Large - 2x2) -->
                 <a href="project-detail.html" class="sm:col-span-2 row-span-2 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="progress">
-                    <img alt="تصویر یادبود" src="assets/images/a1.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img alt="تصویر یادبود" src="assets/images/iranian-project-2.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
@@ -243,7 +251,7 @@
 
                 <!-- Card 2 (Square - 1x1) -->
                 <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="equipment">
-                    <img alt="تصویر یادبود" src="assets/images/a5.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img alt="تصویر یادبود" src="assets/images/iranian-project-3.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-5 flex flex-col justify-between">
@@ -273,7 +281,7 @@
 
                 <!-- Card 3 (Square - 1x1) -->
                 <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="equipment">
-                    <img alt="تصویر همراهان" src="assets/images/a10.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img alt="تصویر همراهان" src="assets/images/iranian-project-1.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-5 flex flex-col justify-between">
@@ -303,7 +311,7 @@
 
                 <!-- Card 4 (Wide - 2x1) -->
                 <a href="project-detail.html" class="sm:col-span-2 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="progress">
-                    <img alt="تصویر همراهان" src="assets/images/a11.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top">
+                    <img alt="تصویر همراهان" src="assets/images/iranian-project-5.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
@@ -340,7 +348,7 @@
 
                 <!-- Card 5 (Square - 1x1) -->
                 <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="completed">
-                    <img alt="تصویر پروژه" src="assets/images/a4.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img alt="تصویر پروژه" src="assets/images/iranian-project-4.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-5 flex flex-col justify-between">
@@ -368,7 +376,7 @@
 
                 <!-- Card 6 (Square - 1x1) -->
                 <a href="project-detail.html" class="sm:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-md hover:shadow-2xl hover:z-10 hover:-translate-y-1 transition-all duration-300 border border-slate-200/50" data-category="progress">
-                    <img alt="تصویر همراهان" src="assets/images/a12.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img alt="تصویر همراهان" src="assets/images/iranian-project-6.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     
                     <div class="absolute inset-0 p-5 flex flex-col justify-between">
@@ -438,7 +446,7 @@
                 <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
                 <div class="md:col-span-4 flex flex-col gap-4">
                     <a href="index.html" class="inline-block">
-                        <img src="assets/images/site-logo-banner.png" alt="یاسی شو" class="h-12 md:h-14 object-contain">
+                        <img src="assets/images/logo.png" alt="لوگوی یاسی شو" class="h-12 md:h-14 object-contain">
                     </a>
                     <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
                         یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
@@ -470,7 +478,7 @@
                             <li><a href="about.html" class="ys-footer-link">درباره ما</a></li>
                             <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
                             <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
-                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل نقره</a></li>
                             <li><a href="terms.html" class="ys-footer-link">قوانین و مقررات</a></li>
                             <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
                             <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
@@ -496,46 +504,37 @@
                         <i class="fa-solid fa-shield-halved text-[12px] text-brand-pink"></i> نمادهای اعتماد
                     </h4>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <!-- 1. Enamad (real asset) -->
+                        <!-- 1. Enamad -->
                         <a href="#" title="اینماد" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <img src="assets/images/enamad.png" alt="اینماد" class="h-9 object-contain" onerror="this.style.display='none'">
+                                <img src="assets/images/enamad.png" alt="نماد اعتماد الکترونیک اینماد" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
-                            <span class="ys-trust-label">اینماد</span>
                         </a>
-                        <!-- 2. Bank Mellat (placeholder) -->
+                        <!-- 2. Bank Mellat (real bank icon) -->
                         <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <span class="text-[11px] font-black text-amber-700 leading-tight">بانک ملت</span>
+                                <i class="fa-solid fa-building-columns text-amber-600 text-2xl"></i>
                             </div>
-                            <span class="ys-trust-label">درگاه پرداخت</span>
                         </a>
-                        <!-- 3. National Charity Network (placeholder) -->
+                        <!-- 3. National Charity Network (heart icon) -->
                         <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <i class="fa-solid fa-hand-holding-heart text-[#16a34a] text-xl"></i>
+                                <i class="fa-solid fa-hand-holding-heart text-green-600 text-2xl"></i>
                             </div>
-                            <span class="ys-trust-label">شبکه ملی نیکوکاری</span>
                         </a>
-                        <!-- 4. INCDA (placeholder) -->
-                        <a href="#" title="INCDA" class="ys-trust-badge">
+                        <!-- 4. Samandehi -->
+                        <a href="#" title="ساماندهی" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <span class="text-[11px] font-black text-blue-700 leading-tight">INCDA</span>
+                                <img src="assets/images/samandehi.png" alt="نماد ساماندهی" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
-                            <span class="ys-trust-label">مرکز داده</span>
                         </a>
                     </div>
-                    <!-- Secondary trust row: Samandehi -->
-                    <div class="mt-2.5 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
-                        <img src="assets/images/samandehi.png" alt="ساماندهی" class="h-6 w-6 object-contain" onerror="this.style.display='none'">
-                        <span class="text-[10px] text-slate-500 font-bold leading-tight">درگاه ثبت ساماندهی</span>
-                    </div>
-                </div>
+                </div></div>
             </div>
 
             <!-- Bottom bar: copyright + socials -->
-            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-[12px] text-slate-500 text-center md:text-right">
+            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col items-center justify-center gap-4 text-center">
+                <p class="text-[12px] text-slate-500 text-center">
                     تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
                 </p>
                 <div class="flex gap-2 text-base">
@@ -547,28 +546,28 @@
             </div>
         </div>
     </footer>
-    <!-- Mobile-only sticky bottom trust-symbol bar — Step 1 -->
+    <!-- Mobile-only sticky bottom navigation bar -->
     <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
         <div class="flex items-stretch h-14 px-1">
+            <a href="deceased-detail.html" class="ys-trust-item" aria-label="درگذشتگان">
+                <i class="fa-solid fa-dove text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">درگذشتگان</span>
+            </a>
+            <a href="projects-archive.html" class="ys-trust-item" aria-label="طرح‌ها">
+                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">طرح‌ها</span>
+            </a>
             <a href="index.html" class="ys-trust-item" aria-label="خانه">
                 <i class="fa-solid fa-house text-slate-600 text-base"></i>
                 <span class="ys-trust-item-label">خانه</span>
             </a>
-            <a href="projects-archive.html" class="ys-trust-item" aria-label="پروژه‌ها">
-                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
-                <span class="ys-trust-item-label">پروژه‌ها</span>
+            <a href="board-order.html" class="ys-trust-item" aria-label="تابلو گل نقره">
+                <i class="fa-solid fa-table-columns text-brand-purple-dark text-base"></i>
+                <span class="ys-trust-item-label">تابلو گل نقره</span>
             </a>
-            <a href="#" class="ys-trust-item" aria-label="اینماد" title="نماد اعتماد الکترونیک">
-                <img src="assets/images/enamad.png" alt="اینماد" class="h-5 w-5 object-contain" onerror="this.style.display='none'">
-                <span class="ys-trust-item-label">اینماد</span>
-            </a>
-            <a href="#" class="ys-trust-item" aria-label="پرداخت امن" title="پرداخت امن">
-                <i class="fa-solid fa-lock text-brand-purple-dark text-base"></i>
-                <span class="ys-trust-item-label">پرداخت امن</span>
-            </a>
-            <a href="contact.html" class="ys-trust-item" aria-label="پشتیبانی" title="پشتیبانی">
-                <i class="fa-solid fa-headset text-brand-pink text-base"></i>
-                <span class="ys-trust-item-label">پشتیبانی</span>
+            <a href="profile.html" class="ys-trust-item" aria-label="پروفایل">
+                <i class="fa-solid fa-user text-brand-pink text-base"></i>
+                <span class="ys-trust-item-label">پروفایل</span>
             </a>
         </div>
     </nav>

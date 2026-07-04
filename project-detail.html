@@ -23,27 +23,29 @@
             </button>
 
             <!-- Right side (Nav Links) - Desktop only -->
-            <nav class="hidden md:flex gap-6 lg:gap-8 text-[14px] font-bold text-slate-600">
-                <a href="index.html" class="text-brand-purple-dark transition-all duration-300">خانه</a>
+            <nav class="hidden md:flex gap-4 lg:gap-6 text-[14px] font-bold text-slate-600">
+                <a href="index.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">خانه</a>
+                <a href="deceased-detail.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درگذشتگان</a>
+                <a href="board-order.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تابلو گل نقره</a>
+                <a href="projects-archive.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">طرح‌ها</a>
                 <a href="about.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">درباره ما</a>
                 <a href="contact.html" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">تماس با ما</a>
-                <a href="https://yaas.org.ir" target="_blank" class="hover:text-brand-purple-dark hover:-translate-y-0.5 transition-all duration-300">انجمن یاس</a>
             </nav>
 
             <!-- Center Logo (flex on mobile, absolute on desktop) -->
             <a href="index.html" class="flex-1 md:flex-none md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center cursor-pointer group">
-                <img src="assets/images/site-logo-banner.png" alt="YasiShow Logo"
-                    class="h-10 md:h-14 object-contain group-hover:opacity-90 transition-opacity duration-300">
+                <img src="assets/images/logo.png" alt="لوگوی یاسی شو"
+                    class="h-12 md:h-16 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
             <!-- Left side (Auth + Socials) — Step 1 update -->
             <div class="flex items-center gap-2 md:gap-4 text-slate-500 text-[13px] font-bold shrink-0">
                 <!-- Social Icons (Aparat replaces YouTube) -->
-                <div class="hidden sm:flex gap-3 text-lg items-center">
+                <div class="hidden sm:flex gap-4 text-2xl items-center">
                     <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon"></i></a>
+                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer" style="height:1em;line-height:1"><i class="aparat-icon" style="display:block"></i></a>
                 </div>
 
                 <!-- Auth: Logged-out state -->
@@ -105,14 +107,20 @@
                 <a href="index.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-home w-5 text-center text-brand-purple-light"></i> خانه
                 </a>
+                <a href="deceased-detail.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-dove w-5 text-center text-brand-purple-light"></i> درگذشتگان
+                </a>
+                <a href="board-order.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-table-columns w-5 text-center text-brand-purple-light"></i> تابلو گل نقره
+                </a>
+                <a href="projects-archive.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-folder w-5 text-center text-brand-purple-light"></i> طرح‌ها
+                </a>
                 <a href="about.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-circle-info w-5 text-center text-brand-purple-light"></i> درباره ما
                 </a>
                 <a href="contact.html" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
                     <i class="fa-solid fa-envelope w-5 text-center text-brand-purple-light"></i> تماس با ما
-                </a>
-                <a href="https://yaas.org.ir" target="_blank" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 font-bold hover:bg-slate-100 hover:text-brand-purple-dark active:bg-slate-200 transition-colors">
-                    <i class="fa-solid fa-external-link w-5 text-center text-brand-purple-light"></i> انجمن یاس
                 </a>
             </nav>
             <div class="px-4 pt-2 pb-6 mt-2 border-t border-slate-100">
@@ -150,7 +158,7 @@
 
             <!-- 1. Hero Image -->
             <div class="w-full aspect-[4/3] sm:aspect-video bg-slate-200 rounded-3xl overflow-hidden shadow-md relative group">
-                <img src="assets/images/a1.jpg" alt="تصویر پروژه" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <img src="assets/images/iranian-project-2.jpg" alt="تصویر پروژه" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-6">
                     <div class="bg-brand-pink text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">پروژه در حال احداث</div>
                 </div>
@@ -195,17 +203,31 @@
                 <div class="ys-gallery-preview">
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer group" onclick="YasiGallery.open(0)">
-                            <img src="assets/images/a2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
+                            <img src="assets/images/iranian-project-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
+                        <!-- Title bar at bottom (always visible) -->
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
+                            <p class="text-white text-[11px] font-bold truncate">مرحله سوله‌سازی</p>
                         </div>
+                        <!-- Hover description overlay -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
+                            <p class="text-white text-[11px] text-center leading-relaxed">ساخت سوله اصلی پروژه</p>
+                        </div>
+                    </div>
                         <!-- Video Mockup Thumbnail -->
                         <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer group relative" onclick="YasiGallery.open(1)">
                             <div class="absolute inset-0 bg-black/30 z-10 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-3xl opacity-90 group-hover:scale-110 transition-transform"></i>
                             </div>
-                            <img src="assets/images/a3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
+                            <img src="assets/images/iranian-project-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2 z-20">
+                            <p class="text-white text-[11px] font-bold truncate">گزارش تصویری</p>
                         </div>
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-20">
+                            <p class="text-white text-[11px] text-center leading-relaxed">ویدئوی پیشرفت پروژه</p>
+                        </div>
+                    </div>
                         <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 cursor-pointer group relative" onclick="document.getElementById('project-gallery-modal').classList.remove('hidden'); document.getElementById('project-gallery-modal').classList.add('flex');">
-                            <img src="assets/images/a4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
+                            <img src="assets/images/iranian-project-4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="گالری">
                             <!-- 'See more' overlay for the last item -->
                             <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center z-10">
                                 <span class="text-white font-bold text-sm">+۵ تصویر</span>
@@ -352,7 +374,7 @@
                 <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
                 <div class="md:col-span-4 flex flex-col gap-4">
                     <a href="index.html" class="inline-block">
-                        <img src="assets/images/site-logo-banner.png" alt="یاسی شو" class="h-12 md:h-14 object-contain">
+                        <img src="assets/images/logo.png" alt="لوگوی یاسی شو" class="h-12 md:h-14 object-contain">
                     </a>
                     <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
                         یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
@@ -384,7 +406,7 @@
                             <li><a href="about.html" class="ys-footer-link">درباره ما</a></li>
                             <li><a href="contact.html" class="ys-footer-link">تماس با ما</a></li>
                             <li><a href="projects-archive.html" class="ys-footer-link">آرشیو پروژه‌ها</a></li>
-                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل</a></li>
+                            <li><a href="board-order.html" class="ys-footer-link">تابلوی گل نقره</a></li>
                             <li><a href="terms.html" class="ys-footer-link">قوانین و مقررات</a></li>
                             <li><a href="https://yaas.org.ir" target="_blank" rel="noopener" class="ys-footer-link">انجمن خیریه یاس</a></li>
                             <li><a href="register.html" class="ys-footer-link">ثبت نام</a></li>
@@ -410,46 +432,37 @@
                         <i class="fa-solid fa-shield-halved text-[12px] text-brand-pink"></i> نمادهای اعتماد
                     </h4>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <!-- 1. Enamad (real asset) -->
+                        <!-- 1. Enamad -->
                         <a href="#" title="اینماد" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <img src="assets/images/enamad.png" alt="اینماد" class="h-9 object-contain" onerror="this.style.display='none'">
+                                <img src="assets/images/enamad.png" alt="نماد اعتماد الکترونیک اینماد" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
-                            <span class="ys-trust-label">اینماد</span>
                         </a>
-                        <!-- 2. Bank Mellat (placeholder) -->
+                        <!-- 2. Bank Mellat (real bank icon) -->
                         <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <span class="text-[11px] font-black text-amber-700 leading-tight">بانک ملت</span>
+                                <i class="fa-solid fa-building-columns text-amber-600 text-2xl"></i>
                             </div>
-                            <span class="ys-trust-label">درگاه پرداخت</span>
                         </a>
-                        <!-- 3. National Charity Network (placeholder) -->
+                        <!-- 3. National Charity Network (heart icon) -->
                         <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <i class="fa-solid fa-hand-holding-heart text-[#16a34a] text-xl"></i>
+                                <i class="fa-solid fa-hand-holding-heart text-green-600 text-2xl"></i>
                             </div>
-                            <span class="ys-trust-label">شبکه ملی نیکوکاری</span>
                         </a>
-                        <!-- 4. INCDA (placeholder) -->
-                        <a href="#" title="INCDA" class="ys-trust-badge">
+                        <!-- 4. Samandehi -->
+                        <a href="#" title="ساماندهی" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <span class="text-[11px] font-black text-blue-700 leading-tight">INCDA</span>
+                                <img src="assets/images/samandehi.png" alt="نماد ساماندهی" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
-                            <span class="ys-trust-label">مرکز داده</span>
                         </a>
                     </div>
-                    <!-- Secondary trust row: Samandehi -->
-                    <div class="mt-2.5 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
-                        <img src="assets/images/samandehi.png" alt="ساماندهی" class="h-6 w-6 object-contain" onerror="this.style.display='none'">
-                        <span class="text-[10px] text-slate-500 font-bold leading-tight">درگاه ثبت ساماندهی</span>
-                    </div>
-                </div>
+                </div></div>
             </div>
 
             <!-- Bottom bar: copyright + socials -->
-            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-[12px] text-slate-500 text-center md:text-right">
+            <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col items-center justify-center gap-4 text-center">
+                <p class="text-[12px] text-slate-500 text-center">
                     تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
                 </p>
                 <div class="flex gap-2 text-base">
@@ -461,28 +474,28 @@
             </div>
         </div>
     </footer>
-    <!-- Mobile-only sticky bottom trust-symbol bar — Step 1 -->
+    <!-- Mobile-only sticky bottom navigation bar -->
     <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
         <div class="flex items-stretch h-14 px-1">
+            <a href="deceased-detail.html" class="ys-trust-item" aria-label="درگذشتگان">
+                <i class="fa-solid fa-dove text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">درگذشتگان</span>
+            </a>
+            <a href="projects-archive.html" class="ys-trust-item" aria-label="طرح‌ها">
+                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
+                <span class="ys-trust-item-label">طرح‌ها</span>
+            </a>
             <a href="index.html" class="ys-trust-item" aria-label="خانه">
                 <i class="fa-solid fa-house text-slate-600 text-base"></i>
                 <span class="ys-trust-item-label">خانه</span>
             </a>
-            <a href="projects-archive.html" class="ys-trust-item" aria-label="پروژه‌ها">
-                <i class="fa-solid fa-folder text-slate-600 text-base"></i>
-                <span class="ys-trust-item-label">پروژه‌ها</span>
+            <a href="board-order.html" class="ys-trust-item" aria-label="تابلو گل نقره">
+                <i class="fa-solid fa-table-columns text-brand-purple-dark text-base"></i>
+                <span class="ys-trust-item-label">تابلو گل نقره</span>
             </a>
-            <a href="#" class="ys-trust-item" aria-label="اینماد" title="نماد اعتماد الکترونیک">
-                <img src="assets/images/enamad.png" alt="اینماد" class="h-5 w-5 object-contain" onerror="this.style.display='none'">
-                <span class="ys-trust-item-label">اینماد</span>
-            </a>
-            <a href="#" class="ys-trust-item" aria-label="پرداخت امن" title="پرداخت امن">
-                <i class="fa-solid fa-lock text-brand-purple-dark text-base"></i>
-                <span class="ys-trust-item-label">پرداخت امن</span>
-            </a>
-            <a href="contact.html" class="ys-trust-item" aria-label="پشتیبانی" title="پشتیبانی">
-                <i class="fa-solid fa-headset text-brand-pink text-base"></i>
-                <span class="ys-trust-item-label">پشتیبانی</span>
+            <a href="profile.html" class="ys-trust-item" aria-label="پروفایل">
+                <i class="fa-solid fa-user text-brand-pink text-base"></i>
+                <span class="ys-trust-item-label">پروفایل</span>
             </a>
         </div>
     </nav>
@@ -498,81 +511,9 @@
                 </button>
             </div>
             <div class="p-6 overflow-y-auto">
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(0)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر یادبود" src="assets/images/a2.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">مرحله سوله‌سازی</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۰۸/۱۵</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(1)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-3xl opacity-90 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <img alt="تصویر پروژه" src="assets/images/a3.jpg" class="w-full h-full object-cover opacity-80">
-                            <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded font-bold z-20">02:30</span>
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">گزارش تصویری</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۰۹/۰۱</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(2)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر پروژه" src="assets/images/a4.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">نصب تجهیزات</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۰۹/۱۵</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(3)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر یادبود" src="assets/images/a5.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">بخش رادیوتراپی</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۱۰/۰۱</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(4)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر پروژه" src="assets/images/a6.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">خط تولید آب معدنی</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۱۰/۱۵</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(5)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر یادبود" src="assets/images/a7.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">مراسم افتتاح فاز اول</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۱۱/۰۱</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(6)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر پروژه" src="assets/images/a8.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">بخش بستری</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۱۱/۱۵</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2 cursor-pointer" onclick="YasiGallery.open(7)">
-                        <div class="aspect-square rounded-2xl overflow-hidden shadow-sm relative group border border-slate-200 bg-black">
-                            <img alt="تصویر یادبود" src="assets/images/a9.jpg" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
-                        </div>
-                        <div class="text-xs text-slate-600 flex justify-between px-1">
-                            <span class="font-bold truncate">نمای کلی پروژه</span>
-                            <span class="text-slate-400 shrink-0" dir="ltr">۱۴۰۲/۱۲/۰۱</span>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="ys-project-gallery-grid">
+                    <!-- Items rendered by YasiGalleryPaged.init() -->
+                
                         </div>
                     </div>
                 </div>
@@ -604,6 +545,23 @@
             </div>
         </div>
     </div>
+    <!-- Step 6: Initialize paginated project gallery modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.YasiGalleryPaged) {
+                YasiGalleryPaged.init('ys-project-gallery-grid', [
+                    { type: 'image', src: 'assets/images/iranian-project-1.jpg', title: 'مرحله سوله‌سازی', date: '۱۴۰۲/۰۸/۱۵', desc: 'ساخت سوله اصلی پروژه.' },
+                    { type: 'video', src: 'assets/images/iranian-project-3.jpg', title: 'گزارش تصویری', date: '۱۴۰۲/۰۹/۰۱', desc: 'ویدئوی پیشرفت پروژه.' },
+                    { type: 'image', src: 'assets/images/iranian-project-4.jpg', title: 'نصب تجهیزات', date: '۱۴۰۲/۰۹/۱۵', desc: 'نصب تجهیزات پزشکی.' },
+                    { type: 'image', src: 'assets/images/iranian-project-2.jpg', title: 'بخش رادیوتراپی', date: '۱۴۰۲/۱۰/۰۱', desc: 'ساخت بخش رادیوتراپی.' },
+                    { type: 'image', src: 'assets/images/iranian-project-5.jpg', title: 'خط تولید آب معدنی', date: '۱۴۰۲/۱۰/۱۵', desc: 'احداث خط تولید.' },
+                    { type: 'image', src: 'assets/images/iranian-project-6.jpg', title: 'مراسم افتتاح', date: '۱۴۰۲/۱۱/۰۱', desc: 'افتتاح فاز اول.' },
+                    { type: 'image', src: 'assets/images/iranian-project-1.jpg', title: 'بخش بستری', date: '۱۴۰۲/۱۱/۱۵', desc: 'بخش بستری بیماران.' },
+                    { type: 'image', src: 'assets/images/iranian-project-2.jpg', title: 'نمای کلی پروژه', date: '۱۴۰۲/۱۲/۰۱', desc: 'نمای کامل پروژه.' }
+                ]);
+            }
+        });
+    </script>
     <!-- Shared front-end interactions (auth state, dropdown, login modal) -->
     <script src="assets/js/app.js"></script>
     <!-- Step 3: Lightbox + chart modal interactions -->
