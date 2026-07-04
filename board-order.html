@@ -116,7 +116,7 @@
 
             <!-- Center Logo (flex on mobile, absolute on desktop) -->
             <a href="index.html" class="flex-1 md:flex-none md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center justify-center cursor-pointer group">
-                <img src="assets/images/logo.png" alt="لوگوی یاسی شو"
+                <img src="assets/logos/logo.png" alt="لوگوی یاسی شو"
                     class="h-12 md:h-16 object-contain group-hover:opacity-90 transition-opacity duration-300">
             </a>
 
@@ -299,7 +299,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-special.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-samples/board-sample-special.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-black text-brand-purple-dark text-[13px] mb-1">نوع ویژه</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۲۰×۸۰</div>
@@ -312,7 +312,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade1.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-samples/board-sample-grade1.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه یک</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۱۰۰×۷۰</div>
@@ -325,7 +325,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade2.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-samples/board-sample-grade2.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه دو</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۸۰×۶۰</div>
@@ -338,7 +338,7 @@
                                 <i class="fa-solid fa-check text-[10px]"></i>
                             </div>
                             <div class="w-full aspect-[3/4] bg-slate-100 rounded-xl mb-3 overflow-hidden border border-slate-200 relative">
-                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-sample-grade3.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+                                <img alt="نمونه تابلو گل نقره" src="assets/images/board-samples/board-sample-grade3.png" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
                             </div>
                             <div class="font-bold text-slate-700 text-[13px] mb-1 peer-checked:font-black peer-checked:text-brand-purple-dark">درجه سه</div>
                             <div class="text-[9px] font-bold text-slate-500 bg-white px-1 py-0.5 rounded border border-slate-100 mb-2 w-full">سایز: ۶۰×۴۰</div>
@@ -509,7 +509,7 @@
                 <!-- Header of Board -->
                 <div class="flex justify-between items-start z-10 w-full relative">
                     <div class="flex flex-col items-center opacity-90 w-[20%] max-w-[75px]">
-                        <img src="assets/images/association-logo.png" alt="لوگوی انجمن خیریه یاس" class="w-full object-contain filter drop-shadow-sm">
+                        <img src="assets/logos/association-logo.png" alt="لوگوی انجمن خیریه یاس" class="w-full object-contain filter drop-shadow-sm">
                     </div>
                     <div class="flex flex-col text-[11px] font-bold gap-1 bg-white/60 backdrop-blur-sm px-2.5 py-1.5 rounded border shadow-sm mt-1" style="color: var(--board-accent); border-color: var(--board-accent);">
                         <div class="flex items-center gap-1"><span class="text-slate-500 font-medium">مسجد:</span> <span id="preview-mosque">طالبی-1</span></div>
@@ -563,7 +563,7 @@
                     <!-- Sample 1: Special -->
                     <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.getElementById('boardType[value=\'ویژه\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'ویژه\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
                         <div class="aspect-[3/4] overflow-hidden bg-white">
-                            <img src="assets/images/board-sample-special.png" alt="نوع ویژه" class="w-full h-full object-cover">
+                            <img src="assets/images/board-samples/board-sample-special.png" alt="نوع ویژه" class="w-full h-full object-cover">
                         </div>
                         <div class="p-3 text-center">
                             <h4 class="font-black text-brand-purple-dark text-sm mb-1">نوع ویژه</h4>
@@ -574,7 +574,7 @@
                     <!-- Sample 2: Grade 1 -->
                     <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه یک\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه یک\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
                         <div class="aspect-[3/4] overflow-hidden bg-white">
-                            <img src="assets/images/board-sample-grade1.png" alt="درجه یک" class="w-full h-full object-cover">
+                            <img src="assets/images/board-samples/board-sample-grade1.png" alt="درجه یک" class="w-full h-full object-cover">
                         </div>
                         <div class="p-3 text-center">
                             <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه یک</h4>
@@ -585,7 +585,7 @@
                     <!-- Sample 3: Grade 2 -->
                     <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه دو\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه دو\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
                         <div class="aspect-[3/4] overflow-hidden bg-white">
-                            <img src="assets/images/board-sample-grade2.png" alt="درجه دو" class="w-full h-full object-cover">
+                            <img src="assets/images/board-samples/board-sample-grade2.png" alt="درجه دو" class="w-full h-full object-cover">
                         </div>
                         <div class="p-3 text-center">
                             <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه دو</h4>
@@ -596,7 +596,7 @@
                     <!-- Sample 4: Grade 3 -->
                     <div class="ys-board-sample-card bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.querySelector('input[name=boardType][value=\'درجه سه\']').checked=true; updateBoardType(document.querySelector('input[name=boardType][value=\'درجه سه\']')); document.getElementById('board-guide-modal').classList.add('hidden'); document.getElementById('board-guide-modal').classList.remove('flex');">
                         <div class="aspect-[3/4] overflow-hidden bg-white">
-                            <img src="assets/images/board-sample-grade3.png" alt="درجه سه" class="w-full h-full object-cover">
+                            <img src="assets/images/board-samples/board-sample-grade3.png" alt="درجه سه" class="w-full h-full object-cover">
                         </div>
                         <div class="p-3 text-center">
                             <h4 class="font-black text-brand-purple-dark text-sm mb-1">درجه سه</h4>
@@ -618,7 +618,7 @@
                 <!-- RIGHT column (first in RTL): Yasi Show logo + about + contact -->
                 <div class="md:col-span-4 flex flex-col gap-4">
                     <a href="index.html" class="inline-block">
-                        <img src="assets/images/logo.png" alt="لوگوی یاسی شو" class="h-12 md:h-14 object-contain">
+                        <img src="assets/logos/logo.png" alt="لوگوی یاسی شو" class="h-12 md:h-14 object-contain">
                     </a>
                     <p class="text-[13px] text-slate-600 leading-relaxed text-justify">
                         یاسی شو، پلتفرم مشارکت مردمی انجمن خیریه حمایت از بیماران سرطانی یاس کرمان است. هدف ما ساخت مراکز درمانی و تکمیل پروژه‌های خیریه با همیاری دغدغه‌مندان نیکوکار است.
@@ -679,25 +679,25 @@
                         <!-- 1. Enamad -->
                         <a href="#" title="اینماد" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <img src="assets/images/enamad.png" alt="نماد اعتماد الکترونیک اینماد" class="h-10 object-contain" onerror="this.style.display='none'">
+                                <img src="assets/icons/enamad.webp" alt="نماد اعتماد الکترونیک اینماد" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
                         </a>
                         <!-- 2. Bank Mellat (real bank icon) -->
                         <a href="#" title="درگاه پرداخت بانک ملت" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <i class="fa-solid fa-building-columns text-amber-600 text-2xl"></i>
+                                <img src="assets/icons/Mellat-Bank.jpg" alt="درگاه پرداخت بانک ملت" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
                         </a>
                         <!-- 3. National Charity Network (heart icon) -->
                         <a href="#" title="شبکه ملی نیکوکاری" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <i class="fa-solid fa-hand-holding-heart text-green-600 text-2xl"></i>
+                                <img src="assets/icons/Shabake-melli.png" alt="شبکه ملی نیکوکاری" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
                         </a>
                         <!-- 4. Samandehi -->
                         <a href="#" title="ساماندهی" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <img src="assets/images/samandehi.png" alt="نماد ساماندهی" class="h-10 object-contain" onerror="this.style.display='none'">
+                                <img src="assets/icons/INCDA.jpg" alt="نماد ساماندهی" class="h-10 object-contain" onerror="this.style.display='none'">
                             </div>
                         </a>
                     </div>

@@ -48,11 +48,11 @@
   width: 1em;
   height: 1em;
   vertical-align: -0.18em;
-  background: url("../images/aparat-logo-128.png") center / contain no-repeat;
+  background: url("../icons/aparat-logo-128.png") center / contain no-repeat;
   /* SVG wins on high-DPI / large sizes; PNG is the crisp default. */
   background-image: image-set(
-    url("../images/aparat-logo-128.png") type("image/png") 1x,
-    url("../images/aparat-logo.png") type("image/png") 2x
+    url("../icons/aparat-logo-128.png") type("image/png") 1x,
+    url("../icons/aparat-logo.png") type("image/png") 2x
   );
 }
 /* When the Aparat icon sits inside a colored circular "chip" (e.g. footer

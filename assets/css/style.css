@@ -4038,8 +4038,8 @@
   width: 1em;
   height: 1em;
   vertical-align: -0.18em;
-  background: url("../images/aparat-logo-128.png") center / contain no-repeat;
-  background-image: image-set( url("../images/aparat-logo-128.png") type("image/png") 1x, url("../images/aparat-logo.png") type("image/png") 2x );
+  background: url("../icons/aparat-logo-128.png") center / contain no-repeat;
+  background-image: image-set( url("../icons/aparat-logo-128.png") type("image/png") 1x, url("../icons/aparat-logo.png") type("image/png") 2x );
 }
 a .aparat-icon {
   transition: transform .2s ease;
