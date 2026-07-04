@@ -46,7 +46,7 @@
                     <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer" style="height:1em;line-height:1"><i class="aparat-icon" style="display:block"></i></a>
+                    <a href="#" aria-label="آپارات" class="text-[#ed145b] hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon" style="display:inline-block;width:1.5rem;height:1.5rem;vertical-align:-0.125em"></i></a>
                 </div>
 
                 <!-- Auth: Logged-out state -->
@@ -343,63 +343,7 @@
         </main>
     </div>
 
-                <button onclick="document.getElementById('modal-step-1').classList.add('hidden'); document.getElementById('modal-step-2').classList.remove('hidden');" class="w-full bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                    دریافت کد تایید
-                </button>
-                <div class="text-center">
-                    <p class="text-[11px] text-slate-500">با ورود شما <a href="#" class="text-brand-purple-dark font-bold underline">قوانین و مقررات</a> را می‌پذیرید.</p>
-                </div>
-            </div>
-
-            <!-- Step 2: OTP & Registration (Hidden by default) -->
-            <div class="p-6 md:p-8 hidden flex-col gap-6" id="modal-step-2">
-                <div class="text-center mb-2">
-                    <p class="text-[13px] font-bold text-slate-700 mb-1">کد تایید پیامک شده را وارد کنید</p>
-                    <p class="text-[12px] text-slate-500 cursor-pointer hover:text-brand-pink" onclick="document.getElementById('modal-step-2').classList.add('hidden'); document.getElementById('modal-step-1').classList.remove('hidden');">ویرایش شماره: ۰۹۱۲۳۴۵۶۷۸۹ <i class="fa-solid fa-pen ms-1"></i></p>
-                </div>
-
-                <!-- OTP 4 Graphic Boxes -->
-                <div class="flex justify-center gap-3" dir="ltr">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="7">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="4">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
-                    <input type="text" maxlength="1" class="w-12 h-14 bg-slate-50 border-2 border-slate-200 rounded-xl text-center text-xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none transition-colors" value="">
-                </div>
-
-                <!-- Fake Registration Fields (Shown if user is new) -->
-                <div class="border-t border-slate-100 pt-5 mt-2 flex flex-col gap-4">
-                    <p class="text-[12px] text-brand-purple-dark font-bold text-center bg-brand-purple-light/10 py-1.5 rounded-lg">شما کاربر جدید هستید. لطفا اطلاعات زیر را تکمیل کنید.</p>
-                    
-                    <!-- Avatar Upload -->
-                    <div class="flex justify-center">
-                        <div class="relative group cursor-pointer">
-                            <div class="w-20 h-20 bg-slate-100 border-2 border-dashed border-slate-300 rounded-full flex items-center justify-center overflow-hidden group-hover:border-brand-pink transition-colors">
-                                <i class="fa-solid fa-camera text-2xl text-slate-400 group-hover:text-brand-pink transition-colors"></i>
-                            </div>
-                            <div class="absolute -bottom-1 -end-1 bg-brand-pink text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Name Input -->
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" placeholder="مثال: علی احمدی" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 ps-11 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800">
-                        </div>
-                    </div>
-                </div>
-
-                <a href="profile.html" class="w-full block text-center bg-brand-pink text-white font-black py-3 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                    تایید و ورود
-                </a>
-            </div>
-
-        </div>
-    </div>
-            <!-- Global Footer — Step 1 redesign -->
+                    <!-- Global Footer — Step 1 redesign -->
     <footer class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-200 mt-12 w-full z-10 relative">
         <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-12">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
@@ -496,7 +440,7 @@
             <!-- Bottom bar: copyright + socials -->
             <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col items-center justify-center gap-4 text-center">
                 <p class="text-[12px] text-slate-500 text-center">
-                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۵
                 </p>
                 <div class="flex gap-2 text-base">
                     <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>

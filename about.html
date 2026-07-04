@@ -46,7 +46,7 @@
                     <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer" style="height:1em;line-height:1"><i class="aparat-icon" style="display:block"></i></a>
+                    <a href="#" aria-label="آپارات" class="text-[#ed145b] hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon" style="display:inline-block;width:1.5rem;height:1.5rem;vertical-align:-0.125em"></i></a>
                 </div>
 
                 <!-- Auth: Logged-out state -->
@@ -149,22 +149,20 @@
 
         <!-- ================= SIDEBAR (Right side) ================= -->
         <aside
-            class="w-full lg:w-[300px] shrink-0 flex flex-col items-center gap-6 md:gap-8 lg:border-l border-slate-200 lg:pl-10">
+            class="hidden lg:flex lg:w-[300px] shrink-0 flex-col items-center gap-6 lg:border-l border-slate-200 lg:pl-10 lg:sticky lg:top-24 lg:self-start">
 
             <!-- TL Logo -->
             <img src="assets/images/association-logo.png" alt="لوگوی انجمن خیریه یاس"
                 class="w-32 object-contain hover:opacity-80 transition-opacity cursor-pointer">
 
-            <!-- Filter Buttons (Stack on desktop, horizontal scrollable row on mobile) -->
+            <!-- Navigation Links -->
             <div class="w-full max-w-[280px] flex flex-row flex-nowrap md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0 -mx-1 px-1 snap-x">
-                <button
-                    class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">افراد</button>
-                <button
-                    class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">مراکز</button>
-                <button
-                    class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">درگذشتگان</button>
-                <button
-                    class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full">همه</button>
+                <a href="index.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-home text-xs"></i> خانه</a>
+                <a href="deceased-detail.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-dove text-xs"></i> درگذشتگان</a>
+                <a href="board-order.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-table-columns text-xs"></i> تابلو گل نقره</a>
+                <a href="projects-archive.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-folder text-xs"></i> طرح‌ها</a>
+                <a href="about.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-circle-info text-xs"></i> درباره ما</a>
+                <a href="contact.html" class="shrink-0 snap-start bg-slate-800 text-white py-3 px-4 rounded-xl text-sm font-medium shadow-md hover:bg-brand-purple-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 md:w-full flex items-center gap-2 justify-center md:justify-start"><i class="fa-solid fa-envelope text-xs"></i> تماس با ما</a>
             </div>
 
             <!-- Intro Text (hidden on mobile to save vertical space) -->
@@ -457,7 +455,7 @@
             <!-- Bottom bar: copyright + socials -->
             <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col items-center justify-center gap-4 text-center">
                 <p class="text-[12px] text-slate-500 text-center">
-                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۵
                 </p>
                 <div class="flex gap-2 text-base">
                     <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>

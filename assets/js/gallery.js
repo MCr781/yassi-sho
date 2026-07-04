@@ -302,11 +302,11 @@
                 b.onclick = function() { self.goTo(page); };
                 return b;
             }
-            pager.appendChild(btn('›', self.currentPage - 1, false, self.currentPage === 1));
+            pager.appendChild(btn('‹', self.currentPage - 1, false, self.currentPage === 1));
             for (var p = 1; p <= self.totalPages; p++) {
                 pager.appendChild(btn(self.toPersian(p), p, p === self.currentPage, false));
             }
-            pager.appendChild(btn('‹', self.currentPage + 1, false, self.currentPage === self.totalPages));
+            pager.appendChild(btn('›', self.currentPage + 1, false, self.currentPage === self.totalPages));
             this.grid.parentElement.appendChild(pager);
         },
 

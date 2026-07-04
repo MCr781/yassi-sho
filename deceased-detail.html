@@ -45,7 +45,7 @@
                     <a href="#" aria-label="اینستاگرام" class="text-pink-600 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="تلگرام" class="text-blue-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" aria-label="واتساپ" class="text-green-500 hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" aria-label="آپارات" class="inline-flex items-center justify-center hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer" style="height:1em;line-height:1"><i class="aparat-icon" style="display:block"></i></a>
+                    <a href="#" aria-label="آپارات" class="text-[#ed145b] hover:-translate-y-1 hover:scale-110 transition-all cursor-pointer"><i class="aparat-icon" style="display:inline-block;width:1.5rem;height:1.5rem;vertical-align:-0.125em"></i></a>
                 </div>
 
                 <!-- Auth: Logged-out state -->
@@ -347,69 +347,59 @@
                         <div class="ys-gallery-preview flex-1">
                             <div class="grid grid-cols-3 gap-2">
                                 <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(0)">
-                                    <img alt="تصویر یادبود" src="assets/images/iranian-face-4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <!-- Title bar at bottom (always visible) -->
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                                    <p class="text-white text-[11px] font-bold truncate">یادبود علی احمدی</p>
-                                </div>
-                                <!-- Hover description overlay -->
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
-                                    <p class="text-white text-[11px] text-center leading-relaxed">عکس خانوادگی در مراسم سالگرد</p>
-                                </div>
-                            </div>
-                                <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(1)">
-                                    <img alt="تصویر یادبود" src="assets/images/iranian-face-5.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <!-- Title bar at bottom (always visible) -->
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                                    <p class="text-white text-[11px] font-bold truncate">یادبود حسین فولادی</p>
-                                </div>
-                                <!-- Hover description overlay -->
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
-                                    <p class="text-white text-[11px] text-center leading-relaxed">تصویر یادگاری در کنار دوستان</p>
-                                </div>
-                            </div>
-                                <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(2)">
-                                    <div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center">
-                                        <i class="fa-solid fa-play text-white text-2xl opacity-80 group-hover:scale-125 transition-transform"></i>
+                                    <img src="assets/images/iranian-face-4.jpg" alt="یادبود علی احمدی" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute bottom-2 inset-x-0 flex justify-center px-2 z-30">
+                                        <span class="bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full truncate max-w-full">یادبود علی احمدی</span>
                                     </div>
-                                    <img alt="تصویر پروژه" src="assets/images/iranian-face-6.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <!-- Title bar at bottom (always visible) -->
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2 z-20">
-                                    <p class="text-white text-[11px] font-bold truncate">ویدئو مریم رضایی</p>
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-30">
+                                        <p class="text-white text-[11px] text-center leading-relaxed">عکس خانوادگی در مراسم سالگرد</p>
+                                    </div>
                                 </div>
-                                <!-- Hover description overlay -->
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-20">
-                                    <p class="text-white text-[11px] text-center leading-relaxed">کلیپ کوتاه از دوران جوانی</p>
+                                <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(1)">
+                                    <img src="assets/images/iranian-face-5.jpg" alt="یادبود حسین فولادی" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute bottom-2 inset-x-0 flex justify-center px-2 z-30">
+                                        <span class="bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full truncate max-w-full">یادبود حسین فولادی</span>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-30">
+                                        <p class="text-white text-[11px] text-center leading-relaxed">تصویر یادگاری در کنار دوستان</p>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(2)">
+                                    <img src="assets/images/iranian-face-6.jpg" alt="ویدئو مریم رضایی" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/30 z-10 flex items-center justify-center pointer-events-none">
+                                        <i class="fa-solid fa-play text-white text-2xl opacity-90 group-hover:scale-110 transition-transform"></i>
+                                    </div>
+                                    <div class="absolute bottom-2 inset-x-0 flex justify-center px-2 z-30">
+                                        <span class="bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full truncate max-w-full">ویدئو مریم رضایی</span>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-30">
+                                        <p class="text-white text-[11px] text-center leading-relaxed">کلیپ کوتاه از دوران جوانی</p>
+                                    </div>
+                                </div>
                                 <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(3)">
-                                    <img alt="تصویر پروژه" src="assets/images/iranian-face-11.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <!-- Title bar at bottom (always visible) -->
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                                    <p class="text-white text-[11px] font-bold truncate">یادبود زهرا کریمی</p>
+                                    <img src="assets/images/iranian-face-7.jpg" alt="یادبود زهرا کریمی" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute bottom-2 inset-x-0 flex justify-center px-2 z-30">
+                                        <span class="bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full truncate max-w-full">یادبود زهرا کریمی</span>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-30">
+                                        <p class="text-white text-[11px] text-center leading-relaxed">عکس ساعت خوش کودکی</p>
+                                    </div>
                                 </div>
-                                <!-- Hover description overlay -->
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
-                                    <p class="text-white text-[11px] text-center leading-relaxed">عکس ساعت خوش کودکی</p>
-                                </div>
-                            </div>
                                 <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="YasiGallery.open(4)">
-                                    <img alt="تصویر پروژه" src="assets/images/iranian-face-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <!-- Title bar at bottom (always visible) -->
-                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                                    <p class="text-white text-[11px] font-bold truncate">یادبود محمود نوری</p>
+                                    <img src="assets/images/iranian-face-8.jpg" alt="یادبود محمود نوری" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute bottom-2 inset-x-0 flex justify-center px-2 z-30">
+                                        <span class="bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full truncate max-w-full">یادبود محمود نوری</span>
+                                    </div>
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 z-30">
+                                        <p class="text-white text-[11px] text-center leading-relaxed">تصویری از محل کار ایشان</p>
+                                    </div>
                                 </div>
-                                <!-- Hover description overlay -->
-                                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
-                                    <p class="text-white text-[11px] text-center leading-relaxed">تصویری از محل کار ایشان</p>
-                                </div>
-                            </div>
                                 <div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer" onclick="document.getElementById('gallery-modal').classList.remove('hidden'); document.getElementById('gallery-modal').classList.add('flex');">
-                                    <div class="absolute inset-0 bg-black/60 z-10 flex flex-col items-center justify-center">
+                                    <img src="assets/images/iranian-face-9.jpg" alt="+۶ تصویر دیگر" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/60 z-20 flex flex-col items-center justify-center">
                                         <span class="text-white font-bold text-xl">+۶</span>
                                         <span class="text-white/80 text-xs mt-1">تصویر دیگر</span>
                                     </div>
-                                    <img alt="تصویر یادبود" src="assets/images/iranian-face-2.jpg" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -523,7 +513,7 @@
             <!-- Bottom bar: copyright + socials -->
             <div class="ys-footer-bottom border-t border-slate-200 mt-8 pt-5 flex flex-col items-center justify-center gap-4 text-center">
                 <p class="text-[12px] text-slate-500 text-center">
-                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۴
+                    تمامی حقوق برای انجمن خیریه حمایت از بیماران سرطانی یاس کرمان محفوظ است. © ۱۴۰۵
                 </p>
                 <div class="flex gap-2 text-base">
                     <a href="#" aria-label="اینستاگرام" class="w-8 h-8 flex items-center justify-center bg-pink-50 text-pink-600 rounded-lg hover:bg-pink-100 transition-colors"><i class="fa-brands fa-instagram"></i></a>
