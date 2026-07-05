@@ -900,9 +900,6 @@
   .snap-start {
     scroll-snap-align: start;
   }
-  .appearance-none {
-    appearance: none;
-  }
   .auto-rows-\[250px\] {
     grid-auto-rows: 250px;
   }
@@ -2780,16 +2777,6 @@
         content: var(--tw-content);
         border-color: var(--color-white);
       }
-    }
-  }
-  .checked\:border-brand-pink {
-    &:checked {
-      border-color: var(--color-brand-pink);
-    }
-  }
-  .checked\:bg-brand-pink {
-    &:checked {
-      background-color: var(--color-brand-pink);
     }
   }
   .hover\:z-10 {
