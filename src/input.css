@@ -60,13 +60,13 @@
 a .aparat-icon { transition: transform .2s ease; }
 a:hover .aparat-icon { transform: scale(1.1); }
 
-/* ---- Footer: trust badge tiles (redesigned for larger, cleaner display) ---- */
+/* ---- Footer: trust badge tiles (30% bigger) ---- */
 .ys-trust-badge {
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   padding: 0.75rem;
-  height: 7rem;
+  height: 6.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,14 +81,14 @@ a:hover .aparat-icon { transform: scale(1.1); }
   border-color: #c4b5fd;
 }
 .ys-trust-badge .ys-trust-mark {
-  height: 4rem;
+  height: 3rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .ys-trust-badge .ys-trust-mark img {
-  max-height: 4rem;
+  max-height: 3rem;
   max-width: 100%;
   width: auto;
   height: auto;
@@ -391,4 +391,32 @@ a:hover .aparat-icon { transform: scale(1.1); }
   .ys-deceased-content { grid-column: 1 !important; grid-row: 1 !important; }
   .ys-deceased-photo  { grid-column: 2 !important; grid-row: 1 !important; }
   .ys-fullwidth-row   { grid-column: 1 / -1 !important; grid-row: 2 !important; }
+}
+
+/* ---- Custom checkbox styling (deceased-detail + add-deceased) ---- */
+input[type="checkbox"].peer:checked {
+  background-color: var(--color-brand-pink);
+  border-color: var(--color-brand-pink);
+}
+
+/* ---- Custom checkbox: pink background when checked ---- */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type="checkbox"]:checked {
+  background-color: #e91e63;
+  border-color: #e91e63;
+}
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
 }

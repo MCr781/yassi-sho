@@ -16,18 +16,18 @@
        <video controls> element for it.
        ------------------------------------------------------------------ */
     var GALLERY_DATA = [
-        { type: 'image', src: 'assets/images/a5.jpg',  title: 'یادبود علی احمدی',     date: '۱۴۰۱/۰۵/۱۶', desc: 'عکس خانوادگی در مراسم یادبود سالگرد درگذشت.' },
-        { type: 'video', src: 'assets/images/a3.jpg',  title: 'ویدئو مریم رضایی',     date: '۱۴۰۱/۰۵/۱۶', desc: ' Clips کوتاه از دوران جوانی مرحومه.' },
-        { type: 'image', src: 'assets/images/a2.jpg',  title: 'یادبود حسین فولادی',   date: '۱۴۰۱/۰۵/۱۷', desc: 'تصویر یادگاری در کنار دوستان.' },
-        { type: 'image', src: 'assets/images/a4.jpg',  title: 'یادبود زهرا کریمی',    date: '۱۴۰۱/۰۵/۱۸', desc: 'عکس ساعت خوش کودکی.' },
-        { type: 'image', src: 'assets/images/a6.jpg',  title: 'یادبود محمود نوری',    date: '۱۴۰۱/۰۵/۲۰', desc: 'تصویری از محل کار ایشان.' },
-        { type: 'image', src: 'assets/images/a7.jpg',  title: 'یادبود فاطمه عباسی',   date: '۱۴۰۱/۰۵/۲۲', desc: 'عکس یادگاری با نوه‌ها.' },
-        { type: 'video', src: 'assets/images/a8.jpg',  title: 'ویدئو کریم دادخواه',   date: '۱۴۰۱/۰۵/۲۵', desc: 'گفتگوی کوتاه با دوستان در مراسم.' },
-        { type: 'image', src: 'assets/images/a9.jpg',  title: 'یادبود سارا موسوی',    date: '۱۴۰۱/۰۵/۲۷', desc: 'عکس طبیعت‌گردی آخرین بهار.' },
-        { type: 'image', src: 'assets/images/a10.jpg', title: 'یادبود رضا هاشمی',     date: '۱۴۰۱/۰۵/۲۹', desc: 'یادگاری از مراسم عروسی فرزند ایشان.' },
-        { type: 'image', src: 'assets/images/a11.jpg', title: 'یادبود نرگس صادقی',    date: '۱۴۰۱/۰۶/۰۱', desc: 'تصویر خانوادگی در عید نوروز.' },
-        { type: 'image', src: 'assets/images/a12.jpg', title: 'یادبود امیر تهرانی',   date: '۱۴۰۱/۰۶/۰۳', desc: 'عکس آخرین سفر یادگاری.' },
-        { type: 'image', src: 'assets/images/a13.jpg', title: 'یادبود هما جعفری',     date: '۱۴۰۱/۰۶/۰۵', desc: 'یادگاری از دوران جوانی.' }
+        { type: 'image', src: 'assets/images/people/man-1.jpg',  title: 'یادبود علی احمدی',     date: '۱۴۰۱/۰۵/۱۶', desc: 'عکس خانوادگی در مراسم یادبود سالگرد درگذشت.' },
+        { type: 'video', src: 'assets/images/people/woman-1.jpg',  title: 'ویدئو مریم رضایی',     date: '۱۴۰۱/۰۵/۱۶', desc: ' Clips کوتاه از دوران جوانی مرحومه.' },
+        { type: 'image', src: 'assets/images/people/man-2.jpg',  title: 'یادبود حسین فولادی',   date: '۱۴۰۱/۰۵/۱۷', desc: 'تصویر یادگاری در کنار دوستان.' },
+        { type: 'image', src: 'assets/images/people/woman-2.jpg',  title: 'یادبود زهرا کریمی',    date: '۱۴۰۱/۰۵/۱۸', desc: 'عکس ساعت خوش کودکی.' },
+        { type: 'image', src: 'assets/images/people/man-3.jpg',  title: 'یادبود محمود نوری',    date: '۱۴۰۱/۰۵/۲۰', desc: 'تصویری از محل کار ایشان.' },
+        { type: 'image', src: 'assets/images/people/woman-3.jpg',  title: 'یادبود فاطمه عباسی',   date: '۱۴۰۱/۰۵/۲۲', desc: 'عکس یادگاری با نوه‌ها.' },
+        { type: 'video', src: 'assets/images/people/man-4.jpg',  title: 'ویدئو کریم دادخواه',   date: '۱۴۰۱/۰۵/۲۵', desc: 'گفتگوی کوتاه با دوستان در مراسم.' },
+        { type: 'image', src: 'assets/images/people/woman-4.jpg',  title: 'یادبود سارا موسوی',    date: '۱۴۰۱/۰۵/۲۷', desc: 'عکس طبیعت‌گردی آخرین بهار.' },
+        { type: 'image', src: 'assets/images/people/man-5.jpg', title: 'یادبود رضا هاشمی',     date: '۱۴۰۱/۰۵/۲۹', desc: 'یادگاری از مراسم عروسی فرزند ایشان.' },
+        { type: 'image', src: 'assets/images/people/woman-5.jpg', title: 'یادبود نرگس صادقی',    date: '۱۴۰۱/۰۶/۰۱', desc: 'تصویر خانوادگی در عید نوروز.' },
+        { type: 'image', src: 'assets/images/people/man-6.jpg', title: 'یادبود امیر تهرانی',   date: '۱۴۰۱/۰۶/۰۳', desc: 'عکس آخرین سفر یادگاری.' },
+        { type: 'image', src: 'assets/images/people/woman-6.jpg', title: 'یادبود هما جعفری',     date: '۱۴۰۱/۰۶/۰۵', desc: 'یادگاری از دوران جوانی.' }
     ];
 
     var currentIndex = 0;
