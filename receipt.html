@@ -1,50 +1,101 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ورود یا ثبت‌نام در یاسی شو با شماره موبایل و کد تایید پیامکی. مدیریت درگذشتگان و تابلوهای سفارش داده شده.">
-    <meta name="keywords" content="ورود یاسی شو, ثبت‌نام, لاگین, کد تایید, حساب کاربری">
-    <link rel="canonical" href="https://yassishow.ir/register.html">
-    <meta property="og:title" content="ورود / ثبت‌نام | یاسی شو">
-    <meta property="og:description" content="ورود یا ثبت‌نام در یاسی شو با شماره موبایل و کد تایید پیامکی. مدیریت درگذشتگان و تابلوهای سفارش داده شده.">
+    <title>رسید پرداخت | یاسی شو</title>
+    <meta name="description" content="رسید پرداخت آنلاین یاسی شو — وضعیت تراکنش، مبلغ، تاریخ و درگاه پرداخت.">
+    <meta name="keywords" content="رسید پرداخت, تراکنش, یاسی شو, پرداخت آنلاین">
+    <link rel="canonical" href="https://yassishow.ir/receipt.html">
+    <meta property="og:title" content="رسید پرداخت | یاسی شو">
+    <meta property="og:description" content="رسید پرداخت آنلاین یاسی شو.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="یاسی شو">
     <meta property="og:locale" content="fa_IR">
-    <meta property="og:url" content="https://yassishow.ir/register.html">
-    <meta property="og:image" content="https://yassishow.ir/assets/logos/logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ورود / ثبت‌نام | یاسی شو">
-    <meta name="twitter:description" content="ورود یا ثبت‌نام در یاسی شو با شماره موبایل و کد تایید پیامکی. مدیریت درگذشتگان و تابلوهای سفارش داده شده.">
-    <meta name="twitter:image" content="https://yassishow.ir/assets/logos/logo.png">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, follow">
     <meta name="theme-color" content="#7b2c83">
-    <title>ورود / ثبت‌نام | یاسی شو</title>
-
-    <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
-    <!-- Make sure FontAwesome is properly linked for the new icons -->
-    <link rel="stylesheet" href="assets/css/all.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/logos/logo.png">
 
+    <link rel="stylesheet" href="assets/css/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <script type="application/ld+json">
-    {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "ورود / ثبت‌نام | یاسی شو",
-  "description": "ورود یا ثبت‌نام در یاسی شو با شماره موبایل و کد تایید پیامکی. مدیریت درگذشتگان و تابلوهای سفارش داده شده.",
-  "inLanguage": "fa-IR",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "یاسی شو",
-    "url": "https://yassishow.ir"
-  }
-}
+    {"@context":"https://schema.org","@type":"WebPage","name":"رسید پرداخت | یاسی شو","description":"رسید پرداخت آنلاین یاسی شو.","inLanguage":"fa-IR"}
     </script>
+
+    <style>
+        /* Print styles — only show the receipt card when printing */
+        @media print {
+            /* Hide everything */
+            body > * { display: none !important; }
+
+            /* Show only the receipt body */
+            body { background: white !important; padding: 0 !important; margin: 0 !important; }
+
+            /* Create a clone container for printing */
+            #print-output {
+                display: block !important;
+            }
+        }
+
+        /* Hidden on screen, shown only in print */
+        #print-output { display: none; }
+
+        /* Receipt card hover effect */
+        .ys-receipt-card {
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .ys-receipt-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+        }
+
+        /* Dashed separator */
+        .ys-receipt-dashed {
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        /* Print receipt template (always in DOM but hidden on screen) */
+        .ys-print-receipt {
+            font-family: 'Vazirmatn', sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ys-print-receipt .ys-pr-header {
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .ys-print-receipt .ys-pr-amount {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+        .ys-print-receipt .ys-pr-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        .ys-print-receipt .ys-pr-dashed {
+            border-top: 2px dashed #ccc;
+            margin: 15px 0;
+        }
+        .ys-print-receipt .ys-pr-logo {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .ys-print-receipt .ys-pr-logo img {
+            max-height: 40px;
+        }
+    </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white has-mobile-trustbar">
+<body class="bg-slate-50 text-slate-800 selection:bg-brand-pink selection:text-white flex flex-col min-h-screen font-sans has-mobile-trustbar">
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-sm z-50 transition-all">
@@ -176,173 +227,187 @@
         </div>
     </div>
 
-    <!-- ================= AUTH CONTENT ================= -->
-    <main class="max-w-[1400px] mx-auto px-4 pt-10 md:pt-16 pb-12 md:pb-20 flex justify-center">
+    <!--
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center p-4 py-8 md:py-16">
         <div class="w-full max-w-md">
 
-            <!-- Back to Home button -->
-            <a href="index.html" class="inline-flex items-center gap-2 text-slate-500 hover:text-brand-purple-dark text-[13px] font-bold mb-6 transition-colors">
-                <i class="fa-solid fa-arrow-right text-[12px]"></i>
-                بازگشت به خانه
-            </a>
+            <h1 class="sr-only">رسید پرداخت یاسی شو</h1>
 
-            <!-- Auth Card -->
-            <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <!-- Toggle buttons (demo only — backend will determine status) -->
+            <div class="flex gap-2 mb-6 no-print">
+                <button onclick="showReceipt('success')" id="btn-success" class="flex-1 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-500 text-white shadow-md">
+                    <i class="fa-solid fa-check-circle text-xs ml-1"></i> پرداخت موفق
+                </button>
+                <button onclick="showReceipt('failed')" id="btn-failed" class="flex-1 py-2.5 rounded-xl text-sm font-bold transition-all bg-white border border-slate-200 text-slate-500 hover:bg-slate-50">
+                    <i class="fa-solid fa-times-circle text-xs ml-1"></i> پرداخت ناموفق
+                </button>
+            </div>
 
-                <!-- Gradient Header -->
-                <div class="bg-gradient-to-br from-brand-purple-light to-brand-purple-dark p-7 text-center text-white relative overflow-hidden">
-                    <div class="absolute inset-0 bg-white/5 opacity-50"></div>
-                    <div class="absolute -top-8 -end-8 w-28 h-28 bg-white/10 rounded-full blur-xl"></div>
-                    <div class="absolute -bottom-6 -start-6 w-20 h-20 bg-brand-pink/20 rounded-full blur-lg"></div>
-                    <div class="w-16 h-16 mx-auto bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-3 shadow-lg relative z-10 ring-1 ring-white/20">
-                        <i class="fa-solid fa-shield-halved text-3xl text-white drop-shadow-md"></i>
-                    </div>
-                    <h1 class="text-xl font-black relative z-10">ورود / ثبت‌نام</h1>
-                    <p class="text-white/80 text-[12px] mt-1.5 relative z-10">به پلتفرم مشارکت مردمی یاس بپیوندید</p>
-                </div>
-
-                <!-- ============ Step 1: Phone Input ============ -->
-                <div id="step-phone" class="p-6 md:p-8 flex flex-col gap-6">
-                    <div class="text-center">
-                        <div class="w-14 h-14 mx-auto bg-brand-purple-light/10 text-brand-purple-dark rounded-2xl flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-mobile-screen text-2xl"></i>
+            <!-- ============ SUCCESS RECEIPT ============ -->
+            <div id="receipt-success" class="ys-receipt-card bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden" >
+                <div id="receipt-print-area">
+                    <!-- Status header -->
+                    <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 px-6 py-8 text-center text-white relative overflow-hidden">
+                        <div class="absolute -top-8 -end-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-3 border-2 border-white/30">
+                                <i class="fa-solid fa-check text-3xl"></i>
+                            </div>
+                            <h2 class="text-xl font-black">پرداخت با موفقیت انجام شد</h2>
+                            <p class="text-white/70 text-[12px] mt-1">تراکنش شما با موفقیت ثبت گردید</p>
                         </div>
-                        <h2 class="text-[16px] font-black text-slate-800 mb-1">شماره موبایل خود را وارد کنید</h2>
-                        <p class="text-[12px] text-slate-500 font-medium">کد تایید یکبار مصرف برای شما پیامک خواهد شد</p>
                     </div>
 
-                    <!-- Phone input -->
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">شماره موبایل</label>
-                        <div class="relative">
-                            <input id="phone-input" type="tel" inputmode="numeric" maxlength="11" placeholder="09123456789" dir="ltr" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 px-4 ps-24 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800 tracking-[0.2em] font-sans text-[15px] font-bold">
-                            <div class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
-                                <i class="fa-solid fa-phone text-slate-400 text-sm"></i>
-                                <span class="flex items-center justify-center w-7 h-7 rounded-md overflow-hidden bg-slate-100">
-                                    <span class="text-base leading-none">🇮🇷</span>
+                    <!-- Receipt body -->
+                    <div class="p-6">
+                        <!-- Amount -->
+                        <div class="text-center mb-5">
+                            <p class="text-[12px] text-slate-400 font-bold mb-1">مبلغ پرداختی</p>
+                            <p class="text-3xl font-black text-emerald-600">۵۰۰,۰۰۰ <span class="text-sm font-normal text-slate-400">تومان</span></p>
+                        </div>
+
+                        <!-- Dashed separator -->
+                        <div class="ys-receipt-dashed mb-5"></div>
+
+                        <!-- Details -->
+                        <div class="flex flex-col gap-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">عنوان</span>
+                                <span class="text-[13px] text-slate-700 font-black">تابلو گل نقره - نوع ویژه</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">پرداخت‌کننده</span>
+                                <span class="text-[13px] text-slate-700 font-black">علی صیدنژاد</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">تاریخ</span>
+                                <span class="text-[13px] text-slate-700 font-black" dir="ltr">۱۴۰۴/۰۴/۱۲ - ۱۴:۳۰</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">کد پیگیری</span>
+                                <span class="text-[13px] text-slate-700 font-black font-mono" dir="ltr">YS-78451296</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">درگاه پرداخت</span>
+                                <span class="text-[13px] text-slate-700 font-black flex items-center gap-1.5">
+                                    <i class="fa-solid fa-building-columns text-amber-600 text-xs"></i>
+                                    بانک ملت
                                 </span>
                             </div>
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-2 flex items-center gap-1"><i class="fa-solid fa-circle-info"></i> شماره باید با ۰۹ شروع شود و ۱۱ رقم باشد.</p>
-                    </div>
 
-                    <!-- Send Code Button -->
-                    <button type="button" id="send-code-btn" class="w-full bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white font-black py-3.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane text-sm"></i>
-                        ارسال کد تایید
-                    </button>
+                        <!-- Dashed separator -->
+                        <div class="ys-receipt-dashed my-5"></div>
 
-                    <!-- Terms -->
-                    <div class="text-center">
-                        <p class="text-[11px] text-slate-500 leading-relaxed">با ورود شما <a href="#" class="text-brand-purple-dark font-bold underline hover:text-brand-pink transition-colors">قوانین و مقررات</a> را می‌پذیرید.</p>
+                        <!-- Logo + thank you -->
+                        <div class="text-center">
+                            <img src="assets/logos/logo.png" alt="لوگوی یاسی شو" class="h-10 mx-auto object-contain mb-2">
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                <i class="fa-solid fa-heart text-brand-pink text-[10px] ml-1"></i>
+                                از همراهی شما با بیماران سرطانی سپاسگزاریم
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- ============ Step 2: OTP Input (hidden) ============ -->
-                <div id="step-otp" class="hidden p-6 md:p-8 flex-col gap-6">
-                    <div class="text-center">
-                        <div class="w-14 h-14 mx-auto bg-brand-pink/10 text-brand-pink rounded-2xl flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-comment-sms text-2xl"></i>
-                        </div>
-                        <h2 class="text-[16px] font-black text-slate-800 mb-1">کد تایید پیامک شده را وارد کنید</h2>
-
-                        <!-- Phone with edit button -->
-                        <div class="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full ps-3 pe-1.5 py-1.5 mt-3">
-                            <span class="text-[12px] text-slate-500 font-bold">کد برای</span>
-                            <span id="display-phone" class="text-[13px] text-slate-800 font-black tracking-wider font-sans" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
-                            <button type="button" id="edit-phone-btn" class="w-7 h-7 flex items-center justify-center bg-white text-brand-purple-dark border border-slate-200 rounded-full hover:bg-brand-purple-light hover:text-white hover:border-brand-purple-light transition-all" title="ویرایش شماره">
-                                <i class="fa-solid fa-pen text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- OTP Boxes -->
-                    <div class="flex justify-center gap-3" dir="ltr">
-                        <input type="text" inputmode="numeric" maxlength="1" class="otp-box w-14 h-16 bg-slate-50 border-2 border-slate-200 rounded-2xl text-center text-2xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none focus:bg-white transition-all">
-                        <input type="text" inputmode="numeric" maxlength="1" class="otp-box w-14 h-16 bg-slate-50 border-2 border-slate-200 rounded-2xl text-center text-2xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none focus:bg-white transition-all">
-                        <input type="text" inputmode="numeric" maxlength="1" class="otp-box w-14 h-16 bg-slate-50 border-2 border-slate-200 rounded-2xl text-center text-2xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none focus:bg-white transition-all">
-                        <input type="text" inputmode="numeric" maxlength="1" class="otp-box w-14 h-16 bg-slate-50 border-2 border-slate-200 rounded-2xl text-center text-2xl font-black text-brand-purple-dark focus:border-brand-pink focus:outline-none focus:bg-white transition-all">
-                    </div>
-
-                    <!-- Countdown / Resend -->
-                    <div class="text-center">
-                        <p class="text-[12px] text-slate-500 font-bold flex items-center justify-center gap-1.5">
-                            <i class="fa-regular fa-clock text-slate-400"></i>
-                            ارسال مجدد کد تا
-                            <span class="text-brand-pink font-black font-sans tracking-wide">۰۱:۳۰</span>
-                        </p>
-                    </div>
-
-                    <!-- Verify Button — for demo: shows step 3 (new user) -->
-                    <button type="button" id="verify-btn" class="w-full text-center bg-gradient-to-l from-brand-pink to-[#ff4b72] text-white font-black py-3.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-check-circle text-sm"></i>
-                        تایید و ورود
+                <!-- Actions -->
+                <div class="px-6 pb-6 flex gap-3 no-print">
+                    <button onclick="printReceipt()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-sm py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-print text-xs"></i> چاپ رسید
                     </button>
-
-                    <!-- Hint -->
-                    <p class="text-center text-[11px] text-slate-400">کد تایید ۴ رقمی به شماره شما ارسال شد</p>
-                </div>
-
-                <!-- ============ Step 3: New User Registration (hidden) ============ -->
-                <div id="step-register" class="hidden p-6 md:p-8 flex-col gap-6">
-                    <div class="text-center">
-                        <div class="w-14 h-14 mx-auto bg-brand-purple-light/10 text-brand-purple-dark rounded-2xl flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-user-plus text-2xl"></i>
-                        </div>
-                        <h2 class="text-[16px] font-black text-slate-800 mb-1">تکمیل ثبت‌نام</h2>
-                        <p class="text-[12px] text-slate-500">شما کاربر جدید هستید. لطفاً اطلاعات خود را وارد کنید.</p>
-                    </div>
-
-                    <!-- Avatar Upload with Preview -->
-                    <div class="flex flex-col items-center gap-3">
-                        <div class="relative group cursor-pointer" id="avatar-upload-area">
-                            <div id="avatar-preview-wrap" class="w-24 h-24 rounded-full bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center overflow-hidden transition-all group-hover:border-brand-purple-light">
-                                <i class="fa-solid fa-camera text-2xl text-slate-400 group-hover:text-brand-purple-light transition-colors" id="avatar-placeholder-icon"></i>
-                                <img id="avatar-preview-img" class="hidden w-full h-full object-cover" alt="پیش‌نمایش تصویر">
-                            </div>
-                            <div class="absolute -bottom-1 -end-1 bg-brand-purple-dark text-white w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-md group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                            <input type="file" id="avatar-input" accept="image/*" class="hidden">
-                        </div>
-                        <p class="text-[11px] text-slate-400 font-bold">تصویر پروفایل (اختیاری)</p>
-                    </div>
-
-                    <!-- Name Input -->
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">نام و نام خانوادگی</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                            <input type="text" id="register-name" placeholder="مثال: علی صیدنژاد" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 ps-11 pe-4 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800 text-[14px]">
-                        </div>
-                    </div>
-
-                    <!-- Job Input -->
-                    <div>
-                        <label class="block text-[13px] font-bold text-slate-700 mb-2">شغل <span class="text-slate-400 font-normal text-[11px]">(اختیاری)</span></label>
-                        <div class="relative">
-                            <i class="fa-solid fa-briefcase absolute start-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                            <input type="text" id="register-job" placeholder="مثال: مهندس" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 ps-11 pe-4 text-start focus:outline-none focus:ring-2 focus:ring-brand-purple-light/50 focus:border-brand-purple-light transition-all text-slate-800 text-[14px]">
-                        </div>
-                    </div>
-
-                    <!-- Complete Registration Button -->
-                    <a href="profile.html" class="w-full text-center bg-gradient-to-l from-brand-pink to-[#ff4b72] text-white font-black py-3.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-check-circle text-sm"></i>
-                        تکمیل ثبت‌نام و ورود
+                    <a href="profile.html" class="flex-1 bg-gradient-to-l from-brand-purple-light to-brand-purple-dark text-white font-bold text-sm py-3 rounded-xl text-center transition-all hover:shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user text-xs"></i> پروفایل
                     </a>
                 </div>
             </div>
 
-            <!-- Helper note below the card -->
-            <p class="text-center text-[12px] text-slate-500 mt-6 leading-relaxed">
-                کاربران قبلی یاسی شو با همان شماره موبایل می‌توانند وارد حساب خود شوند.<br>
-                در صورت بروز مشکل با <a href="contact.html" class="text-brand-purple-dark font-bold underline">پشتیبانی</a> تماس بگیرید.
-            </p>
+            <!-- ============ FAILED RECEIPT (hidden by default) ============ -->
+            <div id="receipt-failed" class="ys-receipt-card bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden hidden">
+                <div>
+                    <!-- Status header -->
+                    <div class="bg-gradient-to-br from-rose-500 to-red-600 px-6 py-8 text-center text-white relative overflow-hidden">
+                        <div class="absolute -top-8 -end-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-3 border-2 border-white/30">
+                                <i class="fa-solid fa-xmark text-3xl"></i>
+                            </div>
+                            <h2 class="text-xl font-black">پرداخت ناموفق بود</h2>
+                            <p class="text-white/70 text-[12px] mt-1">تراکنش با خطا مواجه شد</p>
+                        </div>
+                    </div>
+
+                    <!-- Receipt body -->
+                    <div class="p-6">
+                        <!-- Amount -->
+                        <div class="text-center mb-5">
+                            <p class="text-[12px] text-slate-400 font-bold mb-1">مبلغ</p>
+                            <p class="text-3xl font-black text-rose-500">۵۰۰,۰۰۰ <span class="text-sm font-normal text-slate-400">تومان</span></p>
+                        </div>
+
+                        <!-- Dashed separator -->
+                        <div class="ys-receipt-dashed mb-5"></div>
+
+                        <!-- Details -->
+                        <div class="flex flex-col gap-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">عنوان</span>
+                                <span class="text-[13px] text-slate-700 font-black">تابلو گل نقره - نوع ویژه</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">پرداخت‌کننده</span>
+                                <span class="text-[13px] text-slate-700 font-black">علی صیدنژاد</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">تاریخ</span>
+                                <span class="text-[13px] text-slate-700 font-black" dir="ltr">۱۴۰۴/۰۴/۱۲ - ۱۴:۲۸</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">کد پیگیری</span>
+                                <span class="text-[13px] text-slate-700 font-black font-mono" dir="ltr">YS-78451295</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">درگاه پرداخت</span>
+                                <span class="text-[13px] text-slate-700 font-black flex items-center gap-1.5">
+                                    <i class="fa-solid fa-building-columns text-amber-600 text-xs"></i>
+                                    بانک ملت
+                                </span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[13px] text-slate-400 font-bold">علت خطا</span>
+                                <span class="text-[13px] text-rose-500 font-black">تراکنش توسط بانک رد شد</span>
+                            </div>
+                        </div>
+
+                        <!-- Dashed separator -->
+                        <div class="ys-receipt-dashed my-5"></div>
+
+                        <!-- Logo -->
+                        <div class="text-center">
+                            <img src="assets/logos/logo.png" alt="لوگوی یاسی شو" class="h-10 mx-auto object-contain mb-2">
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                در صورت بروز مشکل با <a href="contact.html" class="text-brand-purple-dark font-bold underline">پشتیبانی</a> تماس بگیرید
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="px-6 pb-6 flex gap-3 no-print">
+                    <a href="board-order.html" class="flex-1 bg-gradient-to-l from-brand-pink to-[#ff4b72] text-white font-bold text-sm py-3 rounded-xl text-center transition-all hover:shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rotate-right text-xs"></i> تلاش مجدد
+                    </a>
+                    <a href="index.html" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-sm py-3 rounded-xl text-center transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-house text-xs"></i> خانه
+                    </a>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- Global Footer — Step 1 redesign -->
+        <!-- Global Footer — Step 1 redesign -->
     <footer class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-200 mt-12 w-full z-10 relative">
         <div class="max-w-[1400px] mx-auto px-4 py-10 md:py-12">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
@@ -427,9 +492,9 @@
                             </div>
                         </a>
                         <!-- 4. Samandehi -->
-                        <a href="#" title="ساماندهی" class="ys-trust-badge">
+                        <a href="#" title="شبکه ملی پیشگیری از بیماری‌های غیرواگیر" class="ys-trust-badge">
                             <div class="ys-trust-mark">
-                                <img src="assets/icons/INCDA.jpg" alt="نماد ساماندهی" class="object-contain" onerror="this.style.display='none'">
+                                <img src="assets/icons/INCDA.jpg" alt="نماد شبکه ملی پیشگیری از بیماری‌های غیرواگیر" class="object-contain" onerror="this.style.display='none'">
                             </div>
                         </a>
                     </div>
@@ -445,7 +510,7 @@
         </div>
     </footer>
 
-    <!-- Mobile-only sticky bottom navigation bar -->
+        <!-- Mobile-only sticky bottom navigation bar -->
     <nav id="ys-mobile-trustbar" class="md:hidden fixed bottom-0 start-0 end-0 z-40">
         <div class="flex items-stretch h-14 px-1">
             <a href="deceased-detail.html" class="ys-trust-item" aria-label="درگذشتگان">
@@ -471,127 +536,84 @@
         </div>
     </nav>
 
-    <!-- Shared front-end interactions (auth state, dropdown, login modal) -->
-    <script src="assets/js/app.js"></script>
+    <!-- Print-only receipt template (hidden on screen, shown when printing) -->
+    <div id="print-output">
+        <div class="ys-print-receipt" id="print-receipt-content">
+            <!-- Content injected by JS before printing -->
+        </div>
+    </div>
 
-    <!-- OTP flow step switching -->
+    <!-- Receipt toggle + print logic -->
     <script>
-        (function () {
-            var stepPhone = document.getElementById('step-phone');
-            var stepOtp = document.getElementById('step-otp');
-            var sendCodeBtn = document.getElementById('send-code-btn');
-            var editPhoneBtn = document.getElementById('edit-phone-btn');
-            var phoneInput = document.getElementById('phone-input');
-            var displayPhone = document.getElementById('display-phone');
-            var otpBoxes = document.querySelectorAll('.otp-box');
+        function showReceipt(type) {
+            var success = document.getElementById('receipt-success');
+            var failed = document.getElementById('receipt-failed');
+            var btnS = document.getElementById('btn-success');
+            var btnF = document.getElementById('btn-failed');
 
-            // Convert English digits to Persian for display
-            function toPersianDigits(str) {
-                var persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-                return String(str).replace(/[0-9]/g, function (d) { return persian[d]; });
+            if (type === 'success') {
+                success.classList.remove('hidden');
+                failed.classList.add('hidden');
+                btnS.classList.add('bg-emerald-500', 'text-white', 'shadow-md');
+                btnS.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-500');
+                btnF.classList.remove('bg-rose-500', 'text-white', 'shadow-md');
+                btnF.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-500');
+            } else {
+                failed.classList.remove('hidden');
+                success.classList.add('hidden');
+                btnF.classList.add('bg-rose-500', 'text-white', 'shadow-md');
+                btnF.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-500');
+                btnS.classList.remove('bg-emerald-500', 'text-white', 'shadow-md');
+                btnS.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-500');
+            }
+        }
+
+        // Build a clean print-only receipt before printing
+        function printReceipt() {
+            var isSuccess = !document.getElementById('receipt-success').classList.contains('hidden');
+            var content = document.getElementById('print-receipt-content');
+
+            if (isSuccess) {
+                content.innerHTML = `
+                    <div class="ys-pr-header" style="background:#10b981;color:#fff;border-radius:16px;padding:20px;text-align:center;">
+                        <div style="font-size:48px;line-height:1;margin-bottom:8px;">✓</div>
+                        <div style="font-size:18px;font-weight:900;">پرداخت با موفقیت انجام شد</div>
+                        <div style="font-size:11px;opacity:0.7;margin-top:4px;">تراکنش شما با موفقیت ثبت گردید</div>
+                    </div>
+                    <div class="ys-pr-amount" style="color:#10b981;">۵۰۰,۰۰۰ <span style="font-size:14px;font-weight:normal;color:#999;">تومان</span></div>
+                    <div class="ys-pr-dashed"></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">عنوان</span><span style="font-weight:900;">تابلو گل نقره - نوع ویژه</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">پرداخت‌کننده</span><span style="font-weight:900;">علی صیدنژاد</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">تاریخ</span><span style="font-weight:900;" dir="ltr">۱۴۰۴/۰۴/۱۲ - ۱۴:۳۰</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">کد پیگیری</span><span style="font-weight:900;" dir="ltr">YS-78451296</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">درگاه پرداخت</span><span style="font-weight:900;">بانک ملت</span></div>
+                    <div class="ys-pr-dashed"></div>
+                    <div class="ys-pr-logo"><img src="assets/logos/logo.png" alt="یاسی شو"><p style="font-size:10px;color:#999;margin-top:6px;">از همراهی شما با بیماران سرطانی سپاسگزاریم</p></div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <div class="ys-pr-header" style="background:#f43f5e;color:#fff;border-radius:16px;padding:20px;text-align:center;">
+                        <div style="font-size:48px;line-height:1;margin-bottom:8px;">✗</div>
+                        <div style="font-size:18px;font-weight:900;">پرداخت ناموفق بود</div>
+                        <div style="font-size:11px;opacity:0.7;margin-top:4px;">تراکنش با خطا مواجه شد</div>
+                    </div>
+                    <div class="ys-pr-amount" style="color:#f43f5e;">۵۰۰,۰۰۰ <span style="font-size:14px;font-weight:normal;color:#999;">تومان</span></div>
+                    <div class="ys-pr-dashed"></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">عنوان</span><span style="font-weight:900;">تابلو گل نقره - نوع ویژه</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">پرداخت‌کننده</span><span style="font-weight:900;">علی صیدنژاد</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">تاریخ</span><span style="font-weight:900;" dir="ltr">۱۴۰۴/۰۴/۱۲ - ۱۴:۲۸</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">کد پیگیری</span><span style="font-weight:900;" dir="ltr">YS-78451295</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">درگاه پرداخت</span><span style="font-weight:900;">بانک ملت</span></div>
+                    <div class="ys-pr-row"><span style="color:#999;font-weight:bold;">علت خطا</span><span style="font-weight:900;color:#f43f5e;">تراکنش توسط بانک رد شد</span></div>
+                    <div class="ys-pr-dashed"></div>
+                    <div class="ys-pr-logo"><img src="assets/logos/logo.png" alt="یاسی شو"><p style="font-size:10px;color:#999;margin-top:6px;">در صورت بروز مشکل با پشتیبانی تماس بگیرید</p></div>
+                `;
             }
 
-            function showStep(step) {
-                if (step === 'otp') {
-                    stepPhone.classList.add('hidden');
-                    stepOtp.classList.remove('hidden');
-                    stepOtp.classList.add('flex');
-                    // Update displayed phone number
-                    var rawPhone = (phoneInput && phoneInput.value) ? phoneInput.value.trim() : '09123456789';
-                    displayPhone.textContent = toPersianDigits(rawPhone);
-                    // Auto-focus first OTP box
-                    setTimeout(function () { if (otpBoxes[0]) otpBoxes[0].focus(); }, 100);
-                } else {
-                    stepOtp.classList.add('hidden');
-                    stepOtp.classList.remove('flex');
-                    stepPhone.classList.remove('hidden');
-                    // Clear OTP boxes when going back
-                    otpBoxes.forEach(function (b) { b.value = ''; });
-                    // Focus phone input
-                    setTimeout(function () { if (phoneInput) phoneInput.focus(); }, 100);
-                }
-            }
-
-            if (sendCodeBtn) {
-                sendCodeBtn.addEventListener('click', function () { showStep('otp'); });
-            }
-            if (editPhoneBtn) {
-                editPhoneBtn.addEventListener('click', function () { showStep('phone'); });
-            }
-
-            // Auto-advance OTP boxes
-            otpBoxes.forEach(function (box, idx) {
-                box.addEventListener('input', function (e) {
-                    // keep only digits
-                    this.value = this.value.replace(/\D/g, '').slice(0, 1);
-                    if (this.value && idx < otpBoxes.length - 1) {
-                        otpBoxes[idx + 1].focus();
-                    }
-                });
-                box.addEventListener('keydown', function (e) {
-                    if (e.key === 'Backspace' && !this.value && idx > 0) {
-                        otpBoxes[idx - 1].focus();
-                    }
-                });
-            });
-
-            // Restrict phone input to digits only
-            if (phoneInput) {
-                phoneInput.addEventListener('input', function () {
-                    this.value = this.value.replace(/\D/g, '').slice(0, 11);
-                });
-            }
-            // Step 3 elements
-            var stepRegister = document.getElementById('step-register');
-            var verifyBtn = document.getElementById('verify-btn');
-
-            function showStep3() {
-                stepOtp.classList.add('hidden');
-                stepOtp.classList.remove('flex');
-                if (stepRegister) {
-                    stepRegister.classList.remove('hidden');
-                    stepRegister.classList.add('flex');
-                    setTimeout(function() {
-                        var nameInput = document.getElementById('register-name');
-                        if (nameInput) nameInput.focus();
-                    }, 100);
-                }
-            }
-
-            if (verifyBtn) {
-                verifyBtn.addEventListener('click', function () {
-                    // In production: backend checks if user exists.
-                    // For demo: always show Step 3 (new user registration)
-                    showStep3();
-                });
-            }
-
-            // Avatar upload with live preview
-            var avatarInput = document.getElementById('avatar-input');
-            var avatarPreviewImg = document.getElementById('avatar-preview-img');
-            var avatarPlaceholderIcon = document.getElementById('avatar-placeholder-icon');
-            var avatarPreviewWrap = document.getElementById('avatar-preview-wrap');
-
-            if (avatarInput) {
-                document.getElementById('avatar-upload-area').addEventListener('click', function () {
-                    avatarInput.click();
-                });
-                avatarInput.addEventListener('change', function (e) {
-                    if (e.target.files && e.target.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (ev) {
-                            avatarPreviewImg.src = ev.target.result;
-                            avatarPreviewImg.classList.remove('hidden');
-                            if (avatarPlaceholderIcon) avatarPlaceholderIcon.style.display = 'none';
-                            avatarPreviewWrap.classList.remove('border-dashed');
-                            avatarPreviewWrap.classList.add('border-solid', 'border-brand-purple-light');
-                        };
-                        reader.readAsDataURL(e.target.files[0]);
-                    }
-                });
-            }
-        })();
+            // Trigger print
+            window.print();
+        }
     </script>
+    <script src="assets/js/app.js"></script>
 </body>
-
 </html>
